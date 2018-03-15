@@ -15,7 +15,7 @@
 %% Copyright 2017 documentation in Finnish in the template by Perttu Puska,   %%
 %% perttu.puska@aalto.fi                                                      %%
 %% Copyright Swedish translations 2014 by Elisabeth Nyberg,                   %%
-%% elisabeth.nyberg@aalto.fi and Henrik Wagllén, henrik.wallen@aalto.fi        %%
+%% elisabeth.nyberg@aalto.fi and Henrik Wallén, henrik.wallen@aalto.fi        %%
 %%                                                                            %%
 %% Permission is hereby granted, free of charge, to any person obtaining a    %%
 %% copy of this software and associated documentation files (the "Software"), %%
@@ -207,8 +207,16 @@
 %% myös tiivistelmälomakkeeseen.
 %%
 \thesisabstract{
-Semanttinen internet mahdollistaa tiedon tehokkaan jakamisen ja hyödyntämisen. Kaikki saatavilla oleva tieto ei kuitenkaan ole semanttista. Tämä johtuu siitä, että semanttisen tiedon luominen vaatii ylimääräistä vaivannäköä ja resursseja. Toinen hidaste semanttisen tiedon synnylle on ihmisten tietämättömyys asiasta. Kovinkaan moni ihminen ei pysty määrittelemään termiä: semanttinen internet, vaikka
-semanttinen internet kuuluukin hyvin monen ihmisen arkeen. Pelkästään yksittäinen Google haku tuo käyttäjälle esiin linkittynyttä tietoa, joka on mahdollisesti muodostettu hyödyntäen semanttisen verkon työkaluja. Tutkielmassa selvitetään semanttisen verkon luomiseen vaadittavat vähimmäistyökalut. Tutkielman tarkoituksena on selkeyttää semanttisen internetin merkitystä ja tutustuttaa lukija linkittyneen tiedon luomiseen. Lisäksi tutkielmassa yritetään tuoda ilmi semanttisen internetin hyötyjä ja hyviä käyttökohteita.
+Tiivistelmässä on lyhyt selvitys (noin 100 sanaa) kirjoituksen tärkeimmästä
+sisällöstä: mitä ja miten on tutkittu, sekä mitä tuloksia on saatu. Tämän
+opinnäytteen Pdf/A -formaatissa tiivistelmäteksti kirjoitetaan opinnäytteen
+luettavan osan lomakkeen lisäksi myös pdf-tiedoston metadataan. Kirjoita tähän
+metadataan kirjoitettavaa teksti. Metadatatekstissa ei saa olla erikoismerkkejä,
+rivinvaiho- tai kappaleenjakomerkkiä, joten näitä merkkeja ei saa käyttää tässä.
+Jos tiivistelmäsi ei sisällä erikoimerkkejä eikä kaipaa kappaleenjakoa, voit
+hyödynttää makroa abstracttext luodessasi lomakkeen tiivistelmää (katso
+kommentti alla). Metadatatiivistelmatekstin on muuten oltava sama kuin
+lomakkeessa oleva teksti.
 }
 
 %% Tekijänoikeusteksti. Tekijänoikeus on tekijällä riippumatta siitä onko
@@ -245,7 +253,7 @@ semanttinen internet kuuluukin hyvin monen ihmisen arkeen. Pelkästään yksitt�
 
 %% Vaihdetaan sisällysluettelon väri mustaksi
 \usepackage{hyperref}% http://ctan.org/pkg/hyperref
-\hypersetup{
+\hypersetup{%
   colorlinks = true,
   linkcolor  = black
 }
@@ -255,20 +263,6 @@ semanttinen internet kuuluukin hyvin monen ihmisen arkeen. Pelkästään yksitt�
 \apptocmd{\sloppy}{\hbadness 10000\relax}{}{}
 
 \usepackage{listings}
-\lstdefinestyle{codeblock}{
-  language=XML,
-  numbers=left,
-  numbersep=0.75em,
-  frame=single,
-  framesep=\fboxsep,
-  framerule=\fboxrule,
-  rulecolor=\color{black},
-  xleftmargin=0.60cm,
-  xrightmargin=\dimexpr\fboxsep+\fboxrule\relax,
-  breaklines=true,
-  tabsize=2,
-  columns=flexible,
-}
 
 %% Salli svg kuvat
 \usepackage{svg}
@@ -298,10 +292,19 @@ semanttinen internet kuuluukin hyvin monen ihmisen arkeen. Pelkästään yksitt�
 %% Tiivistelmän tekstiosa
 %%
 \begin{abstractpage}[finnish]
-Semanttinen internet mahdollistaa tiedon tehokkaan jakamisen ja hyödyntämisen. Kaikki saatavilla oleva tieto ei kuitenkaan ole semanttista. Tämä johtuu siitä, että semanttisen tiedon luominen vaatii ylimääräistä vaivannäköä ja resursseja. Toinen hidaste semanttisen tiedon synnylle on ihmisten tietämättömyys. Kovinkaan moni ihminen ei pysty määrittelemään termiä: semanttinen internet, vaikka
-semanttinen internet kuuluukin hyvin monen ihmisen arkeen. Pelkästään yksittäinen Google haku tuo käyttäjälle esiin linkittynyttä tietoa, joka on mahdollisesti muodostettu hyödyntäen semanttisen verkon työkaluja.
-\vskip 0.5cm
-Tutkielmassa selvitetään semanttisen verkon luomiseen vaadittavat vähimmäistyökalut. Tutkielman tarkoituksena on selkeyttää semanttisen internetin merkitystä ja tutustuttaa lukija linkittyneen tiedon luomiseen. Lisäksi tutkielmassa yritetään tuoda ilmi semanttisen internetin hyötyjä ja hyviä käyttökohteita.
+Tiivistelmässä on lyhyt selvitys (noin 100 sanaa) kirjoituksen tärkeimmästä
+sisällöstä: mitä ja miten on tutkittu, sekä mitä tuloksia on saatu.
+
+Tämän opinnäytteen Pdf/A -formaatissa tiivistelmäteksti kirjoitetaan
+opinnäytteen luettavan osan lomakkeen lisäksi myös pdf-tiedoston metadataan
+$\backslash$thesisabstract-makron avulla (kasto yllä). Kirjoita tähän
+luettavaan tiivistelmälomakkeeseen menevä teksti. Tässä saa olla erikoismerkkejä
+kuten kreikkalaiset kirjaimet ja rivinvaiho- ja kappaleenjakomerkit. Tämän
+tekstin on muuten oltava sama kuin metedatatiivistelmän teksti.
+
+Jos tiivistelmäsi ei sisällä erikoimerkkejä eikä kaipaa kappaleenjakoa, voit
+hyödynttää makroa $\backslash$abstracttext luodessasi lomakkeen tiivistelmää
+(katso kommentti alla).
 \end{abstractpage}
 
 %% \thesisabstract -makrossa kirjoitettu teksti on tallennettu \abstractext
@@ -354,17 +357,21 @@ Otaniemi, 15.9.2017
 \subsection*{Operaattorit}
 
 \begin{tabular}{ll}
-%$\nabla \times \mathbf{A}$              & vektorin $\mathbf{A}$ roottori\\
+$\nabla \times \mathbf{A}$              & vektorin $\mathbf{A}$ roottori\\
 \end{tabular}
 
 \subsection*{Lyhenteet}
+
+OWL          Web Ontology Language \\
+RDF          Resource Description Framework \\
+SPARQL       SPARQL Protocol and RDF Query Language \\
+WWW          World Wide Web \\
+W3C          World Wide Web Consortium \\
+XML          Extensible Markup Language \\
+
 \begin{tabular}{ll}
-OWL          & Web Ontology Language \\
-RDF          & Resource Description Framework \\
-SPARQL       & SPARQL Protocol and RDF Query Language \\
-WWW          & World Wide Web \\
-W3C          & World Wide Web Consortium \\
-XML          & Extensible Markup Language \\
+%%AC         & vaihtovirta \\
+
 \end{tabular}
 
 
@@ -395,11 +402,9 @@ Internet mahdollistaa suurten tietomäärien jakamisen. Nykyisin informaatiota o
 
 Tietokoneiden ymmärtämä jäsennelty tieto on erittäin arvokasta. Tietokoneet voivat jalostaa jäsenneltyä tietoa itsenäisesti pidemmälle, jolloin ne kykenevät löytämään uusia asiayhteyksiä. Asiayhteydet voivat olla täysin tuntemattomia ihmiselle, jolloin niiden esittämisestä voi olla hyötyä käyttäjälle. Semanttisen verkon tarkoituksena on siis tehdä Internetistä ja tietokoneista entistäkin hyödyllisempiä, koska tietokoneiden resurssit riittävät nykyisin muuhunkin kuin pelkästään tiedon esittämiseen ja jakamiseen. Tietokoneiden ei tarvitse olla ainoastaan ihmisen työkaluja vaan ne voivat olla myös apureita.
 
-Tietokoneet eivät ymmärrä tiedon välisiä suhteita suoraan tekstistä kuten ihmiset. Sanat ja lauseet eivät itsessään tarkoita tietokoneelle mitään. Sanat koostuvat erilaisista kirjainyhdistelmistä, jotka voidaan esittää binääreinä \cite{ASCII}, mutta näiden avulla ei voida luoda asiayhteyksiä. Tietokone ei esimerkiksi kykene tunnistamaan synonyymejä terveyskeskus ja terveysasema, vaan tietokone käsittää ne täysin erillisinä sanoina. Tästä syystä tarvitaan lisätietoa, jonka avulla tietokoneelle voidaan kertoa sanojen merkitys ja suhde. Suhteiden kuvaamista varten on kehitetty tietämyksenesittämiskieliä. Yksi onnistunut ja hyvin spesifioitu tietämyksenesttämiskieli on Web Ontology Language (OWL) \cite{OWL_specification}. Jotta OWL:lla kyketään kuvaamaan suhteita, tarvitaan standardoitu tietomalli. Semanttisen verkon yhteydessä tietomalli on lähes poikkeuksetta RDF (Resource Description Framework), joka on W3C:n spesifioima \cite{RDF_specification} tietomalli. Tietomallilla voidaan kuitenkin ainoastaan säilöä tietoa sopivassa muodossa, joten tarvitaan vielä menetelmiä säilötyn tiedon hakemiseen. RDF tiedon hakemiseen käytetään SPARQL (SPARQL Protocol and RDF Query Language) kyselykieltä.
+Tietokoneet eivät ymmärrä tiedon välisiä suhteita suoraan tekstistä kuten ihmiset. Sanat ja lauseet itsessään eivät tarkoita tietokoneelle mitään. Sanat koostuvat erilaisista kirjainyhdistelmistä, jotka voidaan esittää binääreinä \cite{ASCII}, mutta näiden avulla ei voida luoda asiayhteyksiä. Tietokone ei esimerkiksi kykene tunnistamaan synonyymejä terveyskeskus ja terveysasema, vaan tietokone käsittää ne täysin erillisinä sanoina. Tästä syystä tarvitaan lisätietoa, jonka avulla tietokoneelle voidaan kertoa sanojen merkitys ja suhde. Suhteiden kuvaamista varten on kehitetty tietämyksenesittämiskieliä. Yksi onnistunut ja hyvin spesifioitu tietämyksenesttämiskieli on Web Ontology Language (OWL) \cite{OWL_specification}. Jotta OWL:lla kyketään kuvaamaan suhteita, niin tarvitaan standardoitu tietomalli. Semanttisen verkon yhteydessä tietomalli on lähes poikkeuksetta RDF (Resource Description Framework), joka on W3C:n spesifioima \cite{RDF_specification} tietomalli. Tietomallilla voidaan kuitenkin ainoastaan säilöä tietoa sopivassa muodossa, joten tarvitaan vielä menetelmiä säilötyn tiedon hakemiseen. RDF tiedon hakemiseen käytetään SPARQL (SPARQL Protocol and RDF Query Language) kyselykieltä.
 
-Tutkielmassa tullaan käymään edellämainitut semanttisen Internetin peruselementit yksitellen lävitse.  Tavoitteena on perustella syitä semanttisen verkon olemassaololle ja tarjota lyhyt kokonaisuus, jonka avulla on mahdollista ymmärtää semanttisen verkon merkitys nykyisyydessä. Samoin tarkoituksena on muodostaa kuva siitä, mitä menetelmiä semanttisen Internetin toteutukseen vaaditaan. Työ on toteutettu kirjallisuustutkimuksena.
-
-Tutkielmassa tullaan ensimmäiseksi käsittelemään semanttista Internetiä kokonaisuutena. Toisessa luvussa syvennytään toteutukseen. Kolmannessa luvussa pohditaan tiedon suhteisuutta ja tämän merkitystä tietokoneiden kontekstissa. Neljännessä luvussa tuodaan ilmi semanttisen Internetin edistys ja pyritään luomaan järkevä ennuste tulevaisuudesta. Lopuksi asiat kiteytetään yhteen.
+Tutkielmassa tullaan käymään edellämainitut semanttisen Internetin peruselementit yksitellen lävitse. Tarkoituksena on muodostaa kuva siitä, mitä menetelmiä semanttisen Internetin toteutuksessa vaaditaan. Samoin tutkielma pyrkii selventämään semanttisen Internetin käsitettä lukijalle, koska kovinkaan moni ei tunne termin merkitystä, vaikka hyödyntää semanttisia verkkoja päivittäin. Tutkielmassa tullaan siis ensimmäiseksi käsittelemään semanttista Internetiä kokonaisuudessaan. Toisessa luvussa syvennytään toteutukseen. Kolmannessa luvussa pohditaan tiedon suhteisuutta ja tämän merkitystä tietokoneiden kontekstissa. Neljännessä luvussa tuodaan ilmi semanttisen Internetin edistys ja pyritään luomaan järkevä ennuste tulevaisuudesta. Lopuksi asiat kiteytetään yhteen.
 
 
 \clearpage %% Opinnäytteessä jokainen osa alkaa uudelta sivulta, joten \clearpage
@@ -437,7 +442,7 @@ XML (eXtensible Markup Language) on W3C:n standardoima merkintäkieli, jonka avu
 Esimerkki XML-syntaksista:
 %%\lstinputlisting[language=Xml]{production_file.xml}
 %% name voisi olla myös product attribuutti
-\begin{lstlisting}[style=codeblock, frame=single]
+\begin{lstlisting}
 <sweet_roast>
   <product>
     <name>Herkkupaahto</name>
@@ -463,7 +468,7 @@ RDF:n joustavuutta ei kuitenkaan saavuteta ilmaiseksi. Tietokoneen tulee osata y
 
 Hyvin usein termillä "RDF" viitataan sekä RDF:ään että RDFS:ään.
 
-\subsubsection{Kolmikot}
+\subsubsection{Kolmikko}
 %% Lukijan odotetaan tietävän mitä tarkoittaa URL ja ISBN
 RDF esitys vaatii, että kaikki resurssit esitetään uniikeilla tunnisteilla. Uniikkia tunnistetta nimitetään URI:ksi (URI – Unique Resource Identifier) ja tunniste voi esimerkiksi olla URL (Uniform Resource Locator), ISBN tai vaikkapa puhelinnumero. URI:n avulla tietokone kykenee ymmärtämään yksiselitteisesti mihin viitataan.
 
@@ -479,7 +484,7 @@ Kolmikot voidaan esittää graafimaisessa muodossa Kuva 1:n tapaan. Kaaviot saat
 \begin{figure}[htb]
 \centering
 \includegraphics[height=3cm]{images/RDF-triplet1.pdf}
-\caption{Esimerkki kolmikosta. \label{images/RDF-triplet1}}
+\caption{Esimerkki graafi tripletistä. \label{images/RDF-triplet1}}
 \end{figure}
 
 
@@ -489,7 +494,7 @@ Kaavion kahviyhtiö "Sweet Roast Co." on subjektin asemassa. Yhtiö omistaa kahv
 %% XML/RDF example
 %% hasProduct instead of product
 \vskip 0.75cm
-\begin{lstlisting}[style=codeblock, frame=single]
+\begin{lstlisting}
 <rdf:RDF
 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 xmlns:sr="http://www.SweetRoast.com/semantics/relationship#">
@@ -506,18 +511,18 @@ rdf:about="http://www.SweetRoast.com">
 \begin{figure}[htb]
 \centering
 \includegraphics[width=15cm]{images/RDF-valid.PNG}
-\caption{Suhteet taulukoituna. Lähde: \cite{W3C_RDF_validator}. \label{images/RDF-triplet1}}
+\caption{Suhteet talukoituna. Lähde: \cite{W3C_RDF_validator}. \label{images/RDF-triplet1}}
 \end{figure}
 \cite{W3C_RDF_validator}.
 
-Ylläoleva kuva on generoitu automaattisesti XML/RDF merkinnän pohjalta käyttäen W3C:n palvelua. Voimmekin havaita, että ulkopuolinen palvelu on ymmärtänyt esimerkkimme rakenteen oikein. Palvelu on löytänyt subjektiksi kahviyhtiömme, objektiksi kahvituotteemme ja predikaatiksi oikean suhteen. Suhteen tulisi siis olla erikseen määriteltynä osoitteessa: \url{http://www.SweetRoast.com/semantics/relationship\#product}. Tietokoneet kykenevät siis nyt havaitsemaan yhteyden kahvituotteen ja kahviyhtiön välillä, kun ne hyödyntävät semsanttisen internetin menetelmiä.
+Ylläoleva kuva on generoitu automaattisesti XML/RDF merkinnän pohjalta käyttäen W3C:n palvelua. Voimmekin havaita, että ulkopuolinen palvelu on ymmärtänyt esimerkkimme rakenteen oikein. Palvelu on löytänyt subjektiksi kahviyhtiömme, objektiksi kahvituotteemme ja predikaatiksi oikean suhteen. Suhteen tulisi siis olla erikseen määriteltynä osoitteessa: "http://www.SweetRoast.com/semantics/relationship\#product". Tietokoneet kykenevät siis nyt havaitsemaan yhteyden kahvituotteen ja kahviyhtiön välillä, kun ne hyödyntävät semsanttisen internetin menetelmiä.
 
 \subsubsection{Turtle}
-Nykyisin RDF:ää kirjoitettaessa suositaan paljon muitakin syntakseja kuin pelkkää XML/RDF:ää. Esimerkiksi Turtle (Terse RDF Triple Language) on tällähetkellä hyvin suosittu syntaksi sen helpon luettavuuden ja kirjoitettavuuden vuoksi. Turtle mukailee Notation 3 (N3) syntaksia sisällyttäen ainoastaan N3:n tärkeimpiä ominaisuuksia \cite{W3C_turtle}. Seuraavassa on kahviesimerkin rakenne kirjoitettu Turtlella:
+Nykyisin RDF:ää kirjoitettaessa suositaan kuitenkni paljon muitakin syntakseja kuin pelkkää XML:ää. Esimerkiksi Turtle (Terse RDF Triple Language) on tällähetkellä hyvin suosittu syntaksi sen helpon luettavuuden ja kirjoitettavuuden vuoksi. Turtle mukailee laajempaa Notation 3 (N3) syntaksia. Seuraavassa on kahviesimerkin rakenne kirjoitettu Turtlella:
 
 %%Turle example
 \vskip 0.75cm
-\begin{lstlisting}[style=codeblock, frame=single]
+\begin{lstlisting}
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sr: <http://www.SweetRoast.com/semantics/relationship> .
 
@@ -529,50 +534,33 @@ Nykyisin RDF:ää kirjoitettaessa suositaan paljon muitakin syntakseja kuin pelk
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=15cm]{images/RDF-triplet2.pdf}
+\includegraphics[height=3cm]{images/RDF-triplet2.pdf}
 \caption{Turtle syntaksista automaattisesti generoitu graafi. Lähde: \cite{SeCo_RDF_validator} \label{images/RDF-triplet2}}
 \end{figure}
 
 
-Vaikka esimerkit ovat minimalisoituja, voidaan kuitenkin havaita Turtle:n selkeys ylitse muiden. Turtlella RDF lauseen kirjoittaminen ei vaadi montaa riviä tekstiä. Aluksi määritellään subjekti omalla rivillään ja sen jälkeen predikaatti ja objekti. Kolmikko päätetään aina pisteeseen.
+%%:atomicNumber 2 ;
+Esimerkeistä olisi hyvä huomata, että tietorakenteet eivät ole täysin identtisiä, mutta hyvin lähellä toisiaan. Tämä johtuu merkintäkielien avoimesta luonteesta, jonka ansiosta merkintäkielet sopivat kaikkialla käytettäväksi. Tärkein ominaisuus on se, että tietoa ei katoa mihinkään. Päinvastoin, Tietoa tulee lisää, kun tarkennamme asioiden välisiä suihteita RDF:n mukaisesti.
+
+Edelliset esimerkit löytyvät liitteistä laajemmassa muodossa. Ylläolevat esimerkit on minimalisoitu.
 
 
 \subsubsection{Etuliitteet}
-Etuliitteet eli prefixit määrittävät käytettävän nimiavaruuden. Sama termi voi esiintyä useita kertoja dokumentissa, mutta termi ei välttämättä aina viittaa samaan asiaan. Jotta kaksi samannimistä, mutta eria asiaa tarkoittavaa termiä voi erottaa toisistaa, täytyy hyödyntää nimiavaruuksia. Etuliitteet myös säästävät pitkien URI:en toistolta. Pitkää URI:a ei tarvitse toistaa, kun dokumentin alussa määritetään lyhyt etuliite, jonka avulla viittaaminen voidaan suorittaa. URI:t ovat pakollinen osa RDF tietomuotoa, jotta dokumentin lukija voi ymmärtää tarkalleen mihin dokumentissa viitataan. Yllä olvien esimerkkien alusta voidaan havaita etuliite määritykset. Osoite \url{http://www.SweetRoast.com/product/} ei viittaa mihinkään, mutta  \url{http://www.w3.org/1999/02/22-rdf-syntax-ns#} on oikea. W3C:n ylläpitämä linkki määrittää rdf sanaston, jonka avulla voidaan luoda yhtenäisiä RDF tietotyyppiä noudattavia dokumentteja. Kun kaikki internetissä olevat dokumentit viittaavat yhteiseen sanastoon, niin silloin dokumentit ovat pakosti yhtenäisiä rdf sanaston osalta. Sanastoja voi määrittää itse, mutta silloin sanastot tulis jakaa myös muille. Tämä edesauttaa sitä, että ulkopuoliset tahot voivat tulkita dokumenttiamme. Esimerkiksi osoitteessa: "http://www.SweetRoast.com/product/" tulisi olla määriteltynä (oma) yritykseen viittava termistö. Näin yrityksen ulkopuoliset tahot voisivat tarkastaa käyttämämme sanaston merkityksen "sr" prefixin ohjaamasta osoitteesta.
+Esimerkeistä tulee myös huomata määritykset. Osoitteesta "http://www.SweetRoast.com/product\#/" ei oikeasti löydy mitään, mutta tosiasiassa siellä tulisi olla prod -etuliitteen määritelmä(t). Etuliite rdf on määritelty W3C:n toimesta, joten linkistä: "http://www.w3.org/1999/02/22-rdf-syntax-ns\#" löytyy oikeita määritelmiä. Määrittely on tärkeää tehdä, jotta kaikki voivat ymmärtää esittämäämme tietoa. Etuliitteet eli prefixit voi valita vapaasti, joten sama etuliite voi tarkoittaa useata eri asiaa eri sivustojen välillä. Tästä syystä termit tulee sitoa tiettyyn nimiavaruuteen, jotta voimme tietää tarkalleen mitä termeillä tarkoitetaan, ja jotta ne eivät mene sekaisin muiden saman nimisten termien kanssa. Termien nimiavaruus voidaan ilmaista etuliitteiden eli prefixien avulla. Nimiavaruudet tulee määritellä aina tiedostojen alussa URI:en avulla. Kun nimiavaruudet on määritlety ja niitä käytetään termien yhteydessä, niin silloin kaikki ulkopuoliset tahot kykenevät ymmärtämään esittämäämme tietoamme yksiselitteisesti.
 
 
-\subsubsection{RDFS}
-Usein RDF:llä viitataan virheellisesti sekä RDF:ään että RDFS:ään samanaikaisesti. RDFS (Resource Description Framework Schema) on RDF:n jatke. RDF tarjoaa ainoastaan yleispäteviä määrityksiä, jotka soveltuvat kaikkialle käytettäväksi. Usein tietoa kuitenkin halutaan kuvata mahdollisimman tarkasti, jolloin RDF ei yksinään riitä. Tällöin avuksi otetaan RDFS, jonka avulla voidaan kuvata applikaatiokohtaisia luokkia ja ominaisuuksia \cite{W3C_RDFS}.
 
 %% 5-7 star linked Data by Berners Lee?
 %% Semanttinen tieto voidaan jaotella laadukkuutensa perusteella 1-7 tähden ryhmään. Semantiikan luominen sivustolle vaatii vaivannäköä ja osaamista, joten siksi kaikki sivustot eivät ole luonnostaan täydellisiä.
 
 %% KIRJOITA RDF-tietoa voi tallentaa triple store databaseihin, sen sijaan että säilöttäisiin ainoastaan tekstitiedostoja.
 %% Lisää viittaus: https://www.youtube.com/playlist?list=PLea0WJq13cnDDe8V7eVLReIaOnFztOEAq
-
-
-\subsubsection{semanttinen laadukkuus}
-Semantiikan määrittäminen vaatii vaivannäköä, minkä vuoksi osa jaetusta tiedosta on laadukkaampaa kuin muu. Tästä syystä Tim Berners-Lee on luonut asteikon, jonka avulla tarjolla olevaa linkittynyttä tietoa voi jaotella. Berners-Leen esittelemä asteikko arvostelee tietolähteen 1-5 tähdellä. Yhden tähden saa sillä, että tieto on vapaasti jaossa internetissä. Kaksi tähteä saa, jos tieto on tietokoneen luettavissa. Kolme tähteä ansaitsee, kun tietokoneluettava tieto esitetään yleisesti käytettävissä olveassa standardoidussa muodossa. Kun tarjolla oleva tieto noudattaa RDF tietomuotoa, niin silloin on mahdollista ansaita neljä tähteä. Viiteen tähteen vaaditaan kaikki edellämainitut kohdat, sekä tiedon tulee olla myös linkitettyä muuhun ulkopuoliseen tietoon \cite{Tim-BL}. Arvosteluasteikkoa on ehdotettu laajennettavaksi välille 1-7 tähteä SeCo:n (Semantic Computing Research Group) toimesta \cite{SeCo_stars}. He esittävät, että tieto on kuuden tähden arvoista, jos tietoa kuvaavat skeemat on kuvailtu eksplisiittisesti ja ne on mahdollista saada tiedon yhteydessä. Seitsemään tähteen vaadittaisiin tiedon ja skeemojen erillistä tulkintaa, jolla varmistettaisiin, että tieto ja skeemat liittyvät selkeästi toisiinsa. Näin ulkopuolinen tietoa hyödyntävä taho voisi varmistua tiedon laadukkuudesta ja soveltuvuudesta jatkokäyttöä varten.
-
-
-\begin{figure}[htb]
-\centering
-\includegraphics[width=15cm]{images/linked_data.png}
-\caption{Graafi vapaasti hyödynnettävistä tietokannoista internetissä. (LOD cloud diagram) \cite{LOD_cloud} \label{images/linked_data}}
-\end{figure}
-
-
-Tietokannoista haetaan tietoa SPARQL (SPARQL Protocol and RDF Query Language) kyselykielen avulla.
-
+\subsubsection{Triple store}
+RDF muodossa olevaa tietoa voidaan tallentaa.
 
 \subsection{OWL}
 
-\subsection{RDF tiedon säilöminen}
-\subsubsection{SPARQL}
-
-\subsubsection{Triple store}
-RDF muodossa olevaa tietoa voidaan tallentaa tulevaisuudessa tapahtuvaa käyttöä varten. Yksinkertaisimillaan voidaan tallentaa suoraan RDF/XML, Turtle tai vastaavia dokumentteja säilöön, mutta tämä ei ole kovin tehokasta. Yksittäisen tarpeellisen asian etsiminen on hidasta, kun tiedostokoot ovat suuria. Tästä syystä on kehitetty tehokkaampiakin tallennustapoja, jotka hyödyntävät tietokantoja. Triple store on graafimainen tietokantatyyppi, joka on suunniteltu erityisesti RDF tiedon tallentamiseen. RDF tieto on hyvin linkittynyttä, jonka vuoksi graafiset tietokannat soveltuvan sen tallentamiseen paremmin kuin perinteiset relaatietietokannat. Relaatiotietokannoissa useiden linkittyneiden asioiden välille on huomattavasti vaikeampaa luoda suhderakenteita ja kyselyiden tekeminen on myös haastavampaa. Triple store tallentaa RDF lauseet suoraan kolmikkoina, joten vaikeita talurakennelmia ei tarvitse luoda \cite{triplestore}. Tarkka standardointi sallii tiedon hakemisen myös ulkopuolisista julkisista tietokannoista. Tämän ansiosta tietokantoja on mahdollista linkittää, joka mahdollistaa tavallista laajemman tiedonhaun. Myös triple store tietokantoja on useita erilaisia. Osa pyrkii tarjoamaan monipuolisia keinoja tiedon käsittelyyn, kun taas toiset keskittyvät suurien tietomäärien tallentamiseen \cite{revisited}.
-
+\subsection{SPARQL}
 
 \clearpage
 %%===============================================================================
@@ -594,12 +582,6 @@ RDF muodossa olevaa tietoa voidaan tallentaa tulevaisuudessa tapahtuvaa käyttö
 %% haasteita: yksityisyys, tiedon jaon halukkuus, ylimääräinen työ ontologioiden esiottämisessä kielien jäykkyys.
 %% RDF ongelmia:
 %% http://milicicvuk.com/blog/2011/07/21/problems-of-the-rdf-syntax/
-
-%% Semantic web revisited - loppu ontologioiden kehitystyö ja hinta
-%% Amazon neptune - RDF database
-%% Google knowledge graph
-
-Goel et al. on kerännyt statistiikkaa liittyen semanttiseen merkintään. Statistiikka on saatu keräämällä satunnainen näyte miljoonasta web sivusta. Kesäkuussa 2010 \cite{Google}[3]... p.3. Semanttikkaa (Microformats tai RDFa) käytti ainoastaan 42 605 sivua eli alle puoli prosenttia. Vuonna 2010 semanttisen materiaalin osuus on ollut siis olematon.
 
 \clearpage
 %%===============================================================================

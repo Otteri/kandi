@@ -62,7 +62,7 @@
          <dc:publisher><rdf:Bag><rdf:li></rdf:li></rdf:Bag></dc:publisher>
          
          <dc:rights><rdf:Alt><rdf:li xml:lang="x-default">Copyright © 2018 Joni Airaksinen</rdf:li></rdf:Alt></dc:rights>
-         <dc:description><rdf:Alt><rdf:li xml:lang="x-default"> Tiivistelmässä on lyhyt selvitys (noin 100 sanaa) kirjoituksen tärkeimmästä sisällöstä: mitä ja miten on tutkittu, sekä mitä tuloksia on saatu. Tämän opinnäytteen Pdf/A -formaatissa tiivistelmäteksti kirjoitetaan opinnäytteen luettavan osan lomakkeen lisäksi myös pdf-tiedoston metadataan. Kirjoita tähän metadataan kirjoitettavaa teksti. Metadatatekstissa ei saa olla erikoismerkkejä, rivinvaiho- tai kappaleenjakomerkkiä, joten näitä merkkeja ei saa käyttää tässä. Jos tiivistelmäsi ei sisällä erikoimerkkejä eikä kaipaa kappaleenjakoa, voit hyödynttää makroa abstracttext luodessasi lomakkeen tiivistelmää (katso kommentti alla). Metadatatiivistelmatekstin on muuten oltava sama kuin lomakkeessa oleva teksti. </rdf:li></rdf:Alt></dc:description>
+         <dc:description><rdf:Alt><rdf:li xml:lang="x-default"> Semanttinen internet mahdollistaa tiedon tehokkaan jakamisen ja hyödyntämisen. Kaikki saatavilla oleva tieto ei kuitenkaan ole semanttista. Tämä johtuu siitä, että semanttisen tiedon luominen vaatii ylimääräistä vaivannäköä ja resursseja. Toinen hidaste semanttisen tiedon synnylle on ihmisten tietämättömyys asiasta. Kovinkaan moni ihminen ei pysty määrittelemään termiä: semanttinen internet, vaikka semanttinen internet kuuluukin hyvin monen ihmisen arkeen. Pelkästään yksittäinen Google haku tuo käyttäjälle esiin linkittynyttä tietoa, joka on mahdollisesti muodostettu hyödyntäen semanttisen verkon työkaluja. Tutkielmassa selvitetään semanttisen verkon luomiseen vaadittavat vähimmäistyökalut. Tutkielman tarkoituksena on selkeyttää semanttisen internetin merkitystä ja tutustuttaa lukija linkittyneen tiedon luomiseen. Lisäksi tutkielmassa yritetään tuoda ilmi semanttisen internetin hyötyjä ja hyviä käyttökohteita. </rdf:li></rdf:Alt></dc:description>
          <dc:subject><rdf:Bag><rdf:li>Semanttinen verkko</rdf:li>
      <rdf:li>RDF</rdf:li>
      <rdf:li></rdf:li></rdf:Bag></dc:subject>
@@ -90,9 +90,9 @@
       </rdf:Description> 
       <rdf:Description rdf:about="" xmlns:xmp="http://ns.adobe.com/xap/1.0/"> 
          <xmp:CreatorTool>LaTeX with hyperref package</xmp:CreatorTool> 
-         <xmp:ModifyDate>2018-03-15T03:22:35+02:00</xmp:ModifyDate> 
-         <xmp:CreateDate>2018-03-15T03:22:35+02:00</xmp:CreateDate> 
-         <xmp:MetadataDate>2018-03-15T03:22:35+02:00</xmp:MetadataDate> 
+         <xmp:ModifyDate>2018-03-16T00:32:08+02:00</xmp:ModifyDate> 
+         <xmp:CreateDate>2018-03-16T00:32:08+02:00</xmp:CreateDate> 
+         <xmp:MetadataDate>2018-03-16T00:32:08+02:00</xmp:MetadataDate> 
       </rdf:Description> 
       <rdf:Description rdf:about="" xmlns:xmpRights = "http://ns.adobe.com/xap/1.0/rights/"> 
          <xmpRights:Marked>True</xmpRights:Marked>
@@ -101,7 +101,7 @@
       </rdf:Description> 
       <rdf:Description rdf:about="" xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/"> 
          <xmpMM:DocumentID>uuid:E4A48AB5-7CA3-6712-4FD6-BD3D4CBF3C37</xmpMM:DocumentID> 
-         <xmpMM:InstanceID>uuid:EFDF7980-DC84-8CE3-CC01-57D7228F20AF</xmpMM:InstanceID> 
+         <xmpMM:InstanceID>uuid:2220E212-7EB4-098A-89BE-62FF7FE32C68</xmpMM:InstanceID> 
       </rdf:Description> 
    </rdf:RDF> 
 </x:xmpmeta> 
