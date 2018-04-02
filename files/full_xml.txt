@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-16"?>
+
+<desktop_computer>
+  <cpu></cpu>
+  <gpu></gpu>
+  <ram></ram>
+  <psu></psu>
+  <hdd></hdd>
+  <motherboard></motherboard>
+</desktop_computer>

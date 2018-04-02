@@ -1,0 +1,35 @@
+<rdf:RDF
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:prod="http://www.SweetRoast.com/product#">
+
+<rdf:Description
+rdf:about="http://www.SweetRoast.com/products">
+  <rdf:type rdf:resource="http://www.SweetRoast.com/product/herkkupaahto"/>
+  <rdf:type rdf:resource="http://www.SweetRoast.com/product/CoffeeCao"/>
+</rdf:Description>
+
+<rdf:Description
+  rdf:about="http://www.SweetRoast.com/product/herkkupaahto">
+  <prod:name>Herkkupaahto</prod:name>
+  <prod:ingredients>
+    <rdf:Bag>
+      <rdf:li>Caturra (80%)</rdf:li>
+      <rdf:li>Bourbon (20%)</rdf:li>
+    </rdf:Bag>
+  </prod:ingredients>
+  <prod:ean>5997374172488</prod:ean>
+</rdf:Description>
+
+<rdf:Description
+  rdf:about="http://www.SweetRoast.com/product/CoffeeCao">
+  <prod:name>CoffeeCao</prod:name>
+  <prod:ingredients>
+    <rdf:Bag>
+      <rdf:li>Caturra (75%)</rdf:li>
+      <rdf:li>Arabica (20%)</rdf:li>
+      <rdf:li>Cacao (5%)</rdf:li>
+    </rdf:Bag>
+  </prod:ingredients>
+  <prod:ean>5863254415892</prod:ean>
+</rdf:Description>
+</rdf:RDF>

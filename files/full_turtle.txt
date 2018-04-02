@@ -1,0 +1,17 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix prod: <http://www.SweetRoast.com/product#/> .
+@prefix rel: <http://www.perceive.net/schemas/relationship> .
+
+<http://www.SweetRoast.com/>
+  dc:title "Sweet Roast Co.";
+  rel:product <http://www.SweetRoast.com/product/herkkupaahto/>;
+  rel:product <http://www.SweetRoast.com/product/CoffeeCao/>.
+
+<http://www.SweetRoast.com/product/herkkupaahto/>
+  prod:ean "5997374172488";
+  prod:name "herkkupaahto".
+
+<http://www.SweetRoast.com/product/CoffeeCao/>
+  prod:ean "5997373172488";
+  prod:name "CoffeeCao".

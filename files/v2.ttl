@@ -1,0 +1,56 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix cs: <http://www.Computer-Specs.com/schemas/computers> .
+@prefix ex: <http://example.com/> .
+@prefix exterms: <http://example.com/> .
+
+# Class definitions:
+cs:Computer  rdf:type         rdfs:Class .
+cs:Laptop    rdf:type         rdfs:Class .
+cs:Pc        rdf:type         rdfs:Class .
+
+ex:Cuboid    rdf:type         rdfs:Class .
+ex:Psu       rdf:type         rdfs:Class .
+ex:Case      rdf:type         rdfs:Class .
+
+cs:Laptop    rdfs:subClassOf  cs:Computer .
+cs:Pc        rdfs:subClassOf  cs:Computer .
+
+
+# PROPERTIES:
+exterms:weightInKg rdf:type rdf:Property .
+exterms:priceInEur rdf:type rdf:Property .
+
+# Type defs (dunno if needed)
+xsd:integer a rdfs:Datatype .
+xsd:decimal a rdfs:Datatype .
+xsd:boolean a rdfs:Datatype .
+
+
+ex:Cuboid
+  rdf:type rdfs:Class ;
+  exterms:heightInCm xsd:integer ;
+  exterms:widthInCm xsd:integer ;
+  exterms:depthInCm xsd:integer .
+
+# Predicates
+ex:hasDimensions a rdfs:Property; rdfs:domain ex:Case; rdfs:range ex:Cuboid .
+ex:hasHeight a rdfs:Property; rdfs:domain ex:Cuboid; rdfs:range exterms:heightInCm .
+
+ex:hasDimensions a rdfs:Property; rdfs:domain ex:Psu; rdfs:range ex:Cuboid .
+ex:hasHeight a rdfs:Property; rdfs:domain ex:Cuboid; rdfs:range exterms:heightInCm .
+
+
+# Full class descriptions
+ex:Case
+  rdfs:label "Computer part"@en-US ;
+  exterms:isModular "true"^^xsd:boolean ;
+  ex:hasDimensions "200";
+  ex:hasHeight "100".
+
+ex:Psu
+  rdfs:label "Computer part"@en-US ;
+  exterms:isModular "true"^^xsd:boolean ;
+  ex:hasDimensions "150";
+  ex:hasHeight "30".
