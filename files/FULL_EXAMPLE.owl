@@ -1,0 +1,342 @@
+@prefix : <http://www.semanticweb.org/otteri/ontologies/2018/2/compute#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/otteri/ontologies/2018/2/compute> .
+
+<http://www.semanticweb.org/otteri/ontologies/2018/2/compute> rdf:type owl:Ontology .
+
+#################################################
+#    Object Properties
+#################################################
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#hasCase
+:hasCase rdf:type owl:ObjectProperty ;
+         rdfs:domain :Computer ;
+         rdfs:range :Case .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#hasCpu
+:hasCpu rdf:type owl:ObjectProperty ;
+        rdfs:domain :Computer ;
+        rdfs:range :Cpu .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#hasGpu
+:hasGpu rdf:type owl:ObjectProperty ;
+        rdfs:domain :Computer ;
+        rdfs:range :Gpu .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#hasHdd
+:hasHdd rdf:type owl:ObjectProperty ;
+        rdfs:domain :Computer ;
+        rdfs:range :Hdd .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#hasMotherBoard
+:hasMotherBoard rdf:type owl:ObjectProperty ;
+                rdfs:domain :Computer ;
+                rdfs:range :MotherBoard .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#hasPsu
+:hasPsu rdf:type owl:ObjectProperty ;
+        rdfs:domain :Computer ;
+        rdfs:range :Psu .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#hasRam
+:hasRam rdf:type owl:ObjectProperty ;
+        rdfs:domain :Computer ;
+        rdfs:range :Ram .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#hasSsd
+:hasSsd rdf:type owl:ObjectProperty ;
+        rdfs:domain :Computer ;
+        rdfs:range :Ssd .
+
+
+#################################################
+#    Data properties
+#################################################
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#capacityGigaByte
+:capacityGigaByte rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Hdd ,
+                              :Ram ,
+                              :Ssd ;
+                  rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#hasClockRateGhz
+:hasClockRateGhz rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Cpu ,
+                             :Gpu ;
+                 rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#hasClockRateMhz
+:hasClockRateMhz rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Ram ;
+                 rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#hasCores
+:hasCores rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Cpu ;
+          rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#hasDepth
+:hasDepth rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Case ,
+                      :Cpu ,
+                      :Gpu ,
+                      :Hdd ,
+                      :MotherBoard ,
+                      :Psu ,
+                      :Ram ,
+                      :Ssd ;
+          rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#hasHeight
+:hasHeight rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Case ,
+                       :Computer ,
+                       :Cpu ,
+                       :Gpu ,
+                       :Hdd ,
+                       :MotherBoard ,
+                       :Psu ,
+                       :Ram ,
+                       :Ssd ;
+           rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#hasMadeBy
+:hasMadeBy rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Case ,
+                       :Cpu ,
+                       :Gpu ,
+                       :Hdd ,
+                       :MotherBoard ,
+                       :Psu ,
+                       :Ram ,
+                       :Ssd ;
+           rdfs:range rdfs:Literal .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#hasMemoryType
+:hasMemoryType rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Ram ;
+               rdfs:range rdfs:Literal .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#hasSizeInch
+:hasSizeInch rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Hdd ,
+                         :Ssd ;
+             rdfs:range xsd:decimal .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#hasSocket
+:hasSocket rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Cpu ;
+           rdfs:range rdfs:Literal .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#hasTdp
+:hasTdp rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Cpu ;
+        rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#hasWeightKg
+:hasWeightKg rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Case ,
+                         :Computer ,
+                         :Cpu ,
+                         :Gpu ,
+                         :Hdd ,
+                         :MotherBoard ,
+                         :Psu ,
+                         :Ram ,
+                         :Ssd ;
+             rdfs:range xsd:decimal .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#hasWidth
+:hasWidth rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Case ,
+                      :Cpu ,
+                      :Gpu ,
+                      :Hdd ,
+                      :MotherBoard ,
+                      :Psu ,
+                      :Ram ,
+                      :Ssd ;
+          rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#isModular
+:isModular rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Psu ;
+           rdfs:range xsd:boolean .
+
+
+#################################################
+#    Classes
+#################################################
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#Case
+:Case rdf:type owl:Class ;
+      rdfs:subClassOf :Computer .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#Computer
+:Computer rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#Cpu
+:Cpu rdf:type owl:Class ;
+     rdfs:subClassOf :Computer .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#Gpu
+:Gpu rdf:type owl:Class ;
+     rdfs:subClassOf :Computer .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#Hdd
+:Hdd rdf:type owl:Class ;
+     rdfs:subClassOf :Computer .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#MotherBoard
+:MotherBoard rdf:type owl:Class ;
+             rdfs:subClassOf :Computer .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#Psu
+:Psu rdf:type owl:Class ;
+     rdfs:subClassOf :Computer .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#Ram
+:Ram rdf:type owl:Class ;
+     rdfs:subClassOf :Computer .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#Ssd
+:Ssd rdf:type owl:Class ;
+     rdfs:subClassOf :Computer .
+
+
+#################################################
+#    Individuals
+#################################################
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#Barracuda
+:Barracuda rdf:type owl:NamedIndividual ,
+                    :Hdd ;
+           :capacityGigaByte 4000 ;
+           :hasMadeBy "Seagate" ;
+           :hasSizeInch 3.5 .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#DefineR5
+:DefineR5 rdf:type owl:NamedIndividual ,
+                   :Case ;
+          :hasDepth 52.1 ;
+          :hasHeight 45.1 ;
+          :hasMadeBy "Fractal Design" ;
+          :hasWeightKg 11.8 ;
+          :hasWidth 23.2 .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#HyperXFury
+:HyperXFury rdf:type owl:NamedIndividual ,
+                     :Ram ;
+            :capacityGigaByte 16 ;
+            :hasClockRateMhz 2666 ;
+            :hasMadeBy "Kingston" ;
+            :hasMemoryType "DDR4" .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#PrimeZ370-P
+:PrimeZ370-P rdf:type owl:NamedIndividual ,
+                      :MotherBoard ;
+             :hasMadeBy "Asus" ;
+             :hasSocket 1151 .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#TitanV
+:TitanV rdf:type owl:NamedIndividual ,
+                 :Gpu ;
+        :capacityGigaByte 12 ;
+        :hasClockRateMhz 1455 ;
+        :hasMadeBy "Nvidia" .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#blackBox
+:blackBox rdf:type owl:NamedIndividual ,
+                   :Case ;
+          :hasDepth 50.0 ;
+          :hasHeight 40.0 ;
+          :hasWidth 25.0 .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#ecoPower
+:ecoPower rdf:type owl:NamedIndividual ,
+                   :Psu ;
+          :hasDepth 15.0 ;
+          :hasHeight 12.0 ;
+          :hasWidth 15.0 ;
+          :isModular "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#exampleComputer
+:exampleComputer rdf:type owl:NamedIndividual ,
+                          :Computer ;
+                 :hasCase :DefineR5 ;
+                 :hasCpu :i7-8700K ;
+                 :hasGpu :TitanV ;
+                 :hasHdd :Barracuda ;
+                 :hasMotherBoard :PrimeZ370-P ;
+                 :hasPsu :ecoPower ;
+                 :hasRam :HyperXFury ;
+                 :hasSsd :EVO .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#i7-8700K
+:i7-8700K rdf:type owl:NamedIndividual ,
+                   :Cpu ;
+          :hasClockRateGhz 3.7 ;
+          :hasCores 6 ;
+          :hasMadeBy "Intel" ;
+          :hasSocket "LGA1151" ;
+          :hasTdp 95 .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#purePower
+:purePower rdf:type owl:NamedIndividual ,
+                    :Psu ;
+           :hasDepth 20.0 ;
+           :hasHeight 10.0 ;
+           :hasWidth 15.0 ;
+           :isModular "false"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/otteri/ontologies/2018/2/compute#850EVO
+:EVO rdf:type owl:NamedIndividual ,
+              :Ssd ;
+     :capacityGigaByte 250 ;
+     :hasSizeInch 2.5 .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

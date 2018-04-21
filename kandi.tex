@@ -254,9 +254,12 @@ semanttinen internet kuuluukin hyvin monen ihmisen arkeen. Pelkästään yksitt�
 \usepackage{etoolbox}
 \apptocmd{\sloppy}{\hbadness 10000\relax}{}{}
 
+%% Salli marginien muuttua kesken kirjoituksen
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist
+
 \usepackage{listings}
 \lstdefinestyle{codeblock}{
-  language=XML,
   numbers=left,
   numbersep=0.75em,
   frame=single,
@@ -266,13 +269,16 @@ semanttinen internet kuuluukin hyvin monen ihmisen arkeen. Pelkästään yksitt�
   xleftmargin=0.60cm,
   xrightmargin=\dimexpr\fboxsep+\fboxrule\relax,
   breaklines=true,
-  tabsize=2,
+  tabsize=1,
   columns=flexible,
+  basicstyle=\footnotesize,
 }
 
 %% Salli svg kuvat
 \usepackage{svg}
 \usepackage{amsmath}
+
+\renewcommand*\lstlistingname{Koodikatkelma}
 %%-------------------------------------------------------------------------------
 
 
@@ -396,7 +402,7 @@ Internet on luotu tiedon jakamista varten. Aluksi internetin avulla jaettiin ihm
 Termillä Semanttinen internet (vaihtoehtoisesti Semantic web) viitataan internettiin, jonka sisältö on luotu standardoiduilla tekniikoilla, jotka mahdollistavat loogisten päätelmien tekemisen sekä ihmiselle että tietokoneelle. \cite{Berners_visio}. Semanttinen internet pyrkii siihen, että tietokoneet kykenevät ymmärtämään esitettyä tietoa. Tämä mahdollistaa
 uudenlaisten tiedon hyödyntämistapojen kehityksen. Jotta tietokoneet kykenevät tekemään sanahakua haastavampia loogisia päätelmiä, niin tieto täytyy esittää nille sopivassa muodossa. Semanttista internetiä varten kehitetyt tekniikat tarjoavat tietokoneille sopivan tiedon esitysmuodon.
 
-Tietokoneprosessoitavan tiedon kuvailemiseen on kehitetty tietämyksenesttämiskieliä. Semanttisen internetin yhteydessä käytetään usein Web Ontology Languagea (OWL), joka sallii tiedon suhteiden ja rajoitteiden kuvaamisen \cite{OWL_specification}. Jotta tiedon suhteita ja rajoitteita voidaan kuvailla, niin tarvitaan sopiva esitysmuoto itse kuvailtavalle tiedolle. Tiedon esitymuotona käytetään tehokasta RDF-tietomallia (Resource Description Framework) \cite{RDF_specification}. Tietoa halutaan usein myös säilöä. RDF-tietoa säilötään useimmiten triple store tietokannoissa, joista tarvittava tieto voidaan hakea SPARQL-kyselykielen (SPARQL Protocol and RDF Query Language) avulla \cite{sparql}.
+Tietokoneprosessoitavan tiedon kuvailemiseen on kehitetty tietämyksenesittämiskieliä. Semanttisen internetin yhteydessä käytetään usein Web Ontology Languagea (OWL), joka sallii tiedon suhteiden ja rajoitteiden kuvaamisen \cite{OWL_specification}. Jotta tiedon suhteita ja rajoitteita voidaan kuvailla, niin tarvitaan sopiva esitysmuoto itse kuvailtavalle tiedolle. Tiedon esitymuotona käytetään tehokasta RDF-tietomallia (Resource Description Framework) \cite{RDF_specification}. Tietoa halutaan usein myös säilöä. RDF-tietoa säilötään useimmiten triple store tietokannoissa, joista tarvittava tieto voidaan hakea SPARQL-kyselykielen (SPARQL Protocol and RDF Query Language) avulla \cite{sparql}.
 
 %%Tavoitteet tarkista
 Tutkielmassa tarkastellaan edellämainittuja semanttisen internetin peruskomponentteja. Tavoitteena on löytää syitä edellisten tekniikoiden tarpeellisuudelle. Tekniikat käydään yksitellen lävitse ja niiden pääkohdat pyritään tiivistämään siistiin ja helposti ymmärrettävään muotoon. Lisäksi tutkielmassa käsitellään semanttisen internetin hyödynnettävyyttä käytännönsovelluksissa. Työ on toteutettu kirjallisuustutkimuksena.
@@ -410,46 +416,45 @@ Tutkielmassa käsitellään ensimmäiseksi semanttista internetiä yleisesti. Ko
 
 Semanttinen internet ei vastaa mihinkään yksittäiseen ongelmaan, vaan se mahdollistaa uudenlaisten sovellusten kehittämisen ja tiedon entistä tehokkaamman levittämisen ja hyödyntämisen. Tim Berners-Lee visioi tietokoneiden soveltuvan muuhunkin kuin pelkän tiedon esittämiseen. Hän halusi tehdä tietokoneista ihmisten apureita sen sijaan, että ne olisivat ainoastaan työkaluja tiedon esittämisessä \cite{Berners_visio}.
 
-Internet on valtava tiedonlähde, mutta tällähetkellä tietokoneet eivät voi hyödyntää internetissä esitettyä tehokkaasti. Tietokoneet eivät ymmärrä tiedon tai sanojen välisiä suhteita suoraan tekstistä kuten ihmiset. Sanat ja lauseet eivät itsessään tarkoita tietokoneelle mitään. Sanat koostuvat erilaisista kirjainyhdistelmistä, jotka voidaan ilmaista numeroin tietokoneelle \cite{ASCII}. Siten tietokone ei voi hahmottaa tekstistä suoraan asiayhteyksiä. Tietokone ei esimerkiksi ymmärrä synonyymien terveyskeskus ja terveysasema tarkoittavan samaa asiaa ilman, että kyseinen tieto ilmoitetaan jollain erillisellä tavalla. Tarvitaan tietoa kuvailevaa tietoa, jota kutsutaan metatiedoksi. Semanttinen internet tarjoaa tekniikoita, joiden avulla tietoa voidaan kuvailla tietokoneelle sopivassa muodossa.
+Internet on valtava tiedonlähde, mutta tällä hetkellä tietokoneet eivät voi hyödyntää internetissä esitettyä tehokkaasti. Tietokoneet eivät ymmärrä tiedon tai sanojen välisiä suhteita suoraan tekstistä kuten ihmiset. Sanat ja lauseet eivät itsessään tarkoita tietokoneelle mitään. Sanat koostuvat erilaisista kirjainyhdistelmistä, jotka voidaan ilmaista numeroin tietokoneelle \cite{ASCII}. Siten tietokone ei voi hahmottaa tekstistä suoraan asiayhteyksiä. Tietokone ei esimerkiksi ymmärrä synonyymien terveyskeskus ja terveysasema tarkoittavan samaa asiaa ilman, että kyseinen tieto ilmoitetaan jollain erillisellä tavalla. Tarvitaan tietoa kuvailevaa tietoa, jota kutsutaan metatiedoksi. Semanttinen internet tarjoaa tekniikoita, joiden avulla tietoa voidaan kuvailla tietokoneelle sopivassa muodossa.
 
-Antoniou et al. tiivistää semanttisen internetin menetelmien suunnitteluperiaatteen kolmeen pääkohtaan. Informaation tulisi olla saatavilla standardoidussa muodossa. Tietoelementtien ja niiden keskenäisten kuvausten tulisi olla tietokoneille luettavassa muodossa. Tiedon keskenäiset suhteet tulee esittää tavalla, joka sallii tietokoneen prosessoida suhteita \cite{Antoniou}. Edellämainittujen periaatteiden täytyttyä, tietokoneet voivat hyödyntää nille esitettyä tietoa tehokkaasti. Semanttisen internetin tekniikat toteuttavat edelliset suunniteluperiaatteet, joten niiden käyttö mahdollistaa tehokkaan tiedon hyödyntämisen tietokoneille.
+Antoniou et al. tiivistää semanttisen internetin menetelmien suunnitteluperiaatteen kolmeen pääkohtaan. Informaation tulisi olla saatavilla standardoidussa muodossa. Tietoelementtien ja niiden keskenäisten kuvausten tulisi olla tietokoneille luettavassa muodossa. Tiedon keskenäiset suhteet tulee esittää tavalla, joka sallii tietokoneen prosessoida suhteita \cite{Antoniou}. Edellämainittujen periaatteiden täytyttyä tietokoneet voivat hyödyntää nille esitettyä tietoa tehokkaasti. Semanttisen internetin tekniikat toteuttavat edelliset suunniteluperiaatteet, joten niiden käyttö mahdollistaa tehokkaan tiedon hyödyntämisen tietokoneille.
 
-World Wide Web Consortium (W3C) on ottanut tehtäväkseen kehittää ja ylläpitää yhteisiä internetiin liittyviä standardeja. Myös Semanttisen internetin standardit on määritelty heidän sivuillaan. Kansainvälisen yhteisön johtajana toimii Tim Berners-Lee, joka on yksi internetin keskeisimmistä kehittäjistä ja termin "Semanttinen internet" luoja \cite{W3C}. Berners-Lee esittelee Semanttisen webin internetin jatkeena, joka mahdollistaa ihmisten ja tietokoneiden tehokkaamman yhteistyön \cite{Berners_visio}.
+World Wide Web Consortium (W3C) on ottanut tehtäväkseen kehittää ja ylläpitää yhteisiä internetiin liittyviä standardeja. Myös Semanttisen internetin standardit on määritelty heidän verkkosivuillaan. Kansainvälisen yhteisön johtajana toimii Tim Berners-Lee, joka on yksi internetin keskeisimmistä kehittäjistä ja termin ``Semanttinen internet'' luoja \cite{W3C}. Berners-Lee esittelee Semanttisen webin internetin jatkeena, joka mahdollistaa ihmisten ja tietokoneiden tehokkaamman yhteistyön \cite{Berners_visio}.
 
-Semanttisen internetin toiminnan kannalta on tärkeää, että standardimuodossa olevaa tietoa on paljon tarjolla. Siksi on oleellista, että jokin järjestö ylläpitää yhteisiä tekniikoita, joiden avulla tietoa voidaan esittää yhteisesti ymmärrettävässä muodossa. Semanttinen internet tarjoaa mahdollisuuden yhteisten koneluettavien tietoresurssien luomiseen. Tietoresurssit voidaan linkittää keskenään, jonka seurauksena ihmisillä ja tietokoneilla on pääsy tavallista laajempaan tietovarastoon. Koneluettavan tiedon jakamisen ideaan viitataan englanninkielisellä termillä \textit{linked data} \cite{linked_w3c}.
+Semanttisen internetin toiminnan kannalta on tärkeää, että standardimuodossa olevaa tietoa on paljon tarjolla. Siksi on oleellista, että jokin järjestö ylläpitää yhteisiä tekniikoita, joiden avulla tietoa voidaan esittää yhteisesti ymmärrettävässä muodossa. Semanttinen internet tarjoaa mahdollisuuden yhteisten koneluettavien tietoresurssien luomiseen. Tietoresurssit voidaan linkittää keskenään, minkä seurauksena ihmisillä ja tietokoneilla on pääsy tavallista laajempaan tietovarastoon. Koneluettavan tiedon jakamisen ideaan viitataan  termillä \textit{yhdistetty tieto} (engl. linked data) \cite{linked_w3c}.
 
 \clearpage
 %%===============================================================================
 \section{Semanttisen internetin peruskomponentit}
-Semanttisen internetin kehitykseen liittyy monenlaisia haasteita useista eri osa-alueista. Haasteisiin on pyritty vastaamaan kehittämällä niihin ratkaisuja osa-aluettain. Tämän seurauksena on syntynyt useita eri tekniikoita, joilla pyritään ratkaisemaan tietyntyyppisiä ongelmia. Esimerkiksi RDF on kehitetty ratkaisemaan tiedon esitysmuotoon liittyviä ongelmia. Semanttinen internet koostuu siis useista peruskomponenteista. Jaotteluun perustuva malli on tehokas ja sitä hyödynnetään myös internetin kehityksessä (HTML, CSS ja JavaScript). Kehittäjän ei välttämättä tarvitse hallita kaikkia mahdollisia tekniikoita, vaan riittää, että osaa hyödyntää yksittäisiä tekniikoita hyvin. Modulaarinen rakenne suosii myös yksilöllisten sovellusten kehitystä, koska sovelluset voivat käyttää ainoastaan tarpeellisia komponentteja kaikkien komponenttien sijaan. Seuraavat alaluvut käsittelevät keskeisiä Semanttisen internetin tekniikoita.
+Semanttisen internetin kehitykseen liittyy monenlaisia haasteita useista eri osa-alueista. Haasteisiin on pyritty vastaamaan kehittämällä niihin ratkaisuja osa-aluettain. Tämän seurauksena on syntynyt useita eri tekniikoita, joilla pyritään ratkaisemaan tietyntyyppisiä ongelmia. Esimerkiksi RDF on kehitetty ratkaisemaan tiedon esitysmuotoon liittyviä ongelmia \cite{RDF_specification}. Semanttinen internet koostuu siis useista peruskomponenteista. Jaotteluun perustuva malli on tehokas ja sitä hyödynnetään myös internetin kehityksessä (HTML, CSS ja JavaScript). Kehittäjän ei välttämättä tarvitse hallita kaikkia mahdollisia tekniikoita, vaan riittää, että osaa hyödyntää yksittäisiä tekniikoita hyvin. Modulaarinen rakenne suosii myös yksilöllisten sovellusten kehitystä, koska sovelluset voivat käyttää ainoastaan tarpeellisia komponentteja kaikkien komponenttien sijaan. Seuraavat alaluvut käsittelevät keskeisiä Semanttisen internetin tekniikoita.
 
 
 \subsection{XML}
-XML (eXtensible Markup Language) on W3C:n standardoima merkintäkieli, jonka avulla voidaan tallentaa ja siirtää tietoa. XML-merkintäkieli on suunniteltu ihmisen ja tietokoneen luettavaksi. Merkinnältään XML muistuttaa hyvin paljon HTML-merkintäkieltä (Hypertext Markup Language). XML kuitenkin eroaa HTML:stä käyttötarkoitukseltaan. XML on suunniteltu toimimaan mielivaltaisen tiedon tallennuskielenä, kun taas HTML:llä pystytään esittämään ainoastaan ennalta määriteltyjä web sivuja \cite{IEEE_XML}. XML mahdollistaa tiedon välittämisen yksittäisessä stanardoidussa muodossa. Tämä mahdollistaa sovellusten ymmärtää toistensa esittämää tietoa, mikäli ne tukevat XML-standardia.
+XML (eXtensible Markup Language) on W3C:n standardoima merkintäkieli, jonka avulla voidaan tallentaa ja siirtää tietoa. XML-merkintäkieli on suunniteltu ihmisen ja tietokoneen luettavaksi. Merkinnältään XML muistuttaa hyvin paljon HTML-merkintäkieltä (Hypertext Markup Language). XML kuitenkin eroaa HTML:stä käyttötarkoitukseltaan. XML on suunniteltu toimimaan mielivaltaisen tiedon tallennuskielenä, kun taas HTML:llä pystytään esittämään ainoastaan ennalta määriteltyjä web-sivuja \cite{IEEE_XML}. XML mahdollistaa tiedon välittämisen yksittäisessä stanardoidussa muodossa. Tämä mahdollistaa sovellusten ymmärtää toistensa esittämää tietoa, mikäli ne tukevat XML-standardia. Alla on esitetty esimerkki XML-syntaksista.
 
-Esimerkki XML-syntaksista:
-\begin{lstlisting}[style=codeblock]
+\begin{lstlisting}[style=codeblock,caption={XML-syntaksiesimerkki.},captionpos=b,label={xml-esim}]
 <computer>
-  <cpu>Intel Core i7-8700K Processor</cpu>
+  <cpu>i5-4200m</cpu>
 </computer>
 \end{lstlisting}
 
- Semanttisen internetin näkökulmasta XML-merkintäkieli on ongelmallinen. Edellisestä esimerkistä voidaan havaita, että prosessori on sijoitettu XML-puussa tietokoneen sisälle, mutta muuten merkintä on muuten melko epämääräinen. Pelkän merkinnän pohjalta ei ole mahdollista tietää mihin tietokoneeseen viitataan, sekä prosessorin ja tietokoneen suhdetta ei voida tuntea. Ihminen tekee intuitiivisen päätelmän, että tietokone varmaankin käyttää prosessoria toimiakseen, mutta näin ei välttämättä ole. XML-merkitnä ei siis sisällä riittävästi tietoa, jotta se voisi toimia Semanttisen internetin merkintäkielenä \cite{IEEE_XML}. XML on kuitenkin ollut lähtökohta sopivan syntaksin kehityksessä, mikä tekee siitä merkittävän merkintäkielen semanttisen internetin näkökulmasta.
+ Semanttisen internetin näkökulmasta XML-merkintäkieli on ongelmallinen. Edellisestä esimerkistä voidaan havaita, että prosessori on sijoitettu XML-puussa tietokoneen sisälle, mutta muuten merkintä on melko epämääräinen. Pelkän merkinnän pohjalta ei ole mahdollista tietää mihin tietokoneeseen viitataan, sekä prosessorin ja tietokoneen suhdetta ei voida tuntea. Ihminen tekee intuitiivisen päätelmän, että tietokone varmaankin käyttää prosessoria toimiakseen, mutta näin ei välttämättä ole. XML-merkintä ei siis sisällä riittävästi tietoa, jotta se voisi toimia Semanttisen internetin merkintäkielenä \cite{IEEE_XML}. XML on kuitenkin ollut lähtökohta sopivan syntaksin kehityksessä, mikä tekee siitä merkittävän merkintäkielen Semanttisen internetin näkökulmasta.
 
 
 \subsection{RDF-tietomalli}
 %%s.18 primer
-Resource Description Framework (RDF) on semanttisen internetin tietomalli. RDF on suunniteltu kuvaamaan internetissä esiintyvää tietoa niin, että tietoa kuvaileva tieto eli metatieto ei menetä koskaan merkitystään \cite{RDF_specification}. RDF on standardoitu tietomalli, joten kaikilla on mahdollisuus luoda tietomallin mukaista metatietoa ja ymmärtää sitä \cite{metadata}. Lisäksi RDF pyrkii sovellusriippumattomuuteen, jolloin sen avulla voidaan kuvata lähes kaikentyyppistä tietoa \cite{RDF_specification}. Tämän ansiosta RDF-tietomalli soveltuu kaikkien käytettäväksi, jolloin merkityksellistä metatietoa syntyy paljon. Metatietodosta on hyötyä niille, jotka pystyvät tulkitsemaan sitä. Digitaaliset valokuvat ovat hyvä esimerkki tehokkaasta ja toimivasta RDF-metatiedon hyödyntämisestä \cite{XMP} \cite{profium_metadata}.
+Resource Description Framework (RDF) on semanttisen internetin tietomalli. RDF on suunniteltu kuvaamaan internetissä esiintyvää tietoa niin, että tietoa kuvaileva tieto eli metatieto ei menetä koskaan merkitystään \cite{RDF_specification}. RDF on standardoitu tietomalli, joten kaikilla on mahdollisuus luoda tietomallin mukaista metatietoa ja ymmärtää sitä \cite{metadata}. Lisäksi RDF pyrkii sovellusriippumattomuuteen, jolloin sen avulla voidaan kuvata lähes kaikentyyppistä tietoa \cite{RDF_specification}. Tämän ansiosta RDF-tietomalli soveltuu kaikille aloille käytettäväksi, jolloin merkityksellistä metatietoa syntyy laaja-alaisesti ja paljon. Metatietodosta on hyötyä niille, jotka pystyvät tulkitsemaan sitä. Digitaaliset valokuvat ovat hyvä esimerkki tehokkaasta ja toimivasta RDF-metatiedon hyödyntämisestä \cite{XMP1} \cite{profium_metadata}.
 
-RDF pohjautuu ideaan jossa tiedon kohteet eli resurssit identifioidaan yksikäsitteisten tunnisteiden avulla \cite{RDF_specification}. Yksikäsitteinen tunniste eli URI (Uniform Resource Identifier) voi olla esimerkiksi URL (Uniform Resource Locator), ISBN, sähköpostiosoite tai puhelinnumero. URI:en ansiosta kaikki resurssit ovat viittavissa yksiselitteisesti ja väärinymmärrysten vaaraa ei ole, koska viittaus johtaa aina samaan resurssiin. Resurssit voivat olla mitä tahansa RDF:llä määriteltyä tietoa, kuten esimerkiksi teksti dokumentteja tai fyysisiä esineitä \cite{RDF_specification}.
+RDF pohjautuu ideaan jossa tiedon kohteet eli resurssit identifioidaan yksikäsitteisten tunnisteiden avulla \cite{RDF_specification}. Yksikäsitteinen tunniste eli URI (Uniform Resource Identifier) voi olla esimerkiksi URL (Uniform Resource Locator), ISBN, sähköpostiosoite tai puhelinnumero. URI:en ansiosta kaikki resurssit ovat viittavissa yksiselitteisesti ja väärinymmärrysten vaaraa ei ole, koska viittaus johtaa aina samaan resurssiin. Resurssit voivat olla mitä tahansa RDF:llä määriteltyä tietoa, kuten esimerkiksi tekstidokumentteja tai fyysisiä esineitä \cite{RDF_specification}.
 
-RDF-tietomalli sisältää kuvauksia resurssien suhteista. Suhteita kutsutaan predikaateiksi tai vaihtoehtoisesti ominaisuuksiksi \cite{Antoniou}. Predikaatit täytyy määritellä erikseen, koska tietokone ei kykene luomaan niitä itsestään. Predikaatilla voidaan liittää kaksi resurssia yhteen kertoen resurssien välisestä suhteesta. Esimerkiksi predikaatilla "omistaa" voidaan kuvata resurssien liitos: pankinjohtaja omistaa talon. (Huomaa, että todellisuudessa pankinjohtajaan ja taloon tulisi viitata URI:en avulla). Edellinen kuvaus siis määrittää tietyn pankinjohtajan ja talon välille omistusliitoksen.
+RDF-tietomalli sisältää kuvauksia resurssien suhteista. Suhteita kutsutaan predikaateiksi tai vaihtoehtoisesti ominaisuuksiksi \cite{Antoniou}. Predikaatit täytyy määritellä erikseen, koska tietokone ei kykene luomaan niitä itsestään. Predikaatilla voidaan liittää kaksi resurssia yhteen kertoen resurssien välisestä suhteesta. Esimerkiksi predikaatilla ``omistaa'' voidaan kuvata resurssien liitos: pankinjohtaja omistaa talon. (Huomaa, että todellisuudessa pankinjohtajaan ja taloon tulisi viitata URI:en avulla). Edellinen kuvaus siis määrittää tietyn pankinjohtajan ja talon välille omistusliitoksen.
 
 \subsubsection{Toteamukset}
 
-Toteamukset ovat RDF-tietomallin pääasiallinen tapa esittää tietoa. Toteamukset voidaan esittää resurssien, predikaattien ja arvojen avulla \cite{Antoniou}. Esimerkiksi "auto ajaa 100 km/h" on toteamus, joka voidaan kuvata RDF-tietomallilla. Esitetyn arvon ei tarvitse olla lukuarvo, vaan se voi olla myös toinen resurssi \cite{Antoniou}\cite{IEEE_XML}. Toteamukset sisältävät paljon tietoa ja esitysmuoto on hyvin abstrakti, minkä vuoksi RDF-tietomallilla voidaan kuvata monenlaista tietoa.
+Toteamukset (RDF statements) ovat RDF-tietomallin pääasiallinen tapa esittää tietoa. Toteamukset voidaan esittää resurssien, predikaattien ja arvojen avulla \cite{Antoniou}. Esimerkiksi ``auto ajaa 100 km/h'' on toteamus, joka voidaan kuvata RDF-tietomallilla. Esitetyn arvon ei tarvitse olla lukuarvo, vaan se voi olla myös toinen resurssi \cite{Antoniou}\cite{IEEE_XML}. Toteamukset sisältävät paljon tietoa ja esitysmuoto on hyvin abstrakti, minkä vuoksi RDF-tietomallilla voidaan kuvata monenlaista tietoa.
 
-Toteamus rakentuu subjektista, predikaatista ja objektista \cite{lassila_dissertion}. Rakenteensa vuoksi toteamuksia voidaan myös nimittää kolmikoiksi (engl. triple). Kolmikkoja voidaan esittää graafi-muodossa Kuvan 1 tapaan. Kaaviot saattavat auttaa hahmottamisessa, minkä vuoksi niitä käytetään havainnollistamisen tukena. Tulee kuitenkin huomata, että mitään yksittäistä standardia ei ole olemassa RDF-graafeille, minkä vuoksi seuraavat kaaviot ovat vain yksi mahdollinen esitysmuoto monien joukosta. On myös hyvä tiedostaa, että jokaiseen resurssiin viitataan todellisuudessa URI:n avulla, mutta kaaviossa kokonaiset URI:t on jätetty selvyyden vuoksi pois.
+Toteamus rakentuu subjektista, predikaatista ja objektista \cite{lassila_dissertion}. Rakenteensa vuoksi toteamuksia voidaan myös nimittää kolmikoiksi (engl. triple). Kolmikkoja voidaan esittää graafimuodossa kuvan \ref{images/RDF-triplet1} tapaan. Kaaviot saattavat auttaa hahmottamisessa, minkä vuoksi niitä käytetään havainnollistamisen tukena. Tulee kuitenkin huomata, että mitään yksittäistä standardia ei ole olemassa RDF-graafeille, minkä vuoksi seuraavat kaaviot ovat vain yksi mahdollinen esitysmuoto monien joukosta. On myös hyvä tiedostaa, että jokaiseen resurssiin viitataan todellisuudessa URI:n avulla, mutta kaaviossa kokonaiset URI:t on jätetty selvyyden vuoksi pois.
 
 %% Graafi
 \begin{figure}[htb]
@@ -458,30 +463,30 @@ Toteamus rakentuu subjektista, predikaatista ja objektista \cite{lassila_dissert
 \caption{Esimerkki kolmikosta. \label{images/RDF-triplet1}}
 \end{figure}
 
-Kaaviossa esitetään toteamus: computer hasComponent cpu. Computer on toteamuksen subjekti ja cpu on objekti. Predikaatin asemassa on "hasComponent", jonka avulla ilmaistaan, että tietokone sisältää komponentin cpu. Yhdessä edelliset toteamuksenjäsenet muodostavat kolmikon.
+Kaaviossa esitetään toteamus: \textit{computer hasComponent cpu}. \textit{Computer} on toteamuksen subjekti ja \textit{cpu} on objekti. Predikaatin asemassa on \textit{hasComponent}, jonka avulla ilmaistaan, että tietokone sisältää komponentin cpu. Yhdessä edelliset toteamuksenjäsenet muodostavat kolmikon.
 
 
 
 \subsubsection{RDF/XML}
-RDF/XML on syntaksi, jonka avulla voidaan esittää RDF-tietomallin mukaista tietoa. RDF/XML syntaksi määrää tiedon esitysmuodon, jolloin tietokone ymmärtää ihmisen esittämän tiedon halutulla tavalla. Syntaksi pohjautuu XML:ään \cite{RDF_XML}. Seuraavassa on edellisen graafin (Kuva 1) toteamus RDF/XML merkintäkielellä:
+RDF/XML on syntaksi, jonka avulla voidaan esittää RDF-tietomallin mukaista tietoa. RDF/XML-syntaksi määrää tiedon esitysmuodon, jolloin tietokone ymmärtää ihmisen esittämän tiedon halutulla tavalla. Syntaksi pohjautuu XML:ään \cite{RDF_XML}. Alla on esitetty edellisen graafin (Kuva \ref{images/RDF-triplet1}) toteamus RDF/XML-merkintäkielellä:
 
 %% XML/RDF example
 %% hasProduct instead of product?
 \vskip 0.75cm
-\begin{lstlisting}[style=codeblock]
+\begin{lstlisting}[style=codeblock,caption={RDF/XML syntaksiesimerkki.},captionpos=b,label={rdf_esim}]
 <?xml version="1.0"?>
 <rdf:RDF
 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:rel="http://www.Computer-Specs.com/semantics/relationships">
+xmlns:rel="http://www.cmspecs.com/relationships">
 
-<rdf:Description
-rdf:about="http://www.Computer-Specs.com/semantics/computers/example_model_001">
-  <rel:hasComponent rdf:resource="http://www.Computer-Specs.com/semantics/processors/i7-8700k"/>
+<rdf:Description rdf:about="http://www.cmspecs.com/computers/thinkpad-l540">
+    <rel:hasComponent rdf:resource="http://www.cmspecs.com/processors/i5-4200m"/>
 </rdf:Description>
 </rdf:RDF>
 \end{lstlisting}
+% \vspace{-1pc}
+% See code~\ref{lst:label}
 \vskip 0.75cm
-
 
 \begin{figure}[htb]
 \centering
@@ -489,20 +494,23 @@ rdf:about="http://www.Computer-Specs.com/semantics/computers/example_model_001">
 \caption{Suhteet taulukoituna. Lähde: \cite{W3C_RDF_validator}. \label{images/RDF-valid}}
 \end{figure}
 
-Ylläoleva taulukko (Kuva 2) on generoitu automaattisesti RDF/XML-merkinnän pohjalta käyttämällä W3C:n palvelua. Voimme havaita, että ulkopuolinen palvelu on ymmärtänyt esimerkin rakenteen oikein. Palvelu on löytänyt subjektiksi tietokoneen (example-computer), objektiksi prosessorin (i7-8700k) ja predikaatiksi hasComponent-suhteen. Tietokoneet kykenevät siis havaitsemaan yhteyden esimerkin tietokoneen ja prosessorin välillä, kun ne lukevat edellisen RDF/XML-merkinnän.
+Ylläoleva taulukko (Kuva \ref{images/RDF-valid}) on generoitu automaattisesti RDF/XML-merkinnän pohjalta käyttämällä W3C:n validointipalvelua. Voimme havaita, että ulkopuolinen palvelu on ymmärtänyt esimerkin rakenteen täysin oikein. Validaattori on löytänyt subjektiksi tietokoneen (\textit{thinkpad-l540}), objektiksi prosessorin (\textit{i5-4200m}) ja predikaatiksi \textit{hasComponent}-suhteen. Esimerkin tieto on siis tietokoneluettavassa muodossa.
+
+Tietokoneet kykenevät siis havaitsemaan \textit{thinkpad-l540}:n ja i5-4200m:n välillä vallitsevan yhteyden, kun ne lukevat edellisen RDF/XML-merkinnän.
+
 
 \subsubsection{Turtle}
-Nykyisin RDF:ää kirjoitettaessa suositaan paljon muitakin syntakseja kuin pelkkää RDF/XML:ää. Esimerkiksi Turtle (Terse RDF Triple Language) on hyvin suosittu syntaksi sen helpon luettavuuden ja kirjoitettavuuden vuoksi \cite{cambridge2}. Turtlessa toteamukset päättyvät pisteeseen. Seuraavassa on esitetty aiempi esimerkki Turtle-syntaksilla:
+Nykyisin RDF:ää kirjoitettaessa suositaan paljon muitakin syntakseja kuin pelkkää RDF/XML:ää. Esimerkiksi Turtle (Terse RDF Triple Language) on hyvin suosittu syntaksi sen helpon luettavuuden ja kirjoitettavuuden vuoksi \cite{cambridge2}. Turtlessa toteamukset päättyvät pisteeseen. Alla on esitetty edellinen tietokone ja prosessori esimerkki Turtle-syntaksilla:
 
 %%Turle example
 \vskip 0.75cm
-\begin{lstlisting}[style=codeblock]
+\begin{lstlisting}[style=codeblock,caption={Turtle syntaksiesimerkki.},captionpos=b,label={turtle_esim}]
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rel: <http://www.Computer-Specs.com/semantics/relationships> .
-@prefix computer: <http://www.Computer-Specs.com/semantics/computers> .
-@prefix cpu: <http://www.Computer-Specs.com/semantics/processors> .
+@prefix rel: <http://www.computerspecs.com/semantics/relationships> .
+@prefix computer: <http://www.computerspecs.com/semantics/computers> .
+@prefix cpu: <http://www.computerspecs.com/semantics/processors> .
 
-computer:example_model_001 rel:hasComponent cpu:i7-8700k .
+computer:thinkpad-l540 rel:hasComponent cpu:i5-4200m .
 
 \end{lstlisting}
 \vskip 0.75cm
@@ -510,41 +518,36 @@ computer:example_model_001 rel:hasComponent cpu:i7-8700k .
 \begin{figure}[htb]
 \centering
 \includegraphics[width=15cm]{images/RDF-triplet2.pdf}
-\caption{Turtle syntaksista automaattisesti generoitu graafi. Lähde: \cite{SeCo_RDF_validator} \label{images/RDF-triplet2}}
+\vspace{-3pc}
+\caption{Turtle-syntaksista automaattisesti generoitu graafi. Lähde: \cite{SeCo_RDF_validator} \label{images/RDF-triplet2}}
 \end{figure}
 
-Vaikka edelliset syntaksiin liittyvät esimerkit ovat minimaalisia, voidaan niistä silti havaita Turtlen selkeys ja tiiveys verrattun RDF/XML merkintään. Turtlella RDF-lause voidaan kirjoittaa yhdelle riville. Subjektista, objektista ja predikaatista koostuva kolmikko päätetään aina pisteeseen tai puolipisteeseen.
+Vaikka edelliset syntaksiin liittyvät esimerkit ovat minimaalisia, voidaan niistä silti havaita Turtlen selkeys ja tiiveys verrattun RDF/XML-merkintään. Turtlella RDF-toteamus voidaan kirjoittaa yhdelle riville. Subjektista, objektista ja predikaatista koostuva kolmikko päätetään aina pisteeseen tai puolipisteeseen.
 
 
 \subsubsection{Nimiavaruudet}
-Etuliite eli prefiks (engl. prefix) määrää käytettävävän nimiavaruuden. Prefiksien käyttämisestä seuraa useita hyötyjä. Dokumenteista tulee siistimpiä ja helpompia lukea, koska dokumentin riveistä tulee lyhyempiä. Pitkiä URI:a ei tarvitse toistaa jokaisen RDF-lauseen alussa, koska tarpeelliseen URI:iin viittaaminen tapahtuu lyhyellä prefiksillä. Prefiksien käyttö nopeuttaa dokumenttien kirjoitusprosessia, koska lyhyen etuliitteen kirjoittaminen on huomattavasti nopeampaa kuin kokonaisen URI:n. Nimiavaruudet myös sallivat samannimisten termien käytön useissa eri kontekstissa, mikä on hyvin tärkeä ominaisuus \cite{Antoniou}.
+Etuliite eli prefiksi (engl. prefix) määrää käytettävävän nimiavaruuden. Prefiksien käyttämisestä seuraa useita hyötyjä. Dokumenteista tulee siistimpiä ja helpompia lukea, koska dokumentin riveistä tulee lyhyempiä. Pitkiä URI:a ei tarvitse toistaa jokaisen RDF-lauseen alussa, koska tarpeelliseen URI:iin viittaaminen tapahtuu lyhyellä prefiksillä. Prefiksien käyttö nopeuttaa dokumenttien kirjoitusprosessia, koska lyhyen etuliitteen kirjoittaminen on huomattavasti nopeampaa kuin kokonaisen URI:n. Nimiavaruudet myös sallivat samannimisten termien käytön useissa eri kontekstissa, mikä on hyvin tärkeä ominaisuus \cite{Antoniou}.
 
-Sama termi voi esiintyä yhdessä dokumentissa useita kertoja, mutta termillä ei välttämättä aina viitata samaan asiaan. Jotta kaksi samannimistä, mutta eria asiaa tarkoittavaa termiä voidaan erottaa toisistaan, täytyy hyödyntää nimiavaruuksia. Esimerkiksi termillä kaksipyöräinen voidaan viitata sekä polkupyörään että moottoripyörään. Mikäli moottoriajoneuvoista ja polkupyöristä kertovat dokumentit halutaan yhdistää, niin silloin termit saattaisivat mennä keskenään sekaisin. Voidaan kuitenkin määritellä, että etuliitteellä "mo" viitataan moottoriajoneuvoihin ja etuliitteellä "po" polkupyöriin. Näin lopullisessa kulkuneuvodokumentissa esiintyisi mo:kaksipyöräinen ja po:kaksipyöräinen, jotka tarkoittavat eri asioita.
+Sama termi voi esiintyä yhdessä dokumentissa useita kertoja, mutta termillä ei välttämättä aina viitata samaan asiaan. Jotta kaksi samannimistä, mutta eria asiaa tarkoittavaa termiä voidaan erottaa toisistaan, täytyy hyödyntää nimiavaruuksia. Esimerkiksi termillä kaksipyöräinen voidaan viitata sekä polkupyörään että moottoripyörään. Mikäli moottoriajoneuvoista ja polkupyöristä kertovat dokumentit halutaan yhdistää, niin silloin termit saattaisivat mennä keskenään sekaisin. Voidaan kuitenkin määritellä, että etuliitteellä ``mo'' viitataan moottoriajoneuvoihin ja etuliitteellä ``po'' polkupyöriin. Näin lopullisessa kulkuneuvodokumentissa esiintyisi mo:kaksipyöräinen ja po:kaksipyöräinen, jotka tarkoittavat eri asioita.
 
 Etuliitteet määritellään yleensä dokumenttien alussa. Esimerkiksi edellisistä syntaksiesimerkeistä voidaan havaita nimiavaruuksien määritykset ensimmäisillä riveillä. Prefiksin saa valita vapaasti, kunhan kyseinen etuliite ei ole jo valmiiksi käytössä. Prefiksin URI:n täytyy osoittaa olemassaolevaan resurssiin, jotta nimiavaruuden määritykset on mahdollista löytää.
 
-\subsubsection{Semanttinen tieto}
+\subsection{Semanttinen tieto}
 
-Filosofia määrittelee termin \textbf{\textit{semantiikka}} yleiseksi teoriaksi sanojen, ilmaisujen ja lauseiden merkityksestä \cite{semantics_phi}. Tietotekniikan tutkimusala on omaksunut termin käyttöönsä. Semantiikka ei määrittele tiedon esitysmuotoa, joten suomenkielisten lauseiden sijaan voidaan myös tutkia RDF-tietomallin mukaisia toteamuksia. Semantiikan näkökulmasta on mielenkiintoista, kuinka tieto voidaan esittää niin, että tiedon merkitys ymmärretään yksiselitteisesti. Semanttinen internet pyrkii erityisesti esittämään ihmiseltä peräisin olevaa tietoa niin, että tietokone ymmärtää tiedon samalla tavalla kuin ihminen \cite{Berners_visio}.
+Filosofia määrittelee termin {\textit{semantiikka} yleiseksi teoriaksi sanojen, ilmaisujen ja lauseiden merkityksestä \cite{semantics_phi}. Tietotekniikan tutkimusala on omaksunut termin käyttöönsä. Semantiikka ei määrittele tiedon esitysmuotoa, joten suomenkielisten lauseiden sijaan voidaan myös tutkia RDF-tietomallin mukaisia toteamuksia. Semantiikan näkökulmasta on mielenkiintoista, kuinka tieto voidaan esittää niin, että tiedon merkitys ymmärretään yksiselitteisesti. Semanttinen internet pyrkii erityisesti esittämään ihmiseltä peräisin olevaa tietoa niin, että tietokone ymmärtää tiedon samalla tavalla kuin ihminen \cite{Berners_visio}.
 
-Yhtenäiset lauseet sisältävät enemmän tietoa kuin lauseenjäsenet erikseen summattuna. Esimerkiksi lauseesta "En voi ajaa tuota autoa yhdellä jalalla" ihminen voi tehdä useita päätelmiä mitä hän ei todennäköisesti tekisi yksittäisistä sanoista. Lauseesta voidaan esimerkiksi päätellä:
+Luonnollisen kielen yhtenäiset lauseet sisältävät enemmän tietoa kuin lauseenjäsenet erikseen summattuna. Esimerkiksi lauseesta ``En voi ajaa tuota autoa yhdellä jalalla'' ihminen voi tehdä useita päätelmiä mitä hän ei todennäköisesti tekisi yksittäisistä sanoista. Lauseesta voidaan esimerkiksi päätellä:
 \begin{itemize}
   \item  Lause kertoo jostain tietystä autosta, joten ehkä lauseenkertoja osoittaa autoa.
   \item  Lauseesta käy ilmi puhujan kyvyttömyys tietyn auton ajamiseen. Ehkä auto on vääränmallinen (esim. auto on manuaalivaihteinen automaatin sijaan).
   \item  Lauseessa esiintyvä jalka on mitä luultavimmin puhujan.
   \item  Lauseessa puhutaan yhdestä jalasta, joten ehkä puhujan jalka on hyvin kipeä tai mahdollisesti amputoitu.
 \end{itemize}
-Lauseiden sanajärjestyksellä on myös oma merkityksensä. Esimerkiksi lauseet "lapset söivät keksit" ja "keksit söivät lapset" eivät tarkoita samaa, vaikka ne koostuvatkin täysin samoista sanoista. Ihmiskieli siis sisältää paljon tietoa, jota on vaikea tuoda ilmi tietokoneelle \cite{semantics}. Lauseet ovat erittäin informatiivisia, joten ehkä RDF-tietomuodossa ollaan siksi päädytty lauseita muistuttavaa rakenteeseen.
+Lauseiden sanajärjestyksellä on myös oma merkityksensä. Esimerkiksi lauseet ``lapset söivät keksit'' ja ``keksit söivät lapset'' eivät tarkoita samaa, vaikka ne koostuvatkin täysin samoista sanoista. Ihmiskieli siis sisältää paljon tietoa, jota on vaikea tuoda ilmi tietokoneelle \cite{semantics}. Lauseet ovat erittäin informatiivisia, joten ehkä RDF-tietomuodossa ollaan siksi päädytty lauseita muistuttavaa rakenteeseen.
 
-Semanttisella tiedolla viitataan tietoon josta selviää tiedon lisäksi sen merkitys. Jotta voi ymmärtää merkityksiä, niin täytyy kyetä tunnistamaan tiedon suhteisuutta. Semanttisen internetin yhteydessä semanttisella tiedolla tarkoitetaan tietoa, jonka esittämiseen hyödynnetään semanttisen internetin tekniikoita. Semanttisen internetin tekniikat mahdollistavat tietokoneiden ymmärtää tiedon sisältämiä merkityksiä.
-
+Semanttisella tiedolla viitataan tietoon josta selviää tiedon lisäksi sen merkitys. Jotta voi ymmärtää merkityksiä, niin täytyy kyetä tunnistamaan tiedon suhteisuutta. Semanttisen internetin yhteydessä semanttisella tiedolla tarkoitetaan tietoa, jonka esittämiseen hyödynnetään semanttisen internetin tekniikoita. Semanttisen internetin tekniikat mahdollistavat tietokoneiden ymmärtää tiedon sisältämiä merkityksiä. +++  Semantiikkaa esitetään alaluokkien, luokkahierarkian
 %% RDF statement -> koska lauseet sisältävät paljon tietoa!
 
-\subsubsection{Semanttinen laadukkuus} %%poista/lyhennä? esitä tähdet/asteikko kuvana?
-[Tämä kappale kirjoitetaan lopuksi uudestaan tai poistetaan riippuen työn pituudesta].
-Semanttisen tiedon määrittäminen vaatii aihealueen asiantutemusta ja runsaasti kehitystyötä, minkä vuoksi osa jaetusta tiedosta on laadukkaampaa kuin muu. Tästä syystä Tim Berners-Lee on luonut asteikon, jonka avulla tarjolla olevaa linkittynyttä tietoa voidaan luokitella. Berners-Leen esittelemä asteikko arvostelee tietolähteen 1-5 tähdellä. Yhden tähden saa sillä, että tieto on vapaasti jaossa internetissä. Kaksi tähteä saa, jos tieto on tietokoneen luettavissa. Kolme tähteä ansaitsee, kun tietokoneluettava tieto esitetään yleisesti käytettävissä olveassa standardoidussa muodossa. Kun tarjolla oleva tieto noudattaa RDF-tietomuotoa, niin silloin on mahdollista ansaita neljä tähteä. Viiteen tähteen vaaditaan kaikki edellämainitut kohdat, sekä tiedon tulee olla myös linkitettyä muuhun ulkopuoliseen tietoon \cite{Tim-BL}. Arvosteluasteikkoa on ehdotettu laajennettavaksi välille 1-7 tähteä SeCo:n (Semantic Computing Research Group) toimesta \cite{SeCo_stars}. He esittävät, että tieto on kuuden tähden arvoista, jos tietoa kuvaavat skeemat on kuvailtu eksplisiittisesti ja ne on mahdollista saada tiedon yhteydessä. Seitsemään tähteen vaadittaisiin tiedon ja skeemojen erillistä tulkintaa, jolla varmistettaisiin, että tieto ja skeemat liittyvät selkeästi toisiinsa. Näin ulkopuolinen tietoa hyödyntävä taho voisi varmistua tiedon laadukkuudesta ja soveltuvuudesta jatkokäyttöä varten. Tällähetkellä ongelmana on se, että ulkopuolinen taho ei voi nopeasti tietää mikäli sanasto on laadukas. Sanastoon täytyy ensin tutustua, jotta voidaan tehdä päätelmiä sen soveltuvuudesta ja laadukkuudesta. Esitetyn arvosteluasteikon on tarkoituksena ratkaista edellinen ongelma.
-
-%%Check Publishing on the ... source
 
 \subsection{RDF Schema}
 %%Usein tietoa halutaan kuvata tarkasti, jolloin RDF:n tukena tulee käyttää RDF Schemaa.
@@ -555,14 +558,14 @@ Luokkien määrittäminen auttaa järjellisen tiedon esittämisessä. Luokkien a
 %% \textcolor{red} {RDF Schemassa luokan ominaisuudet kuvataan resurssikohtaisesti}
 RDFS:n luokat muistuttavat luokkapainotteisten ohjelmointielten luokkia. Selvänä erona on kuitenkin tapa jolla luokan ominaisuudet määritetään. Tavallinen ohjelmointikieli voi määrittää esimerkiksi luokan \textit{auto} koostuvan renkaista, ovista ja moottorista. Kun luokasta luodaan autoinstanssi, niin sillä on aina edelliset ominaisuudet. RDF Schemassa luokan ominaisuudet kuvataan resurssikohtaisesti \cite{W3C_RDFS2}. Tämän vuoksi kaikki luokan instanssit eivät välttämättä omaa täysin samoja ominaisuuksia. RDFS:n tapa sallii luokkamääritelmien tarkentamisen ja jatkamisen ilman mahdollisuutta muokata alkuperäistä kuvausta. Tämä sallii käyttäjien jatkaa toisten tekemiä määritelmiä.
 
-Tärkeitä RDFS:n ominaisuuksia ovat muun muassa \textit{domain}, \textit{range} ja \textit{subClassOf}, mitkä liittyvät vahavasti luokkiin. Domainin avulla voidaan määrittää tietyn ominaisuuden kuuluvan tietylle luokalle. Voidaan esimerkiksi määrittää autoluokka ja predikatti "hasMotor". Domainin avulla voimme kertoa, että hasMotor-predikaatti kuuluu autoluokalle, joten predikaattia on mieletöntä käyttää kuvailemaan esimerkiksi auton rengasta. Rangen avulla määritetään mihin predikaatilla voidaan viitata. Edellisen esimerkin tapauksessa olisi järkevää määrittää "hasMotor" predikaatin rangeksi moottoriluokka. Siten auton moottori voi olla ainoastaan moottoriluokan ilmentymä eikä esimerkiksi "korkea". RDFS:n "subClassOf" ominaisuuden avulla voidaan esitellä alaluokkia, mikä mahdollistaa luokkahierarkioiden kuvaamisen. Autoluokan alaluokka voisi olla esimerkiksi farmari \cite{W3C_RDFS2}.
+Tärkeitä RDFS:n ominaisuuksia ovat muun muassa \textit{domain}, \textit{range} ja \textit{subClassOf}, jotka liittyvät vahavasti luokkiin. Domainin avulla voidaan määrittää tietyn ominaisuuden kuuluvan tietylle luokalle. Voidaan esimerkiksi määrittää autoluokka ja predikatti ``hasMotor''. Domainin avulla voimme kertoa, että hasMotor-predikaatti kuuluu autoluokalle, joten predikaattia on mieletöntä käyttää kuvailemaan esimerkiksi auton rengasta. Rangen avulla määritetään mihin predikaatilla voidaan viitata. Edellisen esimerkin tapauksessa olisi järkevää määrittää ``hasMotor'' predikaatin rangeksi moottoriluokka. Siten auton moottori voi olla ainoastaan moottoriluokan ilmentymä eikä esimerkiksi ``korkea''. RDFS:n ``subClassOf'' ominaisuuden avulla voidaan esitellä alaluokkia, mikä mahdollistaa luokkahierarkioiden kuvaamisen. Autoluokan alaluokka voisi olla esimerkiksi sedan \cite{W3C_RDFS2}.
 
-Seuraavassa on Turtle-syntaksilla kirjoitettu esimerkki edellä esitetyistä RDF Scheman ominaisuuksista. Esimerkissä määritetään aluksi akku, tietokone ja kannettava tietokone luokat. Kannettava tietokone on tietokoneen alaluokka. Seuraavaksi määritellään "hasBattery" ominaisuus, minkä avulla voidaan kuvata, että kannettava tietokone sisältää akun. Lopuksi akusta ja kannettavasta tietokoneesta luodaan ilmentymät. Kannettava tietokone sisältää edellä määritetyn akun. Esimerkissä hyödynnetään Turtlen ominaisuutta lyhentää toteamuksia määrittelemällä toteamusten subjekti ainoastaan kerran. Puolipisteen jälkeiset toteamukset viittaavat edelleen samaan subjektiin, kun taas pisteen jälkeen määritetään aina uusi subjekti.
+Alla on Turtle-syntaksilla kirjoitettu esimerkki edellä esitetyistä RDF Scheman ominaisuuksista. Esimerkissä määritetään aluksi akku, tietokone ja kannettava tietokone luokat. Kannettava tietokone on tietokoneen alaluokka. Seuraavaksi määritellään ``hasBattery'' ominaisuus, minkä avulla voidaan kuvata, että kannettava tietokone sisältää akun. Lopuksi akusta ja kannettavasta tietokoneesta luodaan ilmentymät. Kannettava tietokone sisältää edellä määritetyn akun. Esimerkissä hyödynnetään Turtlen ominaisuutta lyhentää toteamuksia määrittelemällä niiden subjekti ainoastaan kerran. Puolipisteen jälkeiset toteamukset viittaavat edelleen samaan subjektiin, kun taas pisteen jälkeen määritetään aina uusi subjekti.
 
 %% RDFS
 \vskip 0.75cm
-\begin{lstlisting}[style=codeblock]
-@prefix ex: <http://www.Computer-Specs.com/semantics/example> .
+\begin{lstlisting}[style=codeblock,caption={RDFS esimerkki.},captionpos=b,label={rdfs_esim}]
+@prefix ex: <http://www.computerspecs.com/semantics/example> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -583,8 +586,8 @@ ex:4X50M33573 a ex:Battery ;
     ex:hasPower "32"^^xsd:integer ;
     ex:hasVoltage "15.4"^^xsd:float .
 
-ex:ThinkPad_E570 a ex:Laptop ;
-    ex:hasBattery ex:4X50M33573 .
+ex:ThinkPad_L540 a ex:Laptop ;
+    ex:hasBattery ex:0C52863 .
 
 
 \end{lstlisting}
@@ -600,7 +603,7 @@ ex:ThinkPad_E570 a ex:Laptop ;
 %\caption{Turtle syntaksista automaattisesti generoitu graafi. Lähde: \cite{SeCo_RDF_validator} \label{images/RDF-triplet2}}
 \end{figure}
 %% Lisää viittaus??: https://www.youtube.com/playlist?list=PLea0WJq13cnDDe8V7eVLReIaOnFztOEAq
-\subsubsection{Ontologiat ja sanastot}
+\subsection{Ontologiat ja sanastot}
 %% Littyy rdfs
 Sanastolla (engl. vocabulary) tarkoitetaan määritelmiä, joiden avulla tietoa voidaan kuvata sovellustarkoitukseen sopivassa muodossa \cite{RDF_specification}. Sanastoja hyödynnetään tiedon integroinnissa ja organisoinnissa \cite{vocabulary}. Esimerkiksi tuotteen maahantuojan tuotetietojen ja kauppiaan myyntitetojen yhdistäminen voi olla hyödyllistä. Kauppiaan ei tarvitse kuvailla myymien tuotteidensa ominaisuuksia, koska hän voi hyödyntää maahantuojan valmiita kuvauksia. Kauppias ja myyjä eivät kuitenkaan todennäköisesti kuvaile tuotetteita täysin samalla RDF-termistöllä. Siksi tarvitaan sanasto, jonka avulla voidaan esittää tarpeellinen lisätieto tietokoneelle. Ilman sanastoa tietokone ei kykene yhdistämään maahantuojan tuotekuvausta ja myyjän vastaavaa tuottetta toisiinsa.
 
@@ -615,21 +618,23 @@ Kehitykseen kuluvaa aikaa voidaan vähentää hyödyntämällä erilaisia ohjelm
 
 
 \subsection{OWL}
+% KIRJOITA: OWL on logiikkapohjainen kieli, mikä sallii tietokoneiden käsitellä ilmaisuja.
+% https://www.w3.org/OWL/
 
-OWL (Web Ontology Language) on semanttisen internetin yhteydessä käytetty tietämyksenesttämiskieli. Tietämyksenesittämiskielille tärkeitä ominaisuuksia ovat selkeästi määritelty syntaksi, formaali semantiikka, riittävä ilmaisuvoima ja päättelytuki \cite{Antoniou}. Käyttötarkoitukseltaan OWL on rinnastettavissa RDF Schemaan, mutta ilmaisuvoimaltaan OWL on huomattavasti tehokkaampi kuin RDFS. RDF Schema tarjoaa ainoastaan vähimmäisedellytykset semanttisen tiedon kuvaamiseen \cite{revisited}. OWL:sta on tarjolla kolme erilaajuista versiota: OWL Full, OWL DL ja OWL Lite. OWL Full on kaikista laajin versio ja monet sovellukset eivät tue sitä kokolaajuudessaan \cite{OWL_specification}.
+OWL (Web Ontology Language) on semanttisen internetin yhteydessä käytetty tietämyksenesittämiskieliä. Tietämyksenesittämiskielille tärkeitä ominaisuuksia ovat selkeästi määritelty syntaksi, formaali semantiikka, riittävä ilmaisuvoima ja päättelytuki \cite{Antoniou}. Käyttötarkoitukseltaan OWL on rinnastettavissa RDF Schemaan, mutta ilmaisuvoimaltaan OWL on huomattavasti tehokkaampi kuin RDFS. RDF Schema tarjoaa ainoastaan vähimmäisedellytykset semanttisen tiedon kuvaamiseen \cite{revisited}. OWL:sta on tarjolla kolme erilaajuista versiota: OWL Full, OWL DL ja OWL Lite. OWL Full on kaikista laajin versio ja monet sovellukset eivät tue sitä kokolaajuudessaan \cite{OWL_specification}.
 
 Formaalilla semantiikalla tarkoitetaan kykyä ilmaista esitetyn tiedon merkitys tarkasti ja yksiselitteisesti \cite{Antoniou}. Tämä mahdollistaa päättelyn esitetyn tiedon pohjalta. Esimerkiksi joutsen-alaluokkaan kuuluva laulujoutsen kuuluu selvästi myös lintuluokkaan, ja siten omaa linnulle tyypillisiä ominaisuuksia. Päätelmä voi olla tarpeellinen esimerkiksi sovelluksessa, joka kuvailee linnun tavanomaisia ominaisuuksia, kun tarkastellaan laulujoutsenta. OWL tarjoaa monia keinoja pääteltävän tiedon määrittelyyn, mikä tekee siitä ilmaisuvoimaisen.
 
-Owl määrittelee muun muassa funktionaalisen, transitiivisen ja symmetrisen luokkaominaisuuden. Edelliset ominaisuudet eivät ole ainoita OWL:n ominaisuuksia, mutta niiden tarkoitus on antaa lukijalle riittävä mielikuva OWL:n tarjoamista mahdollisuuksista määritellä tietoa. Funktionaalisella ominaisuudella tarkoitetaan instanssien välistä suhdetta, jossa instanssia kohden voi ilmetä ainoastaan yksi uniikki arvo. Esimerkiksi auton ja rekisterinumeron välistä suhdetta voidaan kuvata funktionaalisella ominaisuudella. Transitiivisella ominaisuudella voidaan kuvata pääteltäviä osakokonaisuus suhteita. Esimerkiksi pöydänjalan ollessa pöydän osa ja ruuvin ollessa pöydänjalan osa, voidaan päätellä, että ruuvi on myös pöydän osa. Symmetrisellä ominaisuudella viitataan ystävyyssuhdetta vastaavaan ilmentymään. Yleensä ystävät kokevat toisensa ystävikseen, joten suhde on molemminpuoleinen eli symmetrinen \cite{OWL_specification}.
+Owl määrittelee muun muassa funktionaalisen, transitiivisen ja symmetrisen luokkaominaisuuden. Edelliset ominaisuudet eivät ole ainoita OWL:n ominaisuuksia, mutta niiden tarkoitus on antaa lukijalle riittävä mielikuva OWL:n tarjoamista mahdollisuuksista määritellä tietoa. Funktionaalisella ominaisuudella tarkoitetaan instanssien välistä suhdetta, jossa instanssia kohden voi ilmetä ainoastaan yksi uniikki arvo. Esimerkiksi auton ja rekisterinumeron välistä suhdetta voidaan kuvata funktionaalisella ominaisuudella. Transitiivisella ominaisuudella voidaan kuvata pääteltäviä osakokonaisuussuhteita. Esimerkiksi pöydänjalan ollessa pöydän osa ja ruuvin ollessa pöydänjalan osa, voidaan päätellä, että ruuvi on myös pöydän osa. Symmetrisellä ominaisuudella viitataan ystävyyssuhdetta vastaavaan ilmentymään. Yleensä ystävät kokevat toisensa ystävikseen, joten suhde on molemminpuoleinen eli symmetrinen \cite{OWL_specification}.
 
 
 %OWL-tietämyksenesttämiskielestä on kolme erilaista versiota: OWL Full, OWL DL ja OWL Lite. Kielien ero on niiden laajuudessa ja kyvyssä kuvata tietoa. OWL Full on kaikista laajin ja se on RDFS yhteensopiva \cite{OWL_specification}.
 
-Seuraavassa on esitetty RDF Schema osion kannettava tietokone-esimerkki täydennettynä OWL:lla. Esimerkistä voidaan huomata, että se näyttää edelleen hyvin samalta kuin aiemmin. OWL-määritelmät ovat lisätietoa. Esimerkin Turtle-merkintä on generoitu protégé nimisellä ohjelmistolla, jonka avulla voidaan tuottaa ontologioita tehokkaasti \cite{Protege}.
+Seuraavassa esimerkissä (Koodikatkelma \ref{owl_esim}) on esitetty RDF Schema osion kannettava tietokone -esimerkki täydennettynä OWL:lla. Esimerkistä voidaan huomata, että se näyttää edelleen hyvin samalta kuin aiemmin. OWL-määritelmät ovat lisätietoa. Esimerkin Turtle-merkintä on generoitu Protégé-nimisellä ohjelmistolla, jonka avulla voidaan tuottaa ontologioita tehokkaasti \cite{Protege}.
 
 %%
 \vskip 0.75cm
-\begin{lstlisting}[style=codeblock]
+\begin{lstlisting}[style=codeblock,caption={OWL esimerkki.},captionpos=b,label={owl_esim}]
 @prefix : <http://www.Computer-Specs.com/ontologies/example#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -664,9 +669,9 @@ Seuraavassa on esitetty RDF Schema osion kannettava tietokone-esimerkki täydenn
         :hasPower "57"^^xsd:int ;
         :hasVoltage "10.8"^^xsd:float .
 
-:ThinkPad_T570 rdf:type owl:NamedIndividual ,
+:ThinkPad_L540 rdf:type owl:NamedIndividual ,
                            :Laptop ;
-               :hasBattery :C52863 .
+               :hasBattery :0C52863 .
 
 \end{lstlisting}
 \vskip 0.75cm
@@ -676,7 +681,7 @@ Seuraavassa on esitetty RDF Schema osion kannettava tietokone-esimerkki täydenn
 
 
 \subsubsection{Triple store}
-RDF-tietomuodossa olevaa tietoa voidaan tallentaa muistiin. Yksinkertaisimillaan voidaan tallentaa suoraan RDF/XML, Turtle tai vastaavia tiedostoja, mutta tämä ei ole kovin tehokasta. Yksittäisen tarpeellisen asian etsiminen on hidasta, kun tiedostokoot ovat suuria. Tästä syystä on kehitetty tehokkaampiakin tallennustapoja, jotka hyödyntävät tietokantoja. Triple store on tietokantatyyppi, joka on suunniteltu erityisesti RDF-graafien tallentamiseen. RDF-tieto on todella linkittynyttä, minkä vuoksi graafi-tietokannat soveltuvan sen tallentamiseen paremmin kuin perinteiset relaatiotietokannat. Relaatiotietokannoissa useiden linkittyneiden asioiden välille on huomattavasti vaikeampaa luoda suhderakenteita ja kyselyiden tekeminen on myös haastavaa. Triple store tietokanta tallentaa RDF-lauseet suoraan kolmikkoina, joten sovelluskohtaisia relaatiotauluja ei tarvitse luoda \cite{triplestore}. Tarkka standardointi sallii tiedon hakemisen myös ulkopuolisista avoimista tietokannoista. Tämän ansiosta tietokantoja voidaan linkittää, mikä mahdollistaa tavallista laajemman tiedonhaun.
+RDF-tietomuodossa olevaa tietoa voidaan tallentaa muistiin. Yksinkertaisimillaan voidaan tallentaa suoraan RDF/XML-, Turtle- tai vastaavia tiedostoja, mutta tämä ei ole kovin tehokasta. Yksittäisen tarpeellisen asian etsiminen on hidasta, kun tiedostokoot ovat suuria. Tästä syystä on kehitetty tehokkaampiakin tallennustapoja, jotka hyödyntävät tietokantoja. Triple store on tietokantatyyppi, joka on suunniteltu erityisesti RDF-graafien tallentamiseen. RDF-tieto on todella linkittynyttä, minkä vuoksi graafi-tietokannat soveltuvan sen tallentamiseen paremmin kuin perinteiset relaatiotietokannat. Relaatiotietokannoissa useiden linkittyneiden alkioiden välille on huomattavasti vaikeampaa luoda suhderakenteita ja kyselyiden tekeminen on myös haastavaa. Triple store -tietokanta tallentaa RDF-lauseet suoraan kolmikkoina, joten sovelluskohtaisia relaatiotauluja ei tarvitse luoda \cite{triplestore}. Tarkka standardointi sallii tiedon hakemisen myös ulkopuolisista avoimista tietokannoista. Tämän ansiosta tietokantoja voidaan linkittää, mikä mahdollistaa tavallista laajemman tiedonhaun.
 
 \begin{figure}[htb]
 \centering
@@ -690,45 +695,62 @@ RDF-tietomuodossa olevaa tietoa voidaan tallentaa muistiin. Yksinkertaisimillaan
 SPARQL on spesifikaatiokokonaisuus, joka tarjoaa kieliä ja protokollia RDF-graafien muokkaamiseen ja kyselyiden tekemiseen \cite{sparql}. SPARQL ei ole yksittäinen kieli, vaan se koostuu useita hyödyllisistä ja tarpeellisista osista. Tässä alaluvussa keskitytään ainoastaan SPARQL Query Languagen perusteisiin.
 
 %% päätepiste???
-SPARQL Query Languagen avulla voidaan hakea RDF-muotoista tietoa triple store tietokannoista. Jokaisella triple storella on päätepiste (engl. endpoint), johon SPARQL kyselyt voidaan lähettää HTTP (Hypertext Transfer Protocol) protokollan avulla. Päätepisteen luominen internettiin on helppoa, joten avoimia päätepisteitä on paljon tarjolla. Esimerkiksi DBpedia tarjoaa avoimen päätepisteen (http://dbpedia.org/sparql), josta voi hakea tietoa RDF-tietomuotoisesta Wikipediasta \cite{Antoniou}.
+SPARQL Query Languagen avulla voidaan hakea RDF-muotoista tietoa triple store -tietokannoista. Jokaisella triple storella on päätepiste (engl. endpoint), johon SPARQL-kyselyt voidaan lähettää HTTP (Hypertext Transfer Protocol) protokollan avulla. Päätepisteen luominen internettiin on helppoa, joten avoimia päätepisteitä on paljon tarjolla. Esimerkiksi DBpedia tarjoaa avoimen päätepisteen (http://dbpedia.org/sparql), josta voi hakea tietoa RDF-tietomuotoisesta Wikipediasta \cite{Antoniou}.
 
-RDF:ssa toteamukset koostuvat subjektista, predikaatista ja objektista. SPARQL kyselylauseessa jokin edellisistä RDF-toteamuksen osista voidaan korvata muuttujalla, mitä merkitään kysymysmerkillä \cite{Antoniou}. SPARQL etsii kyselylausetta vastaavat toteamukset ja palauttaa niistä muuttujan paikalle sopivat arvot. Kyselylause voi olla esimerkiksi seuraavanlainen:
+RDF:ssa toteamukset koostuvat subjektista, predikaatista ja objektista. SPARQL- kyselylauseessa jokin edellisistä RDF-toteamuksen osista voidaan korvata muuttujalla, mitä merkitään kysymysmerkillä \cite{Antoniou}. SPARQL etsii kyselylausetta vastaavat toteamukset ja palauttaa niistä muuttujan paikalle sopivat arvot. Kyselylause voi olla esimerkiksi seuraavanlainen:
 
 \begin{lstlisting}[style=codeblock]
 PREFIX ex: <http://www.Computer-Specs.com/ontologies/example#> .
 
 SELECT ?battery
 WHERE {
-  ex:ThinkPad_T570 ex:hasBattery ?.
+  ex:ThinkPad_L540 ex:hasBattery ?battery.
 }
 \end{lstlisting}
 
-Koska ThinkPad\_T570:n akuksi on aiemmissa luvuissa määritelty "C52863", niin SPARQL palauttaa käyttäjälle kyseisen akun. Kyselyn tulos voi koostua myös useammasta kuin yhdestä arvosta, mikäli useampi toteamus toteuttaa kyselyn. Jotta SPARQL tietää mistä se etsii tietoa, niin sille täytyy kertoa kyselyn nimiavaruudet prefiksien avulla.
+Koska ThinkPad\_L540:n akuksi on aiemmissa luvuissa määritelty ``0C52863'', niin SPARQL palauttaa käyttäjälle kyseisen akun. Kyselyn tulos voi koostua myös useammasta kuin yhdestä arvosta, mikäli useampi toteamus toteuttaa kyselyn. Jotta SPARQL tietää mistä se etsii tietoa, täytyy sille kertoa kyselyn nimiavaruudet prefiksien avulla.
 
 SPARQL tarjoaa monia keinoja hakujen tekemiseen. Kyselyssä voi esiintyä useita muuttujia.
-Haut voivat koostua liitoksista (engl. union) ja negaatioista. Lukuarvoista koostuva tulos voidaan summata yhteen sum-funktion avulla. Tulokset voidaan myös järjestellä haluttuun järjestykseen "ORDER BY" lauseen avulla. Haku voi myös olla SELECT-kyselyn sijaan ASK-tyyppinen, joka testaa mikäli haulla on olemassaolevia ratkaisuja ja palauttaa tuloksen mukaisen boolean arvon \cite{sparql_query}. SPARQL tarjoaa useita erilaisia syntakseja kyseltuloksen esittämiseen. Kyselyn tulos voidaan esimerkiksi esittää Turtle- tai RDF/XML syntaksin mukaisessa muodossa. \cite{W3C_turtle}. Syntaksiltaan SPARQL muistuttaa SQL kyselykieltä.
+Haut voivat koostua liitoksista (engl. union) ja negaatioista. Lukuarvoista koostuva tulos voidaan summata yhteen sum-funktion avulla. Tulokset voidaan myös järjestellä haluttuun järjestykseen ``ORDER BY'' lauseen avulla. Haku voi myös olla SELECT-kyselyn sijaan ASK-tyyppinen, joka testaa mikäli haulla on olemassaolevia ratkaisuja ja palauttaa tuloksen mukaisen boolean-arvon \cite{sparql_query}. SPARQL tarjoaa useita erilaisia syntakseja kyseltuloksen esittämiseen. Kyselyn tulos voidaan esimerkiksi esittää Turtle- tai RDF/XML- syntaksin mukaisessa muodossa. \cite{W3C_turtle}. Syntaksiltaan SPARQL muistuttaa SQL- kyselykieltä.
 
 
 \clearpage
 %%===============================================================================
 
-\subsection{Linkittynyt tieto}
+\subsection{Yhdistetty tieto}
+
+Yhdistetty tieto (engl. Linked data) sallii yhteisiin tietoresursseihin viittaamisen. Siten tietoa ei tarvitse monistaa, vaan eri lähteet voivat käyttää samaa tietoresurssia hyödykseen \cite{linked_data_finlad}. Tämän ansiosta saman tiedon tallennukseen tarvitaan vähemmän muistitilaa. Yhdistetty tieto auttaa myös lisätiedon esittämisessä, koska tietoon voidaan linkittää uusia tietoresursseja. Koska tieto on yhdistetty linkeillä, niin alkuperäisten lähteiden etsiminen on helpompaa. Mikäli alkuperäislähteessä on virhe, niin virhe täytyy korjata ainoastaan yhdesti.
+
 
 \clearpage
 %%===============================================================================
-\section{Käytännönsoveltuvuus}
+\section{Käytännön sovelluksia}
+
+Semanttista tietoa voidaan käyttää monella tavalla hyödyksi. Tässä kappaleessa esitellään joitakin hyödyntämismahdollisuuksia esimerkkien avulla. Esimerkit ovat käytössä olevia ja toimivia ratkaisuja.
+
+
 Esimerkiksi Facebook käyttää semanttista verkkoa tiedonhaussa, minkä avulla se kykenee tarjoamaan käyttäjilleen parempia hakutuloksia \cite{Facebook}.
 
-Hakukoneoptimointi -> nettisivujen löydettävyys.
-https://www.profium.com/en/blog/semantic-search-in-employment-matching
-Semantic search in emplyment matchin.
-Työhakemusten lukemisessa käytetään paljon automattisia ohjelmistoja, jotka yrittävät löytää kaikista sopivimmat hakijat [lähde...]. Tämä säästää yritysten aikaa ja rahaa, koska soveltumattomiin hakijoihin ei tarvitse käyttää resursseja. Ongelmallista tässä tavassa on kuitenkin se, että se voi jättää hyviä hakijoita havaitsematta ja soveltumattomien ehdokkaiden on mahdollista tulla havaituksi, mikäli he tuntevat käytetyn järjestelmän. Järjestelmät tyypillisesti etsivät muun muassa määriteltyjä avainsanoja hakemuksista [lähde]. Jos työhakemus ei ole koneluettava (esimerkiksi kuvaskannaus työhakemuksesta), niin silloin järjestelmät eivät voi löytää avainsanoja, jolloin hakemus todennäköisesti hylätään.
 
-Semanttinen työnhaku m
 
 
 \subsection{XMP-metadataformaatti}
+
+XMP (Extensible Metadata Platform) on Adoben kehittämä metadataformaatti, jota käytetään muun muassa kuvien metadatan tallennukseen. XMP on ISO:n (International Organization for Standardization) hyväksymä standardi (ISO 16684-1:2012) \cite{XMP_standard}. XMP-merkintätekniikka pohjautuu RDF-tietomallin osajoukkoon ja se hyödyntää toteutuksessaan Dublin Core sanastoa \cite{XMP2}. Merkintäteknikan avulla tallennetaan hyödyllistä metatietoa itse tiedostoihin, jolloin tietoa kuvaileva tieto on aina saatavilla tiedostojen yhteydessä \cite{XMP1}.
+
+XMP-metadataformaatista on useita hyötyjä. Sen avulla tiedostot säilyttävät niiden kontekstin, kun tiedostoja siirrellään ohjelmistolta, laitteelta tai tietokannasta toiseen. Yhteinen metadataformaatti sallii tehokkaan etsimisen eri tiedostotyyppien ja tietokantojen välillä. XMP-metadatan avulla voidaan merkitä yhteyksiä eri tiedostojen välille, joka voi auttaa esimerkiksi tiedostojen järjestelyssä. Avoimen standardin ansiosta XMP:n hyödyt ovat kaikkien saatavilla \cite{XMP_overall}. Konkreettinen esimerkki XMP:n eduista voidaan havaita, kun digitaalikameralla otettu kuva siirretään tietokoneelle ja kuvanottohetki ja kameran asetukset voidaan edelleen tietää lukemalla kuvan metadataa.
+
+
 \subsection{Semanttinen haku}
+
+Internetistä hakiessa käyttäjä pyrkii ennakoimaan sopivia hakusanoja, jotka identifioivat merkitykselliset tietolähteet \cite{keyword_search}. Avainsanahaussa materiaalin löytymisen edellytyksenä on, että käyttäjä hakee tietoa materiaalista löytyvillä sanoilla tai termillä. Sanojen eri taivutusmuodot ja synonyymit voivat aiheuttaa haun epäonnistumisen, koska käyttäjälle merkitykselliset tulokset voivat jäädä löytymättä. Haun lopputulos voidaan myös kokea epäonnistuneeksi, jos käyttäjä ei kykene ennakoimaan sopivia hakusanoja. Tällöin hakusanat johtavat vääränlaiseen materiaaliin. Vastuu haun onnistumisesta on käyttäjällä.
+
+Semanttinen haku pyrkii parantamaan haun onnistumismahdollisuuksia. Haku on erityisen menestynyt sosiaalisen median sovelluksissa joissa tavallinen avainsanahaku on hankala suorittaa käyttäjän tarpeita tyydyttävällä tavalla. Esimerkiksi oikean henkilön etsiminen on haastavaa, koska usein parhaiten identifioiva hakusana on henkilön nimi, joka sekin tuottaa monta tulosta. Semanttinen haku huomioi haun kontekstin, minkä ansiosta se tuottaa parempia hakutuloksia kuin pelkkiin avainsanoihin perustuva haku \cite{profium_search}. Konteksti voi olla automaattisesti hankittu tieto hakijan sijainnista ja tieto palvelussa määritetyistä ystävyysuhteista. On todennäköisempää, että henkilö etsii ystävän ystävää kuin satunnaista samanimistä henkilöä toiselta puolelta maapalloa.
+
+Semanttisessa haussa yritetään ymmärtää hakijan haun merkitys, jotta käyttäjälle osataan tarjota osuvia hakutuloksia \cite{profium_search}. Siten käyttäjä ei ole enää yksin vastuussa haun onnistumisesta. Semanttinen haku sallii tavallista laajemmasta tietojoukosta etsimisen, koska haun ei tarvitse rajoittua pelkästään hakusanoilla löydettäviin tuloksiin. Yhdistetyn tiedon ansiosta voidaan näyttää myös vahvoja asiayhteyksiä joita epäillään haun kohteiksi. Google hyödyntää semanttista hakua \cite{knowledge_graph}  \cite{linked_data_finlad}. Esimerkiksi haku hakusanalla "Leonardo da Vinci" tuottaa hakutulosten lisäksi tietoikkunan, jossa esitetään tietoa Leonardo da Vincista. Google arvaa haun tarkoituksen olleen ehkä löytää perustietoa kyseisestä henkilöstä.
+
+Haku voi tapahtua myös puhumalla. Puheentunnistuksen ansiosta laite pystyy poimimaan ihmisen esittämät hakusanat ja tekemään haun niiden avulla. Haun ei tarvitse koostua yksittäisistä sanoista, vaan se voidaan suorittaa luonnollisen lauseen tai kysymyksen pohjalta. Kun sovellus ymmärtää kysymyksen tarkoituksen ja sillä on riittävän hyvä tietoverkko käytettävissä, niin se pystyy tarjoamaan käyttäjän kysymykseen oikean vastauksen. Tietoverkko koostuu yhdistetystä tiedosta. Edellistä tekniikkaa hyödynnetään muun muassa Applen Sirissä, Googlen Assistantissa ja Microsoftin Cortanassa \cite{siri} \cite{assistant} \cite{cortana}.
+
 \subsection{Finlex}
 
 \clearpage
@@ -750,7 +772,43 @@ Semanttinen työnhaku m
 %% LOD-graafi. Käyttökohteita: Life sciences, Government, Linguistic, Social network, Publications.
 %% https://www.w3.org/2001/sw/sweo/public/UseCases/
 
+%% http://www.terminfo.fi/sisalto/linked-data-finland-50.html % <- Hyödyt. Linked data yleisesti.
+
+\subsubsection{Semanttinen laadukkuus} %%poista/lyhennä? esitä tähdet/asteikko kuvana?
+Semanttisen tiedon määrittäminen vaatii aihealueen asiantutemusta ja runsaasti kehitystyötä, minkä vuoksi osa jaetusta tiedosta on laadukkaampaa kuin muu. Tästä syystä Tim Berners-Lee on luonut asteikon, jonka avulla tarjolla olevaa linkittynyttä tietoa voidaan luokitella. Berners-Leen esittelemä asteikko arvostelee tietolähteen 1-5 tähdellä riippuen siitä, kuinka tietokoneystävällisessä muodossa tieto esitetään. Tiedon tulee aina täyttää tähtimäärään mukainen ja sitä aiempien vaatimusten edellytykset. Arvosteluasteikkoa on ehdotettu laajennettavaksi välille 1-7 tähteä SeCo:n (Semantic Computing Research Group) toimesta, sillä 1-5 tähden asteikko ei huomioi kaikkia nykypäivän mahdollisuusksia ja vaatimuksia \cite{SeCo_stars}. Laajennettu arvosteluasteikko on esitelty alla.
+
+\begin{tabular}{ll}
+\vspace*{0.2cm}
+$\star$                     & Tieto on vapaassa jaossa internetissä. \\
+\vspace*{0.2cm}
+$\star\star$                & Tieto on tietokoneen luettavissa. \\
+\vspace*{0.2cm}
+$\star\star\star$           & Tarjolla oleva tieto esitetään avoimen standardin mukaisesti. \\
+
+$\star\star\star\star$      & Tiedon esittämiseen käytetään URI:iä, jotta tietoa \\
+\vspace*{0.2cm}             & voidaan linkittää. \\
+$\star\star\star\star\star$ & Esitetty tieto on linkitettynä muuhun tietoon, jolloin tiedon \\        \vspace*{0.5cm}             & konteksti on saatavissa. \\
+$\star\star\star\star\star\star$     & Tietoa kuvaavat sanastot on kuvailtu eksplisiittisesti ja ne on\\   \vspace*{0.2cm}               & mahdollista hankkia tiedon yhteydessä. \\
+$\star\star\star\star\star\star\star$   & Tiedon tulee olla todenmukaista ja sen alkuperän täytyy olla selvillä, \\                & jotta tidon laatuun voidaan luottaa. \\ \vspace*{0.05cm}
+\end{tabular}
+Listan laadintaan on käytetty seuraavia lähteitä: \cite{SeCo_stars} \cite{SeCo_stars2} \cite{Tim-BL}.
+
+Seitsemän tähden tiedolla pyritään takaamaan tiedon laadukkuus ja soveltuuvuus jatkokäyttöä varten. Tällä hetkellä ongelmana on se, että ulkopuolinen taho ei voi tietää nopeasti mikäli tieto on laadukkasta. Lisäksi tiedon ominaisuuksia ei voida tuntea ja tiedon ja sanaston yhteensopivuudesta ei voida varmistua, mikäli sanastoon ei perehdytä erikseen. Laajennetun arvosteluasteikon tarkoituksena on siten helpottaa ja nopeuttaa tiedon uudelleenkäyttöä \cite{SeCo_stars}.
+
+
+\subsection{Haasteet}
+Termien merkitys voi riippua toimialasta, minkä takia termeillä ei ole välttämättä yhtä ainoaa merkitystä. Siksi kaikkea tietoa ei voida linkittää sokkona yhteen, koska tieto voi mennä sekaisin. Semanttinen internet tarjoaa ongelman ratkaisuksi sanastoja ja ontologioita, joiden avulla tiedon monimerkityksisyysongelmasta päästään eroon \cite{linked_data_finlad}. Termit voidaan ilmaista sanastojen avulla alakohtaisesti, jolloin niillä on ainoastaan yksi merkitys. Termien luokittelu oikeisiin sanastoihin on kuitenkin tietokoneelle vaikeaa, koska se ei vielä ymmärrä termien perimmäistä merkitystyä. Siksi ihminen on tärkeässä asemassa ontologioiden luomisessa ja tiedon ensimäärittämisessä.
+
+Semanttisen tiedon luominen vaatii aikaa ja osaamista. Moni kokee internetissä esiintyvän ihmiselle tarkoitetun tekstimäisen muodon riittäväksi, joten semanttista tietoa syntyy vähän. Yhdistetty tieto vaatii hyvin toimiakseen laajat tietoresurssit. Ihmisten tulisi ymmärtää Semanttisen internetin tarjoamat hyödyt, jotta he alkaisivat luomaan enemmän semanttista materiaalia. Tällähetkellä termi ja ala on vähän ymmärretty. Siten alalle ei myöskään kouluttaudu osaavia ihmisiä, jotka PUSKISIVAT kehitystä eteenpäin.
+
+
+
 Semanttinen internet ei tarkoita tekoälyä. Siten ei ole tekoälyä, joka tekee omia päätelmiä dokumenteista, vaan ihmisen tulee itse kirjoittaa semanttisia dokumentteja \cite{Semantic_Web_represent}. Semanttinen tieto näyttää samalta kuin tavallinen teksti, minkä vuoksi moni voi olla haluton käyttämään enempää aikaa semantiikan määrittämiseen.
+
+
+Semanttinen internet pohjautuu ideaan jossa kuka tahansa voi julkaista semanttista tietoa, mikä voidaan linkittää muuhun tietoon. Ongelmaksi kuitenkin nousee tiedon luotettavuus \cite{Semantic_search}.
+
+
 
 \subsection{Semanttisen internetin arkkitehtuuri}
 Tietotekniikan yhteydessä arkkitehtuurilla viitataan ratkaisujen jäsentelyyn eli rakenteeseen. Semanttinen internet koostuu selkeistä komponenteista, joten voidaan puhua, että semanttisella internetillä on oma arkkitehtuurinsa. Tim-Berners lee esitteli vuonna 2000 semanttisen internetin arkkitehtuurin seuraavanlaisena:
@@ -798,30 +856,19 @@ Goel et al. on kerännyt statistiikkaa liittyen semanttiseen merkintään. Stati
 %%==============================================================================
 \thesisappendix
 
-\section{Syntaksi esimerkit\label{LiiteA}}
+\begin{changemargin}{-1.5cm}{-1.5cm}
+\section{Tietokone esimerkki \label{LiiteA}}
 
-Tässä liitteessä on esitelty yhtenäisiä syntaksiesimerkkejä. Tekstin sekaan upotetuista lyhyistä näytteestä voi olla hankalaa hahmottaa kielten syntaksia, joten laajemmat esimerkit ovat tarpeen. Tekstin seassa olevat lyhyet esimerkit ovat kuitenkin myös oleellisia, sillä niiden tarkoitus on toimia apuvälineenä esitetyn asian hahmottamisessa. Seuraavat esimerkit siis laajentavat jo aiemmin esitettyjä esimerkkejä. (TODO: viimeistele esimerkit, validoi ja lisää graafit)
 
-Esimerkiksi pöytätietokoneen rakenne voidaan kuvata seuraavasti XML-merkintäkielen avulla:
-\subsection{XML esimerkki}
-\lstinputlisting[style=codeblock]{files/full_xml.txt}
-\vskip 0.75cm
-
-\subsection{XML/RDF esimerkki}
-\lstinputlisting[style=codeblock]{files/full_rdf.txt}
-
-\begin{figure}[htb]
-\centering
-\includegraphics[width=15cm]{images/xml-rdf-seco.png}
-\caption{Automaattisti generoitu graafi ylläolevasta merkinnästä. Lähde:\cite{SeCo_RDF_validator} \label{images/xml-rdf-seco.png}}
-\end{figure}
-\vskip 0.75cm
+Tässä liitteessä on esitelty yhtenäinen Turtle syntaksilla kirjoitettu semanttisen tiedon esimerkki tietokoneen rakenteesta. Tietokone koostuu komponenttiluokista, joita kuvataan RDF-tietomallin avulla. [Korjaa ja päivitä]
+\lstinputlisting[style=codeblock]{files/FULL_EXAMPLE.owl}
 \clearpage
 
-\subsection{Turtle esimerkki}
-\lstinputlisting[style=codeblock]{files/full_turtle.txt}
-\vskip 0.75cm
+\section{Digitaalikuva\label{LiiteB}}
 
+Digitaalikuvien metatiedon esittämiseen käytetään XMP:tä. XMP pohjautuu RDF-tietomalliin. Alla on esimerkki digitaalivalokuvan metatiedoista esitettyn XMP-metakielellä.
+%\lstinputlisting[style=codeblock]{files/IMG_5104.xmp}
 
-
+\clearpage
+\end{changemargin}
 \end{document}
