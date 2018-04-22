@@ -427,7 +427,7 @@ Semanttisen internetin toiminnan kannalta on tärkeää, että standardimuodossa
 \clearpage
 %%===============================================================================
 \section{Semanttisen internetin peruskomponentit}
-Semanttisen internetin kehitykseen liittyy monenlaisia haasteita useista eri osa-alueista. Haasteisiin on pyritty vastaamaan kehittämällä niihin ratkaisuja osa-aluettain. Tämän seurauksena on syntynyt useita eri tekniikoita, joilla pyritään ratkaisemaan tietyntyyppisiä ongelmia. Esimerkiksi RDF on kehitetty ratkaisemaan tiedon esitysmuotoon liittyviä ongelmia \cite{RDF_specification}. Semanttinen internet koostuu siis useista peruskomponenteista. Jaotteluun perustuva malli on tehokas ja sitä hyödynnetään myös internetin kehityksessä (HTML, CSS ja JavaScript). Kehittäjän ei välttämättä tarvitse hallita kaikkia mahdollisia tekniikoita, vaan riittää, että osaa hyödyntää yksittäisiä tekniikoita hyvin. Modulaarinen rakenne suosii myös yksilöllisten sovellusten kehitystä, koska sovelluset voivat käyttää ainoastaan tarpeellisia komponentteja kaikkien komponenttien sijaan. Seuraavat alaluvut käsittelevät keskeisiä Semanttisen internetin tekniikoita.
+Semanttisen internetin kehitykseen liittyy monenlaisia haasteita useista eri osa-alueista. Haasteisiin on pyritty vastaamaan kehittämällä niihin ratkaisuja osa-aluettain. Tämän seurauksena on syntynyt useita eri tekniikoita, joilla pyritään ratkaisemaan tietyntyyppisiä ongelmia. Esimerkiksi RDF on kehitetty ratkaisemaan tiedon esitysmuotoon liittyviä ongelmia \cite{RDF_specification}. Semanttinen internet koostuu siis useista peruskomponenteista. Jaotteluun perustuva malli on tehokas ja sitä hyödynnetään myös internetin kehityksessä (HTML, CSS ja JavaScript). Kehittäjän ei välttämättä tarvitse hallita kaikkia mahdollisia tekniikoita, vaan riittää, että osaa hyödyntää yksittäisiä tekniikoita hyvin. Modulaarinen rakenne suosii myös yksilöllisten sovellusten kehitystä, koska sovelluksien tarvitsee käyttää ainoastaan tarpeellisia komponentteja kaikkien komponenttien sijaan. Seuraavat alaluvut käsittelevät keskeisiä Semanttisen internetin tekniikoita.
 
 
 \subsection{XML}
@@ -534,33 +534,33 @@ Etuliitteet määritellään yleensä dokumenttien alussa. Esimerkiksi edellisis
 
 \subsection{Semanttinen tieto}
 
-Filosofia määrittelee termin {\textit{semantiikka} yleiseksi teoriaksi sanojen, ilmaisujen ja lauseiden merkityksestä \cite{semantics_phi}. Tietotekniikan tutkimusala on omaksunut termin käyttöönsä. Semantiikka ei määrittele tiedon esitysmuotoa, joten suomenkielisten lauseiden sijaan voidaan myös tutkia RDF-tietomallin mukaisia toteamuksia. Semantiikan näkökulmasta on mielenkiintoista, kuinka tieto voidaan esittää niin, että tiedon merkitys ymmärretään yksiselitteisesti. Semanttinen internet pyrkii erityisesti esittämään ihmiseltä peräisin olevaa tietoa niin, että tietokone ymmärtää tiedon samalla tavalla kuin ihminen \cite{Berners_visio}.
+Filosofia määrittelee termin {\textit{semantiikka} yleiseksi teoriaksi sanojen, ilmaisujen ja lauseiden merkityksestä \cite{semantics_phi}. Tietotekniikan tutkimusala on omaksunut termin käyttöönsä. Semantiikka ei määrittele tiedon esitysmuotoa, joten suomenkielisten lauseiden sijaan voidaan myös tutkia RDF-tietomallin mukaisia toteamuksia. Semantiikan näkökulmasta on mielenkiintoista, kuinka tietoa voidaan esittää niin, että tiedon merkitys ymmärretään yksiselitteisesti. Semanttinen internet pyrkii erityisesti esittämään ihmiseltä peräisin olevaa tietoa niin, että tietokone ymmärtää tiedon samalla tavalla kuin ihminen \cite{Berners_visio}.
 
-Luonnollisen kielen yhtenäiset lauseet sisältävät enemmän tietoa kuin lauseenjäsenet erikseen summattuna. Esimerkiksi lauseesta ``En voi ajaa tuota autoa yhdellä jalalla'' ihminen voi tehdä useita päätelmiä mitä hän ei todennäköisesti tekisi yksittäisistä sanoista. Lauseesta voidaan esimerkiksi päätellä:
+Luonnollinen kieli (ihmiskieli) sisältää paljon tietoa, jota on vaikea esittää tietokoneelle \cite{semantics}. Esimerkiksi lauseesta ``\textit{En voi ajaa tuota autoa yhdellä jalalla}'' ihminen voi tehdä useita päätelmiä. Kokonaisesta lauseesta voidaan esimerkiksi päätellä:
 \begin{itemize}
   \item  Lause kertoo jostain tietystä autosta, joten ehkä lauseenkertoja osoittaa autoa.
   \item  Lauseesta käy ilmi puhujan kyvyttömyys tietyn auton ajamiseen. Ehkä auto on vääränmallinen (esim. auto on manuaalivaihteinen automaatin sijaan).
   \item  Lauseessa esiintyvä jalka on mitä luultavimmin puhujan.
-  \item  Lauseessa puhutaan yhdestä jalasta, joten ehkä puhujan jalka on hyvin kipeä tai mahdollisesti amputoitu.
+  \item  Lauseessa puhutaan yhdestä jalasta, joten ehkä puhujan toinen jalka on hyvin kipeä tai mahdollisesti amputoitu.
 \end{itemize}
-Lauseiden sanajärjestyksellä on myös oma merkityksensä. Esimerkiksi lauseet ``lapset söivät keksit'' ja ``keksit söivät lapset'' eivät tarkoita samaa, vaikka ne koostuvatkin täysin samoista sanoista. Ihmiskieli siis sisältää paljon tietoa, jota on vaikea tuoda ilmi tietokoneelle \cite{semantics}. Lauseet ovat erittäin informatiivisia, joten ehkä RDF-tietomuodossa ollaan siksi päädytty lauseita muistuttavaa rakenteeseen.
+Lauseiden sanajärjestyksellä on myös oma merkityksensä. Esimerkiksi lauseet \textit{lapset söivät keksit} ja \textit{keksit söivät lapset} eivät tarkoita samaa, vaikka ne koostuvatkin täysin samoista sanoista \cite{semantics}. Kokonaiset lauseet ovat siten infomatiivisempia kuin niiden sanojen informaatio erikseen tarkasteltuna. Tästä syystä RDF-tietomuodon lauserakenne on tehokas kuvaamaan tietoa. Käytännössä tietokoneelle esitetyt toteamukset eivät voi kuitenkaan olla yhtä tietorikkaita kuin edellinen esimerkkilause, koska tietoa täytyy pystyä käsittelemään logiikan avulla ja RDF-toteamukset koostuvat ainoastaan subjektista, predikaatista ja objektista.
 
-Semanttisella tiedolla viitataan tietoon josta selviää tiedon lisäksi sen merkitys. Jotta voi ymmärtää merkityksiä, niin täytyy kyetä tunnistamaan tiedon suhteisuutta. Semanttisen internetin yhteydessä semanttisella tiedolla tarkoitetaan tietoa, jonka esittämiseen hyödynnetään semanttisen internetin tekniikoita. Semanttisen internetin tekniikat mahdollistavat tietokoneiden ymmärtää tiedon sisältämiä merkityksiä. +++  Semantiikkaa esitetään alaluokkien, luokkahierarkian
-%% RDF statement -> koska lauseet sisältävät paljon tietoa!
+Semanttisella tiedolla viitataan tietoon josta selviää itse tiedon lisäksi myös sen merkitys. Jotta voi ymmärtää merkityksiä, täytyy kyetä tunnistamaan tiedon välisiä suhteita. Semanttisen internetin yhteydessä semanttisella tiedolla tarkoitetaan tietoa, jonka esittämiseen hyödynnetään Semanttisen internetin tekniikoita. Tekniikat mahdollistavat tiedon suhteiden ja siten merkityksien kuvaamisen tietokoneelle. Tiedon suhteita voidaan esittää esimerkiksi luokkamäärittelyjen ja luokkahierarkioiden avulla. Semanttisen internetin tekniikoilla esitetty tieto on myös formaalia, koska tietokone kykenee lukemaan ja prosessoimaan tietoa loogisten kuvausten ansiosta. Semantikan esittäminen siis mahdollistaa päättelyn tietokoneelle.
 
 
 \subsection{RDF Schema}
 %%Usein tietoa halutaan kuvata tarkasti, jolloin RDF:n tukena tulee käyttää RDF Schemaa.
-RDF Schema (Resource Description Framework Schema) mahdollistaa tietojoukkojen ja toisiinsa liittyvien resurssien kuvailun. RDFS tarjoaa RDF:n jatkeena lisämahdollisuuksia tiedon kuvailuun. Esimerkiksi luokkamäärittelyt ovat yksi erittäin tärkeä RDFS:n työkalu, joka mahdollistaa tiedon kuvailun yleisellä tasolla \cite{W3C_RDFS2}. RDFS:n avulla voidaan esimerkiksi kuvata talon yleisiä ominaisuuksia, kun RDF:llä pystytään kuvaamaan ainoastaan yksittäisen tunnetun talon ominaisuuksia \cite{Antoniou}. RDF Schema on kirjoitettu RDF:n avulla, joten RDFS:ää hyödyntävät tiedostot ovat myös valideja RDF-graafeja. \cite{RDF_specification_old}
+RDF Schema (Resource Description Framework Schema) mahdollistaa tietojoukkojen ja toisiinsa liittyvien resurssien kuvailun. RDFS tarjoaa RDF:n jatkeena lisämahdollisuuksia tiedon kuvailuun. Esimerkiksi luokkamäärittelyt ovat yksi erittäin tärkeä RDFS:n työkalu, joka mahdollistaa tiedon kuvailun yleisellä tasolla \cite{W3C_RDFS2}. RDF Scheman avulla voidaan kuvata esimerkiksi talojen yleisiä ominaisuuksia määrittelemällä \textit{talo}-luokan, kun taas RDF:llä pystytään kuvaamaan ainoastaan yksittäisten tunnetujen talojen ominaisuuksia \cite{Antoniou}. RDF Schema on kirjoitettu RDF-tietomallin avulla, minkä vuoksi RDFS:ää hyödyntävät sovellukset ovat myös valideja RDF-sovelluksia \cite{RDF_specification_old}.
 
-Luokkien määrittäminen auttaa järjellisen tiedon esittämisessä. Luokkien avulla voidaan luoda rajoitteita liittyen RDF-väitteisiin, mikä estää mielettömien väitteiden esittämisen. Voimme esimerkiksi määritellä kirjoittaja ominaisuuden, joka kuuluu ainoastaan kirjaluokalle. Tämän jälkeen voidaan järjellisesti todeta, että kirjan Viilipytty kirjoittaja on Matti. Määrittely kuitenkin estää esittämästä seuraavan järjettömän toteamuksen: Helsingin kirjoittaja on Matti. Helsinki on kaupunki ja kaupungilla ei ole kirjoittajaa, joten sen kirjoittaja ei voi olla Matti \cite{Antoniou}.
+Luokkien määrittäminen auttaa järjellisen tiedon esittämisessä. Luokkien avulla voidaan luoda rajoitteita liittyen RDF-väitteisiin, mikä estää mielettömien väitteiden esittämisen. Voimme esimerkiksi määritellä \textit{kirjoittaja}-ominaisuuden, joka kuuluu ainoastaan \textit{kirja}-luokalle. Tämän jälkeen voidaan todeta, että kirjan \textit{Sinuhe} kirjoittaja on henkilöluokkaan kuuluva \textit{Mika Waltarin}. Määrittely kuitenkin estää esittämästä järjettömiä toteamuksia: \textit{Helsingin kirjoittaja on Matti}. \textit{Helsinki} on kaupunki ja kaupungilla ei ole kirjoittajaa, joten sen kirjoittaja ei voi olla \textit{Mika Waltarin}. Semanttinen tieto siis mahdollistaa päättelyiden tekemisen ja ristiriitaisuuksien havaitsemisen \cite{Antoniou}.
 
 %% \textcolor{red} {RDF Schemassa luokan ominaisuudet kuvataan resurssikohtaisesti}
-RDFS:n luokat muistuttavat luokkapainotteisten ohjelmointielten luokkia. Selvänä erona on kuitenkin tapa jolla luokan ominaisuudet määritetään. Tavallinen ohjelmointikieli voi määrittää esimerkiksi luokan \textit{auto} koostuvan renkaista, ovista ja moottorista. Kun luokasta luodaan autoinstanssi, niin sillä on aina edelliset ominaisuudet. RDF Schemassa luokan ominaisuudet kuvataan resurssikohtaisesti \cite{W3C_RDFS2}. Tämän vuoksi kaikki luokan instanssit eivät välttämättä omaa täysin samoja ominaisuuksia. RDFS:n tapa sallii luokkamääritelmien tarkentamisen ja jatkamisen ilman mahdollisuutta muokata alkuperäistä kuvausta. Tämä sallii käyttäjien jatkaa toisten tekemiä määritelmiä.
+RDFS:n luokat muistuttavat luokkapainotteisten olio-ohjelmointikielten luokkia. Selvänä erona on kuitenkin tapa jolla luokan ominaisuudet määritetään. Tavallinen ohjelmointikieli voi määrittää esimerkiksi luokan \textit{auto} koostuvan \textit{renkaista}, \textit{ovista} ja \textit{moottorista}. Kun luokasta luodaan autoinstanssi, niin sillä ilmenee aina edelliset ominaisuudet. RDF Schemassa luokkien ominaisuudet kuvataan globaalissa nimiavaruudessa ja ominaisuudet sidotaan sopiviin resursseihin \textit{domain} ja \textit{range} mekanismien avulla. Siten käyttäjät voivat jatkaa toistensa tekemiä luokkia, vaikka heillä ei olisi mahdollisuutta muokata alkuperäistä luokkamääritelmää \cite{Antoniou} \cite{W3C_RDFS2}.
 
-Tärkeitä RDFS:n ominaisuuksia ovat muun muassa \textit{domain}, \textit{range} ja \textit{subClassOf}, jotka liittyvät vahavasti luokkiin. Domainin avulla voidaan määrittää tietyn ominaisuuden kuuluvan tietylle luokalle. Voidaan esimerkiksi määrittää autoluokka ja predikatti ``hasMotor''. Domainin avulla voimme kertoa, että hasMotor-predikaatti kuuluu autoluokalle, joten predikaattia on mieletöntä käyttää kuvailemaan esimerkiksi auton rengasta. Rangen avulla määritetään mihin predikaatilla voidaan viitata. Edellisen esimerkin tapauksessa olisi järkevää määrittää ``hasMotor'' predikaatin rangeksi moottoriluokka. Siten auton moottori voi olla ainoastaan moottoriluokan ilmentymä eikä esimerkiksi ``korkea''. RDFS:n ``subClassOf'' ominaisuuden avulla voidaan esitellä alaluokkia, mikä mahdollistaa luokkahierarkioiden kuvaamisen. Autoluokan alaluokka voisi olla esimerkiksi sedan \cite{W3C_RDFS2}.
+Tärkeitä RDFS:n ominaisuuksia ovat muun muassa \textit{domain}, \textit{range} ja \textit{subClassOf}, joilla on vahva yhteys luokkiin. \textit{Domainin} avulla voidaan määrittää tietyn ominaisuuden kuuluvan tietylle luokalle. Voidaan esimerkiksi määrittää \textit{auto}-luokka ja predikatti \textit{hasMotor}. \textit{Domainin} avulla voidaan kertoa, että \textit{hasMotor}-predikaatti kuuluu \textit{auto}-luokalle, joten predikaattia on mieletöntä käyttää kuvailemaan esimerkiksi auton \textit{rengasta}. \textit{Rangen} avulla määritetään mihin predikaatilla voidaan viitata. Edellisen esimerkin tapauksessa olisi järkevää määrittää \textit{hasMotor}-predikaatin \textit{rangeksi} \textit{moottori}-luokka. Siten auton \textit{moottori} voi olla ainoastaan \textit{moottori}-luokan ilmentymä (engl. instance). RDFS:n \textit{subClassOf} ominaisuuden avulla voidaan esitellä alaluokkia, mikä mahdollistaa luokkahierarkioiden kuvaamisen. \textit{Auto}-luokan alaluokka voisi olla esimerkiksi \textit{sedan}
+\cite{W3C_RDFS2}.
 
-Alla on Turtle-syntaksilla kirjoitettu esimerkki edellä esitetyistä RDF Scheman ominaisuuksista. Esimerkissä määritetään aluksi akku, tietokone ja kannettava tietokone luokat. Kannettava tietokone on tietokoneen alaluokka. Seuraavaksi määritellään ``hasBattery'' ominaisuus, minkä avulla voidaan kuvata, että kannettava tietokone sisältää akun. Lopuksi akusta ja kannettavasta tietokoneesta luodaan ilmentymät. Kannettava tietokone sisältää edellä määritetyn akun. Esimerkissä hyödynnetään Turtlen ominaisuutta lyhentää toteamuksia määrittelemällä niiden subjekti ainoastaan kerran. Puolipisteen jälkeiset toteamukset viittaavat edelleen samaan subjektiin, kun taas pisteen jälkeen määritetään aina uusi subjekti.
+Seuraavassa esimerkissä (koodikatkelma \ref{rdfs_esim}) on Turtle-syntaksilla kirjoitettu esimerkki edellisessä kappaleessa esitetyistä RDF Scheman ominaisuuksista. Esimerkissä määritetään aluksi \textit{akku}, \textit{tietokone} ja \textit{kannettava tietokone} -luokat. \textit{Kannettava tietokone} on \textit{tietokoneen} alaluokka. Seuraavaksi määritellään \textit{hasBattery} ominaisuus, minkä avulla voidaan kuvata, että \textit{kannettava tietokone} sisältää \textit{akun}. Lopuksi \textit{akusta} ja \textit{kannettavasta tietokoneesta} luodaan ilmentymät. \textit{Kannettava tietokone} sisältää edellä määritetyn \textit{akun}. Esimerkissä hyödynnetään Turtlen ominaisuutta lyhentää toteamuksia määrittelemällä niiden subjekti ainoastaan kerran. Puolipisteen jälkeiset toteamukset viittaavat edelleen samaan subjektiin, kun taas pisteen jälkeen täytyy määritellä aina uusi subjekti.
 
 %% RDFS
 \vskip 0.75cm
@@ -582,11 +582,11 @@ ex:hasBattery a rdf:Property ;
     rdfs:range  ex:Battery .
 
 # Instances
-ex:4X50M33573 a ex:Battery ;
+ex:0c52863 a ex:Battery ;
     ex:hasPower "32"^^xsd:integer ;
     ex:hasVoltage "15.4"^^xsd:float .
 
-ex:ThinkPad_L540 a ex:Laptop ;
+ex:thinkpad-l540 a ex:Laptop ;
     ex:hasBattery ex:0C52863 .
 
 
@@ -603,19 +603,6 @@ ex:ThinkPad_L540 a ex:Laptop ;
 %\caption{Turtle syntaksista automaattisesti generoitu graafi. Lähde: \cite{SeCo_RDF_validator} \label{images/RDF-triplet2}}
 \end{figure}
 %% Lisää viittaus??: https://www.youtube.com/playlist?list=PLea0WJq13cnDDe8V7eVLReIaOnFztOEAq
-\subsection{Ontologiat ja sanastot}
-%% Littyy rdfs
-Sanastolla (engl. vocabulary) tarkoitetaan määritelmiä, joiden avulla tietoa voidaan kuvata sovellustarkoitukseen sopivassa muodossa \cite{RDF_specification}. Sanastoja hyödynnetään tiedon integroinnissa ja organisoinnissa \cite{vocabulary}. Esimerkiksi tuotteen maahantuojan tuotetietojen ja kauppiaan myyntitetojen yhdistäminen voi olla hyödyllistä. Kauppiaan ei tarvitse kuvailla myymien tuotteidensa ominaisuuksia, koska hän voi hyödyntää maahantuojan valmiita kuvauksia. Kauppias ja myyjä eivät kuitenkaan todennäköisesti kuvaile tuotetteita täysin samalla RDF-termistöllä. Siksi tarvitaan sanasto, jonka avulla voidaan esittää tarpeellinen lisätieto tietokoneelle. Ilman sanastoa tietokone ei kykene yhdistämään maahantuojan tuotekuvausta ja myyjän vastaavaa tuottetta toisiinsa.
-
-Sanastoja kirjoitetaan RDF Scheman avulla. Sanastoilla voidaan määrittellä sovellukselle ominaisia tiedon rakenteita ja rajoitteita. \cite{vocabulary}. Esimerkiksi rakennussovellusta varten voitaisiin määrittellä \textit{yhteensopiva}-predikaatti, sekä erilaisia mutteri ja pultti resursseja. Tämän jälkeen voitaisiin määritellä, että saman kierteen omaavat pultit ja mutterit ovat yhteensopivia, minkä seurauksena sovelluksen käyttöliittymä voisi tarjota käyttäjälle ainoastaan yhteensopivia rakennustarvikevaihtoehtoja. Sanastoja on paljon erilaisia ja niitä voi tarvittaessa luoda lisää \cite{RDF_specification}. Hyvin määriteltyjä sanastoja voidaan uudelleenkäyttää ja jakaa muiden kesken. Esimerkiksi Dublin Core ja Friend of a Friend (FOAF) ovat hyvin tunnettuja ja maailmanlaajuisesti RDF:n yhteydessä käytettyjä sanastoja \cite{data_namespace}.
-
-Ontologiat ovat kokoelmia toteamuksista, jotka määräävät konseptien välisiä suhteita ja määrittelevät loogisia sääntöjä, joiden avulla tietoa voidaan järkeillä \cite{Berners_visio}.
-Siten ontologiat ovat kuin metadataskeemoja, jotka määrittelevät konseptien esittämiseen käytettävän sanaston. Kun konseptit määritellään eksplisiittisesti ja niiden semantiikka ilmaistaan koneluettavassa muodossa, niin ontologiat tehostavat ihmisen ja tietokoneen välistä kommunikointia \cite{ontology_learning}. Ontologioiden ero sanastoihin on niiden monimutkaisempi ja formaalimpi rakenne. Toisinaan ontologioita ja sanastoja voi olla vaikea erottaa toisistaan, joten termejä voidaan käyttää myös toistensa synonyymeinä \cite{vocabulary}.
-
-Ontologioiden luominen vaatii sovelluskohteen asiantuntemusta ja kehitystyötä.
-Kehitykseen kuluvaa aikaa voidaan vähentää hyödyntämällä erilaisia ohjelmistoja, jotka ovat erikoistuneet ontologioiden luomiseen. Ohjelmistoilla ei voida kuitenkaan korvata asiantutemusta, sillä kehittäjän täytyy tuntea kuvailtava tieto, jotta hän voi luoda siihen liittyviä sääntöjä. Esimerkiksi onnistuneen luokkajaottelun tekeminen on hyvin vaikeaa, mikäli kehittäjä ei hahmota kuvailtavan tiedon suhteisuutta. Lisäksi kehittällä tulee olla tietämystä Semanttisen internetin tekniikoista, jotta hän osaa käyttää niitä. Ontologioiden luomiseen käytetään RDF Schemaa ja OWL-tietämyksenesttämiskieltä \cite{OWL_specification}.
-
-
 
 \subsection{OWL}
 % KIRJOITA: OWL on logiikkapohjainen kieli, mikä sallii tietokoneiden käsitellä ilmaisuja.
@@ -630,7 +617,7 @@ Owl määrittelee muun muassa funktionaalisen, transitiivisen ja symmetrisen luo
 
 %OWL-tietämyksenesttämiskielestä on kolme erilaista versiota: OWL Full, OWL DL ja OWL Lite. Kielien ero on niiden laajuudessa ja kyvyssä kuvata tietoa. OWL Full on kaikista laajin ja se on RDFS yhteensopiva \cite{OWL_specification}.
 
-Seuraavassa esimerkissä (Koodikatkelma \ref{owl_esim}) on esitetty RDF Schema osion kannettava tietokone -esimerkki täydennettynä OWL:lla. Esimerkistä voidaan huomata, että se näyttää edelleen hyvin samalta kuin aiemmin. OWL-määritelmät ovat lisätietoa. Esimerkin Turtle-merkintä on generoitu Protégé-nimisellä ohjelmistolla, jonka avulla voidaan tuottaa ontologioita tehokkaasti \cite{Protege}.
+Seuraavassa esimerkissä (koodikatkelma \ref{owl_esim}) on esitetty RDF Schema osion kannettava tietokone -esimerkki täydennettynä OWL:lla. Esimerkistä voidaan huomata, että se näyttää edelleen hyvin samalta kuin aiemmin. OWL-määritelmät ovat lisätietoa. Esimerkin Turtle-merkintä on generoitu Protégé-nimisellä ohjelmistolla, jonka avulla voidaan tuottaa ontologioita tehokkaasti \cite{Protege}.
 
 %%
 \vskip 0.75cm
@@ -669,19 +656,40 @@ Seuraavassa esimerkissä (Koodikatkelma \ref{owl_esim}) on esitetty RDF Schema o
         :hasPower "57"^^xsd:int ;
         :hasVoltage "10.8"^^xsd:float .
 
-:ThinkPad_L540 rdf:type owl:NamedIndividual ,
+:thinkpad-l540 rdf:type owl:NamedIndividual ,
                            :Laptop ;
                :hasBattery :0C52863 .
 
 \end{lstlisting}
 \vskip 0.75cm
 
+\subsection{Ontologiat ja sanastot}
+%% Littyy rdfs
+
+
+An ontology is a formal, explicit specification of a shared conceptualisation \cite{ontology_def}.
+Vuonna 1998 Studer et al. määritteli ontologian seuraavasti: "Ontologia on formaali, eksplisiittinen määritelmä yhteisestä käsitteellistämisestä." \cite{ontology_def}. Käsitteellistämisellä viitataan abstraktiin malliin jostakin maailman ilmiöstä tunnistamalla merkitykselliset konseptit kyseisestä ilmiöstä \cite{ontology_def}.
+
+
+Sanastolla (engl. vocabulary) tarkoitetaan määritelmiä, joiden avulla tietoa voidaan kuvata sovellustarkoitukseen sopivassa muodossa \cite{RDF_specification}. Sanastoja hyödynnetään tiedon integroinnissa ja organisoinnissa \cite{vocabulary}. Esimerkiksi tuotteen maahantuojan tuotetietojen ja kauppiaan myyntitetojen yhdistäminen voi olla hyödyllistä. Kauppiaan ei tarvitse kuvailla myymien tuotteidensa ominaisuuksia, koska hän voi hyödyntää maahantuojan valmiita kuvauksia. Kauppias ja myyjä eivät kuitenkaan todennäköisesti kuvaile tuotetteita täysin samalla RDF-termistöllä. Siksi tarvitaan sanasto, jonka avulla voidaan esittää tarpeellinen lisätieto tietokoneelle. Ilman sanastoa tietokone ei kykene yhdistämään maahantuojan tuotekuvausta ja myyjän vastaavaa tuottetta toisiinsa.
+
+Sanastoja kirjoitetaan RDF Scheman avulla. Sanastoilla voidaan määrittellä sovellukselle ominaisia tiedon rakenteita ja rajoitteita. \cite{vocabulary}. Esimerkiksi rakennussovellusta varten voitaisiin määrittellä \textit{yhteensopiva}-predikaatti, sekä erilaisia \textit{mutteri} ja \textit{pultti} resursseja. Tämän jälkeen voitaisiin määritellä, että saman kierteen omaavat \textit{pultit} ja \textit{mutterit} ovat yhteensopivia, minkä seurauksena sovelluksen käyttöliittymä voisi tarjota käyttäjälle ainoastaan yhteensopivia rakennustarvikevaihtoehtoja. Sanastoja on paljon erilaisia ja niitä voi tarvittaessa luoda lisää \cite{RDF_specification}. Hyvin määriteltyjä sanastoja voidaan uudelleenkäyttää ja jakaa muiden kesken. Esimerkiksi Dublin Core ja Friend of a Friend (FOAF) ovat todella tunnettuja ja maailmanlaajuisesti RDF:n yhteydessä käytettyjä sanastoja \cite{data_namespace}.
+
+Ontologiat ovat kokoelmia toteamuksista, jotka määräävät konseptien välisiä suhteita ja määrittelevät loogisia sääntöjä, joiden avulla tiedosta voidaan tehdä päätelmiä \cite{Berners_visio}.
+Siten ontologiat ovat kuin metadataskeemoja, jotka määrittelevät konseptien esittämiseen käytettävän sanaston. Kun konseptit määritellään eksplisiittisesti ja niiden semantiikka ilmaistaan koneluettavassa muodossa, niin ontologiat tehostavat ihmisen ja tietokoneen välistä kommunikointia \cite{ontology_learning}. Ontologioiden ero sanastoihin on niiden monimutkaisempi ja formaalimpi rakenne. Toisinaan ontologioita ja sanastoja voi olla vaikea erottaa toisistaan, joten termejä voidaan käyttää myös toistensa synonyymeinä \cite{vocabulary}.
+
+Hyvien ontologioiden luominen vaatii sovelluskohteen asiantuntemusta ja kehitystyötä.
+Kehitykseen kuluvaa aikaa voidaan vähentää hyödyntämällä erilaisia ohjelmistoja, jotka ovat erikoistuneet ontologioiden luomiseen. Ohjelmistoilla ei voida kuitenkaan korvata asiantuntemusta, sillä kehittäjän täytyy tuntea kuvailtava tieto, jotta hän voi luoda siihen liittyviä semanttisia määrittelyjä ja sääntöjä. Esimerkiksi onnistuneen luokkajaottelun tekeminen on hyvin vaikeaa, mikäli kehittäjä ei hahmota kuvailtavan tiedon suhteisuutta. Lisäksi kehittäjällä tulee olla tietämystä Semanttisen internetin tekniikoista, jotta hän osaa käyttää niitä oikein. Ontologioiden luomiseen käytetään RDF Schemaa ja OWL-tietämyksenesittämiskieltä \cite{OWL_specification}.
+
+
+
 
 \subsection{RDF tiedon säilöminen}
 
 
 \subsubsection{Triple store}
-RDF-tietomuodossa olevaa tietoa voidaan tallentaa muistiin. Yksinkertaisimillaan voidaan tallentaa suoraan RDF/XML-, Turtle- tai vastaavia tiedostoja, mutta tämä ei ole kovin tehokasta. Yksittäisen tarpeellisen asian etsiminen on hidasta, kun tiedostokoot ovat suuria. Tästä syystä on kehitetty tehokkaampiakin tallennustapoja, jotka hyödyntävät tietokantoja. Triple store on tietokantatyyppi, joka on suunniteltu erityisesti RDF-graafien tallentamiseen. RDF-tieto on todella linkittynyttä, minkä vuoksi graafi-tietokannat soveltuvan sen tallentamiseen paremmin kuin perinteiset relaatiotietokannat. Relaatiotietokannoissa useiden linkittyneiden alkioiden välille on huomattavasti vaikeampaa luoda suhderakenteita ja kyselyiden tekeminen on myös haastavaa. Triple store -tietokanta tallentaa RDF-lauseet suoraan kolmikkoina, joten sovelluskohtaisia relaatiotauluja ei tarvitse luoda \cite{triplestore}. Tarkka standardointi sallii tiedon hakemisen myös ulkopuolisista avoimista tietokannoista. Tämän ansiosta tietokantoja voidaan linkittää, mikä mahdollistaa tavallista laajemman tiedonhaun.
+RDF-tietomuodossa olevaa tietoa voidaan tallentaa muistiin. Yksinkertaisimillaan voidaan tallentaa suoraan RDF/XML-, Turtle- tai vastaavia tiedostoja, mutta tämä ei ole kovin tehokasta. Yksittäisen tarpeellisen asian etsiminen on hidasta, kun tiedostokoot ovat suuria. Tästä syystä on kehitetty tehokkaampiakin tallennustapoja, jotka hyödyntävät tietokantoja. Triple store on tietokantatyyppi, joka on suunniteltu erityisesti RDF-graafien tallentamiseen. RDF-tieto on todella linkittynyttä, minkä vuoksi graafi-tietokannat soveltuvan sen tallentamiseen paremmin kuin perinteiset relaatiotietokannat. Relaatiotietokannoissa useiden linkittyneiden alkioiden välille on huomattavasti vaikeampaa luoda suhderakenteita ja kyselyiden tekeminen on myös haastavaa \cite{triplestore2}. Triple store -tietokanta tallentaa RDF-lauseet suoraan kolmikkoina, joten sovelluskohtaisia relaatiotauluja ei tarvitse luoda \cite{triplestore}. Triple storen yksinkertainen rakenne ja tarkka standardointi sallivat tietokantojen liittämisen toisiinsa vaivattomasti. Tämän ansiosta tietokantoja linkittämällä voidaan luoda suuria tietoverkkoja.
+
 
 \begin{figure}[htb]
 \centering
@@ -690,28 +698,25 @@ RDF-tietomuodossa olevaa tietoa voidaan tallentaa muistiin. Yksinkertaisimillaan
 \end{figure}
 \clearpage
 
-\subsubsection{SPARQL}
-
-SPARQL on spesifikaatiokokonaisuus, joka tarjoaa kieliä ja protokollia RDF-graafien muokkaamiseen ja kyselyiden tekemiseen \cite{sparql}. SPARQL ei ole yksittäinen kieli, vaan se koostuu useita hyödyllisistä ja tarpeellisista osista. Tässä alaluvussa keskitytään ainoastaan SPARQL Query Languagen perusteisiin.
-
+\subsubsection{SPARQL Quarey Language}
 %% päätepiste???
-SPARQL Query Languagen avulla voidaan hakea RDF-muotoista tietoa triple store -tietokannoista. Jokaisella triple storella on päätepiste (engl. endpoint), johon SPARQL-kyselyt voidaan lähettää HTTP (Hypertext Transfer Protocol) protokollan avulla. Päätepisteen luominen internettiin on helppoa, joten avoimia päätepisteitä on paljon tarjolla. Esimerkiksi DBpedia tarjoaa avoimen päätepisteen (http://dbpedia.org/sparql), josta voi hakea tietoa RDF-tietomuotoisesta Wikipediasta \cite{Antoniou}.
+SPARQL-kyselykielen (SPARQL Query Language) avulla voidaan hakea RDF-muotoista tietoa triple store -tietokannoista. Kyselykieli vastaa relaatiotietokantojen SQL-kyselykieltä. Jokaisella triple storella on SPARQL-päätepiste (engl. endpoint), johon SPARQL-kyselyt voidaan lähettää HTTP (Hypertext Transfer Protocol) protokollan avulla. Päätepisteen luominen internettiin on helppoa, joten avoimia päätepisteitä on paljon tarjolla. Esimerkiksi DBpedia tarjoaa avoimen päätepisteen (http://dbpedia.org/sparql), josta voi hakea tietoa RDF-tietomuotoisesta Wikipediasta \cite{Antoniou}.
 
-RDF:ssa toteamukset koostuvat subjektista, predikaatista ja objektista. SPARQL- kyselylauseessa jokin edellisistä RDF-toteamuksen osista voidaan korvata muuttujalla, mitä merkitään kysymysmerkillä \cite{Antoniou}. SPARQL etsii kyselylausetta vastaavat toteamukset ja palauttaa niistä muuttujan paikalle sopivat arvot. Kyselylause voi olla esimerkiksi seuraavanlainen:
+RDF:ssa toteamukset koostuvat subjektista, predikaatista ja objektista. SPARQL-kyselylauseessa, jokin edellisistä RDF-toteamuksen osista voidaan korvata muuttujalla, mitä merkitään kysymysmerkillä muuttujanimen alussa \cite{Antoniou}. SPARQL etsii kyselylausetta vastaavat toteamukset ja palauttaa niistä muuttujan paikalle sopivat arvot. Kyselylause voi olla esimerkiksi seuraavanlainen:
 
 \begin{lstlisting}[style=codeblock]
 PREFIX ex: <http://www.Computer-Specs.com/ontologies/example#> .
 
 SELECT ?battery
 WHERE {
-  ex:ThinkPad_L540 ex:hasBattery ?battery.
+  ex:thinkpad-l540 ex:hasBattery ?battery.
 }
 \end{lstlisting}
 
-Koska ThinkPad\_L540:n akuksi on aiemmissa luvuissa määritelty ``0C52863'', niin SPARQL palauttaa käyttäjälle kyseisen akun. Kyselyn tulos voi koostua myös useammasta kuin yhdestä arvosta, mikäli useampi toteamus toteuttaa kyselyn. Jotta SPARQL tietää mistä se etsii tietoa, täytyy sille kertoa kyselyn nimiavaruudet prefiksien avulla.
+Koska \textit{thinkpad-l540} esimerkin akuksi on aiemmissa luvuissa määritelty \textit{0C52863}, niin SPARQL palauttaa käyttäjälle kyseisen akun tunnisteen. Kyselyn tulos voi koostua myös useammasta kuin yhdestä arvosta, mikäli useampi toteamus toteuttaa kyselyn. Jotta SPARQL tietää mistä se etsii tietoa, täytyy sille kertoa kyselyn nimiavaruudet prefiksien avulla.
 
 SPARQL tarjoaa monia keinoja hakujen tekemiseen. Kyselyssä voi esiintyä useita muuttujia.
-Haut voivat koostua liitoksista (engl. union) ja negaatioista. Lukuarvoista koostuva tulos voidaan summata yhteen sum-funktion avulla. Tulokset voidaan myös järjestellä haluttuun järjestykseen ``ORDER BY'' lauseen avulla. Haku voi myös olla SELECT-kyselyn sijaan ASK-tyyppinen, joka testaa mikäli haulla on olemassaolevia ratkaisuja ja palauttaa tuloksen mukaisen boolean-arvon \cite{sparql_query}. SPARQL tarjoaa useita erilaisia syntakseja kyseltuloksen esittämiseen. Kyselyn tulos voidaan esimerkiksi esittää Turtle- tai RDF/XML- syntaksin mukaisessa muodossa. \cite{W3C_turtle}. Syntaksiltaan SPARQL muistuttaa SQL- kyselykieltä.
+Haut voivat koostua yhdisteestä (engl. union) ja negaatioista. Lukuarvoista koostuva tulos voidaan summata yhteen sum-funktion avulla. Tulokset voidaan myös järjestellä haluttuun järjestykseen ORDER BY- lauseen avulla. Haku voi olla SELECT-kyselyn sijaan myös ASK-tyyppinen, joka testaa mikäli haulla on olemassaolevia ratkaisuja ja palauttaa tuloksen mukaisen boolean-arvon \cite{sparql_query}. Erilaisia mahdollisuuksia kyselylauseiden muodostamiseen on monia. SPARQL tarjoaa useita erilaisia syntakseja kyseltuloksen esittämiseen. Kyselyn tulos voidaan esimerkiksi esittää Turtle- tai RDF/XML- syntaksin mukaisessa muodossa. \cite{W3C_turtle}.
 
 
 \clearpage
