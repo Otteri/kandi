@@ -427,7 +427,7 @@ Semanttisen internetin toiminnan kannalta on tärkeää, että standardimuodossa
 \clearpage
 %%===============================================================================
 \section{Semanttisen internetin peruskomponentit}
-Semanttisen internetin kehitykseen liittyy monenlaisia haasteita useista eri osa-alueista. Haasteisiin on pyritty vastaamaan kehittämällä niihin ratkaisuja osa-aluettain. Tämän seurauksena on syntynyt useita eri tekniikoita, joilla pyritään ratkaisemaan tietyntyyppisiä ongelmia. Esimerkiksi RDF on kehitetty ratkaisemaan tiedon esitysmuotoon liittyviä ongelmia \cite{RDF_specification}. Semanttinen internet koostuu siis useista peruskomponenteista. Jaotteluun perustuva malli on tehokas ja sitä hyödynnetään myös internetin kehityksessä (HTML, CSS ja JavaScript). Kehittäjän ei välttämättä tarvitse hallita kaikkia mahdollisia tekniikoita, vaan riittää, että osaa hyödyntää yksittäisiä tekniikoita hyvin. Modulaarinen rakenne suosii myös yksilöllisten sovellusten kehitystä, koska sovelluksien tarvitsee käyttää ainoastaan tarpeellisia komponentteja kaikkien sijaan. Seuraavat alaluvut käsittelevät keskeisiä Semanttisen internetin tekniikoita.
+Semanttisen internetin kehitykseen liittyy monenlaisia haasteita useista eri osa-alueista. Haasteisiin on pyritty vastaamaan kehittämällä niihin ratkaisuja osa-aluettain. Tämän seurauksena on syntynyt useita eri tekniikoita, joilla pyritään ratkaisemaan tietyntyyppisiä ongelmia. Esimerkiksi RDF on kehitetty ratkaisemaan tiedon esitysmuotoon liittyviä ongelmia \cite{RDF_specification}. Semanttinen internet koostuu siis useista peruskomponenteista. Jaotteluun perustuva malli on tehokas ja sitä hyödynnetään myös internetin kehityksessä (HTML, CSS ja JavaScript). Kehittäjän ei tarvitse hallita kaikkia mahdollisia tekniikoita, vaan riittää, että osaa hyödyntää yksittäisiä tekniikoita hyvin. Modulaarinen rakenne suosii myös yksilöllisten sovellusten kehitystä, koska sovelluksien tarvitsee käyttää ainoastaan tarpeellisia komponentteja kaikkien sijaan. Seuraavat alaluvut käsittelevät keskeisiä Semanttisen internetin tekniikoita.
 
 % asdasdasdasdas
 Tietotekniikan yhteydessä arkkitehtuurilla viitataan ratkaisujen jäsentelyyn eli rakenteeseen. Semanttinen internet koostuu selkeistä komponenteista, joten voidaan puhua, että semanttisella internetillä on oma arkkitehtuurinsa. Tim-Berners lee esitteli vuonna 2000 semanttisen internetin arkkitehtuurin seuraavanlaisena:
@@ -439,7 +439,7 @@ Tietotekniikan yhteydessä arkkitehtuurilla viitataan ratkaisujen jäsentelyyn e
 \end{figure}
 \clearpage %% Force images on same paragraph
 
-Pinomallissa ajatuksena oli jatkaa kehitystä aina edellisen tason päälle, jolloin tekniikohin nähdyt investoinnit säilyisivät semanttisen internetin kehittyessä. Ajatus kuitenkin vaatii sen, että tekniikat olisivat ikuisia ja aina yhteensopivia uusien kanssa, mikä ei ole käytännössä mahdollista \cite{stack}. Tästä syystä vuoden 2000 pinomalli ei voi olla realistinen ja sen tilalle on esitetty muun muassa seuraavaa pinomallia:
+Pinomallissa ajatuksena oli jatkaa kehitystä aina edellisen tason päälle, jolloin tekniikohin nähdyt investoinnit säilyisivät semanttisen internetin kehittyessä. Ajatus kuitenkin vaatii sen, että tekniikat olisivat ikuisia ja aina yhteensopivia uusien kanssa, mikä ei ole käytännössä mahdollista \cite{stack}. Tästä syystä vuoden 2000 pinomalli ei ole realistinen ja sen tilalle on esitetty muun muassa seuraavaa pinomallia:
 
 \begin{figure}[htb]
 \centering
@@ -447,7 +447,7 @@ Pinomallissa ajatuksena oli jatkaa kehitystä aina edellisen tason päälle, jol
 \caption{Vuonna 2005 esitetty arkkitehtuuri. Lähde: \cite{stack}. \label{images/sweb-stack2.pdf}}
 \end{figure}
 
-Merkittävin ominaisuus uudessa pinomallissa on sen jakautuminen useampiin pinoihin. Tämä sallii tekniikoiden muuttua ja vaihtua vapaammin ilman oletusta, että ne säilyisivät ikuisesti \cite{stack}. Vaikka malli on esitetty vuonna 2005, niin se vastaa edelleen nykypäivän (vuoden 2018) arkkitehtuuria melko hyvin. W3C:n ylläpitämiä standardeja on päivitetty, joten tekniikat eivät ole päässeet vanhenemaan. Jälkimmäisen pinomallin arkkitehtuuria voidaan siis edelleen käyttää lähtökohtana semanttisten sovellusten rakenteen suunnittelussa.
+Merkittävin ominaisuus uudessa pinomallissa on sen jakautuminen useampiin pinoihin. Tämä sallii tekniikoiden muuttua ja vaihtua vapaammin ilman oletusta, että ne säilyisivät ikuisesti \cite{stack}. Vaikka malli on esitetty vuonna 2005, niin se vastaa edelleen nykypäivän (vuoden 2018) arkkitehtuuria melko hyvin. W3C:n ylläpitämiä standardeja on päivitetty, joten tekniikat eivät ole päässeet vanhenemaan ja niitä hyödynnetään edelleen. Jälkimmäistä pinomallia voidaan siis edelleen käyttää lähtökohtana semanttisten sovellusten rakenteen suunnittelussa.
 
 Pinomallin värien tarkoituksena on havainnollistaa tämän työn esittelemä sisältö. Lukijan tulisi nyt tuntea tummansinisellä esitetyt tekniikat ja vaaleisiin lohkoihin tämä tutkielma ei ota kantaa.
 
@@ -734,7 +734,7 @@ Haut voivat koostua yhdisteestä (engl. union) ja negaatioista. Lukuarvoista koo
 
 \subsection{Yhdistetty tieto}
 
-\textit{Yhdistetty tieto} (engl. Linked data) sallii yhteisiin tietoresursseihin viittaamisen. Tetoa ei tarvitse monistaa, vaan eri tietolähteet voivat käyttää samoja tietoresurssia hyödykseen \cite{linked_data_finlad}. Tämän ansiosta tiedon tallennukseen tarvitaan vähemmän muistitilaa ja tiedon muuttaminen on nopeampaa, koska muutos täytyy tehdä ainoastaan yhteen paikkaan. Saumaton ja tehokas yhdistetyn tiedon hyödyntäminen vaatii, että sovelluksen suunnittelussa noudatetaan seuraavia sääntöjä \cite{cambridge_linked}:
+\textit{Yhdistetty tieto} (engl. Linked data) sallii yhteisiin tietoresursseihin viittaamisen. Tietoa ei tarvitse monistaa, vaan eri tietolähteet voivat käyttää samoja tietoresurssia hyödykseen \cite{linked_data_finlad}. Tämän ansiosta tiedon tallennukseen tarvitaan vähemmän muistitilaa ja tiedon muuttaminen on nopeampaa, koska muutos täytyy tehdä ainoastaan yhteen paikkaan. Saumaton ja tehokas yhdistetyn tiedon hyödyntäminen vaatii, että sovelluksen suunnittelussa noudatetaan seuraavia sääntöjä \cite{cambridge_linked}:
 \begin{enumerate}
 \item Resurssien nimeämiseen täytyy käyttää URI:ja.
 \item URI:en tulee tukea HTTP-protokollaa, jotta ihmiset voivat selvittää URI:en merkityksen.
@@ -850,9 +850,9 @@ Internetissä esiintyvän semanttisen materiaalin määrä on jatkuvassa kasvuss
 \end{figure}
 \clearpage
 
-Kuvaajan trendikäyrä on johdettu yhteensä yli 140 miljoonan verkkosivustonäytteen pohjalta. Semanttisen tiedon yleistyminen on siis kasvava trendi. Bizerin tilastoja tukee vuonna 2010 tehty vastaavanlainen tiedonkeräys. Goel ja Gupta (2010) keräsivät miljoona näytettä, joista 42 605 sivua (eli 4,3\%) käytti joko Microformats tai RDFa merkintää \cite{Google}.
+Kuvaajan trendikäyrä on johdettu yhteensä yli 140 miljoonan verkkosivustonäytteen pohjalta. Semanttisen tiedon yleistyminen on siis kasvava trendi. Bizerin tilastoja tukee vuonna 2010 tehty vastaavanlainen tiedonkeräys. Goel ja Gupta (2010) keräsivät miljoona näytettä, joista 42 605 sivua (eli 4,3\%) käytti joko Microformats tai RDFa merkintää \cite{Google}. Tulos sijoittuu Bizerin tilastojen pohjalta johdetun trendikäyrän läheisyyteen.
 
-Vuonna 2014 julkaistu HTML5-merkintäkieli tarjoaa käyttäjälle semanttisia merkintöjä. Esimerkiksi elementit \textit{header}, \textit{main} ja \textit{footer} voidaan kaikki korvata rakenteensa puolesta \textit{div}-elementillä, mutta tällöin elementtien sisällöstä ei voida päätellä mitään. Uudet elementit kuten \textit{article}, \textit{form} ja \textit{figure} vihjaavat tietokoneelle tiedon merkityksestä eli semantiikasta \cite{html5}.  Näin esimerkiksi Googlen ideksoijat (engl. crawlers) kykenevät tunnistamaan verkkosivulla esiintyvän materiaalin tyypin \cite{html5}.
+Vuonna 2014 julkaistu HTML5-merkintäkieli sisältää semanttisia merkintöjä. Esimerkiksi elementit \textit{header}, \textit{main} ja \textit{footer} voidaan kaikki korvata rakenteensa puolesta \textit{div}-elementillä, mutta tällöin elementtien sisällöstä ei voida päätellä mitään. Uudet elementit, kuten \textit{article}, \textit{form} ja \textit{figure} vihjaavat tietokoneelle tiedon sisällöstä ja merkityksestä eli semantiikasta \cite{html5}. Näin esimerkiksi Googlen ideksoijat (engl. crawlers) kykenevät tunnistamaan verkkosivulla esiintyvän materiaalin tyypin \cite{html5}. HTML5:n tarjoamat ominaisuudet on otettu laajalti käyttöön, joten nykyisin semantiikkaa hyödyntävien verkkosivujen määrä on edellisiä tilastoja suurempi. Semanttisia elementtejä on kuitenkin rajallinen määrä, joten HTML5:n avulla ei voida määritellä kaikkea semantiikkaa.
 
 \clearpage %% Force images on same paragraph
 
