@@ -366,12 +366,12 @@ XMP          & Extensible Metadata Platform \\
 
 \subsection*{Esimerkit}
 \begin{tabular}{ll}
-Cpu          & Central Processing Unit \\
-Gpu          & Graphics Processing Unit \\
-Hdd          & Hard Disk Drive \\
-Psu          & Power Supply Unit \\
-Ram          & Random Access Memory \\
-Ssd          & Solid State Drive \\
+CPU          & Central Processing Unit \\
+GPU          & Graphics Processing Unit \\
+HDD          & Hard Disk Drive \\
+PSU          & Power Supply Unit \\
+RAM          & Random Access Memory \\
+SSD          & Solid State Drive \\
 \end{tabular}
 
 %% \clearpage on melkein samanlainen kuin newpage, mutta
@@ -416,7 +416,7 @@ Tutkielmassa käsitellään ensimmäiseksi semanttista internetiä yleisesti. Ko
 
 Semanttinen internet ei vastaa mihinkään yksittäiseen ongelmaan, vaan se mahdollistaa uudenlaisten sovellusten kehittämisen ja tiedon entistä tehokkaamman levittämisen ja hyödyntämisen. Tim Berners-Lee visioi tietokoneiden soveltuvan muuhunkin kuin pelkän tiedon esittämiseen. Hän halusi tehdä tietokoneista ihmisten apureita sen sijaan, että ne olisivat ainoastaan työkaluja tiedon esittämisessä \cite{Berners_visio}.
 
-Internet on valtava tiedonlähde, mutta tällä hetkellä tietokoneet eivät voi hyödyntää internetissä esitettyä tehokkaasti. Tietokoneet eivät ymmärrä tiedon tai sanojen välisiä suhteita suoraan tekstistä kuten ihmiset. Sanat ja lauseet eivät itsessään tarkoita tietokoneelle mitään. Sanat koostuvat erilaisista kirjainyhdistelmistä, jotka voidaan ilmaista numeroin tietokoneelle \cite{ASCII}. Siten tietokone ei voi hahmottaa tekstistä suoraan asiayhteyksiä. Tietokone ei esimerkiksi ymmärrä synonyymien terveyskeskus ja terveysasema tarkoittavan samaa asiaa ilman, että kyseinen tieto ilmoitetaan jollain erillisellä tavalla. Tarvitaan tietoa kuvailevaa tietoa, jota kutsutaan metatiedoksi. Semanttinen internet tarjoaa tekniikoita, joiden avulla tietoa voidaan kuvailla tietokoneelle sopivassa muodossa.
+Internet on valtava tiedonlähde, mutta tällä hetkellä tietokoneet eivät voi hyödyntää internetissä esitettyä tietoa tehokkaasti. Tietokoneet eivät ymmärrä tiedon välisiä suhteita suoraan tekstistä kuten ihmiset. Sanat ja lauseet eivät itsessään tarkoita tietokoneelle mitään. Sanat koostuvat erilaisista kirjainyhdistelmistä, jotka voidaan ilmaista numeroin tietokoneelle \cite{ASCII}. Siten tietokone ei voi hahmottaa tekstistä suoraan asiayhteyksiä. Tietokone ei esimerkiksi ymmärrä synonyymien terveyskeskus ja terveysasema tarkoittavan samaa asiaa ilman, että kyseinen tieto ilmoitetaan jollain erillisellä tavalla. Tarvitaan tietoa kuvailevaa tietoa, jota kutsutaan metatiedoksi. Semanttinen internet tarjoaa tekniikoita, joiden avulla tietoa voidaan kuvailla tietokoneelle sopivassa muodossa.
 
 Antoniou et al. tiivistää semanttisen internetin menetelmien suunnitteluperiaatteen kolmeen pääkohtaan. Informaation tulisi olla saatavilla standardoidussa muodossa. Tietoelementtien ja niiden keskenäisten kuvausten tulisi olla tietokoneille luettavassa muodossa. Tiedon keskenäiset suhteet tulee esittää tavalla, joka sallii tietokoneen prosessoida suhteita \cite{Antoniou}. Edellämainittujen periaatteiden täytyttyä tietokoneet voivat hyödyntää nille esitettyä tietoa tehokkaasti. Semanttisen internetin tekniikat toteuttavat edelliset suunniteluperiaatteet, joten niiden käyttö mahdollistaa tehokkaan tiedon hyödyntämisen tietokoneille.
 
@@ -427,7 +427,31 @@ Semanttisen internetin toiminnan kannalta on tärkeää, että standardimuodossa
 \clearpage
 %%===============================================================================
 \section{Semanttisen internetin peruskomponentit}
-Semanttisen internetin kehitykseen liittyy monenlaisia haasteita useista eri osa-alueista. Haasteisiin on pyritty vastaamaan kehittämällä niihin ratkaisuja osa-aluettain. Tämän seurauksena on syntynyt useita eri tekniikoita, joilla pyritään ratkaisemaan tietyntyyppisiä ongelmia. Esimerkiksi RDF on kehitetty ratkaisemaan tiedon esitysmuotoon liittyviä ongelmia \cite{RDF_specification}. Semanttinen internet koostuu siis useista peruskomponenteista. Jaotteluun perustuva malli on tehokas ja sitä hyödynnetään myös internetin kehityksessä (HTML, CSS ja JavaScript). Kehittäjän ei välttämättä tarvitse hallita kaikkia mahdollisia tekniikoita, vaan riittää, että osaa hyödyntää yksittäisiä tekniikoita hyvin. Modulaarinen rakenne suosii myös yksilöllisten sovellusten kehitystä, koska sovelluksien tarvitsee käyttää ainoastaan tarpeellisia komponentteja kaikkien komponenttien sijaan. Seuraavat alaluvut käsittelevät keskeisiä Semanttisen internetin tekniikoita.
+Semanttisen internetin kehitykseen liittyy monenlaisia haasteita useista eri osa-alueista. Haasteisiin on pyritty vastaamaan kehittämällä niihin ratkaisuja osa-aluettain. Tämän seurauksena on syntynyt useita eri tekniikoita, joilla pyritään ratkaisemaan tietyntyyppisiä ongelmia. Esimerkiksi RDF on kehitetty ratkaisemaan tiedon esitysmuotoon liittyviä ongelmia \cite{RDF_specification}. Semanttinen internet koostuu siis useista peruskomponenteista. Jaotteluun perustuva malli on tehokas ja sitä hyödynnetään myös internetin kehityksessä (HTML, CSS ja JavaScript). Kehittäjän ei välttämättä tarvitse hallita kaikkia mahdollisia tekniikoita, vaan riittää, että osaa hyödyntää yksittäisiä tekniikoita hyvin. Modulaarinen rakenne suosii myös yksilöllisten sovellusten kehitystä, koska sovelluksien tarvitsee käyttää ainoastaan tarpeellisia komponentteja kaikkien sijaan. Seuraavat alaluvut käsittelevät keskeisiä Semanttisen internetin tekniikoita.
+
+% asdasdasdasdas
+Tietotekniikan yhteydessä arkkitehtuurilla viitataan ratkaisujen jäsentelyyn eli rakenteeseen. Semanttinen internet koostuu selkeistä komponenteista, joten voidaan puhua, että semanttisella internetillä on oma arkkitehtuurinsa. Tim-Berners lee esitteli vuonna 2000 semanttisen internetin arkkitehtuurin seuraavanlaisena:
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=10cm]{images/sweb-stack.png}
+\caption{Tim Berners-Leen esittämä pinomalli. Lähde: \cite{stack_bl} \label{images/sweb-stack.png}}
+\end{figure}
+\clearpage %% Force images on same paragraph
+
+Pinomallissa ajatuksena oli jatkaa kehitystä aina edellisen tason päälle, jolloin tekniikohin nähdyt investoinnit säilyisivät semanttisen internetin kehittyessä. Ajatus kuitenkin vaatii sen, että tekniikat olisivat ikuisia ja aina yhteensopivia uusien kanssa, mikä ei ole käytännössä mahdollista \cite{stack}. Tästä syystä vuoden 2000 pinomalli ei voi olla realistinen ja sen tilalle on esitetty muun muassa seuraavaa pinomallia:
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=10cm]{images/sweb-stack2.pdf}
+\caption{Vuonna 2005 esitetty arkkitehtuuri. Lähde: \cite{stack}. \label{images/sweb-stack2.pdf}}
+\end{figure}
+
+Merkittävin ominaisuus uudessa pinomallissa on sen jakautuminen useampiin pinoihin. Tämä sallii tekniikoiden muuttua ja vaihtua vapaammin ilman oletusta, että ne säilyisivät ikuisesti \cite{stack}. Vaikka malli on esitetty vuonna 2005, niin se vastaa edelleen nykypäivän (vuoden 2018) arkkitehtuuria melko hyvin. W3C:n ylläpitämiä standardeja on päivitetty, joten tekniikat eivät ole päässeet vanhenemaan. Jälkimmäisen pinomallin arkkitehtuuria voidaan siis edelleen käyttää lähtökohtana semanttisten sovellusten rakenteen suunnittelussa.
+
+Pinomallin värien tarkoituksena on havainnollistaa tämän työn esittelemä sisältö. Lukijan tulisi nyt tuntea tummansinisellä esitetyt tekniikat ja vaaleisiin lohkoihin tämä tutkielma ei ota kantaa.
+
+
 
 
 \subsection{XML}
@@ -680,7 +704,7 @@ RDF-tietomuodossa olevaa tietoa voidaan tallentaa muistiin. Yksinkertaisimillaan
 \begin{figure}[htb]
 \centering
 \includegraphics[width=15cm]{images/linked_data.png}
-\caption{Graafi vapaasti hyödynnettävistä linkittyneistä tietokannoista vuonna 2017. (LOD cloud diagram) \cite{LOD_cloud} \label{images/linked_data}}
+\caption{Graafi vapaasti hyödynnettävistä linkittyneistä tietokannoista vuonna 2017. (LOD cloud diagram). Lähde: \cite{LOD_cloud} \label{images/linked_data}}
 \end{figure}
 \clearpage
 
@@ -710,23 +734,25 @@ Haut voivat koostua yhdisteestä (engl. union) ja negaatioista. Lukuarvoista koo
 
 \subsection{Yhdistetty tieto}
 
-Yhdistetty tieto (engl. Linked data) sallii yhteisiin tietoresursseihin viittaamisen. Siten tietoa ei tarvitse monistaa, vaan eri lähteet voivat käyttää samaa yksittäistä tietoresurssia hyödykseen \cite{linked_data_finlad}. Tämän ansiosta tiedon tallennukseen tarvitaan vähemmän muistitilaa. Yhdistetty tieto auttaa myös lisätiedon esittämisessä, koska tietoon voidaan linkittää uusia tietoresursseja. Koska tieto on yhdistetty linkeillä, niin alkuperäisten lähteiden etsiminen on helpompaa. Mikäli alkuperäislähteessä on virhe, niin virhe täytyy korjata ainoastaan yhdesti.
+\textit{Yhdistetty tieto} (engl. Linked data) sallii yhteisiin tietoresursseihin viittaamisen. Tetoa ei tarvitse monistaa, vaan eri tietolähteet voivat käyttää samoja tietoresurssia hyödykseen \cite{linked_data_finlad}. Tämän ansiosta tiedon tallennukseen tarvitaan vähemmän muistitilaa ja tiedon muuttaminen on nopeampaa, koska muutos täytyy tehdä ainoastaan yhteen paikkaan. Saumaton ja tehokas yhdistetyn tiedon hyödyntäminen vaatii, että sovelluksen suunnittelussa noudatetaan seuraavia sääntöjä \cite{cambridge_linked}:
+\begin{enumerate}
+\item Resurssien nimeämiseen täytyy käyttää URI:ja.
+\item URI:en tulee tukea HTTP-protokollaa, jotta ihmiset voivat selvittää URI:en merkityksen.
+\item Kun käyttäjä tutkii URI:a, niin hänelle pitää tarjota merkityksellistä tietoa standardiformaatissa (esimerkiksi RDF).
+\item Käyttäjälle täytyy tarjota linkkejä muihin resursseihin, jotta hän voi löytää uusia mielenkiintoisia resursseja.
+\end{enumerate}
+\vspace{0.5cm}
 
+Graafimaiset tietokannat ovat merkittävässä asemassa yhdistetyn tiedon kannalta. Tavallisten relaatiotietokantojen rakenne riippuu pitkälti sovelluksesta. Koska tietokannat ovat erilaisia eri sovellusten välillä, niin tiedon hakeminen on haastavaa, mikäli tietokantaa ei tunne entuudestaan. Tästä syystä graafimaiset tietokannat soveltuvat yhdistetyn tiedon käyttöön paremmin, koska niiden rakenne ei vaihtele sovellusten kesken. Kun viittaukset resursseihin tehdään URI:en avulla, niin tietokanna käyttäjä myös tietää tarkalleen mihin resurssit viittaavat \cite{cambridge_linked}.
 
 \clearpage
 %%===============================================================================
 \section{Käytännön sovelluksia}
 
-Semanttista tietoa voidaan käyttää monella tavalla hyödyksi. Tässä kappaleessa esitellään joitakin hyödyntämismahdollisuuksia esimerkkien avulla. Esimerkit ovat käytössä olevia ja toimivia ratkaisuja. Jokaisessa esimerkissä yritetään painottaa hiukan eri osa-aluetta Semanttisesta internetistä.
-
-
-Esimerkiksi Facebook käyttää semanttista verkkoa tiedonhaussa, minkä avulla se kykenee tarjoamaan käyttäjilleen parempia hakutuloksia \cite{Facebook}.
-
-
+Semanttista tietoa voidaan käyttää monella tavalla hyödyksi. Tässä kappaleessa esitellään eräitä hyödyntämismahdollisuuksia esimerkkien avulla. Esimerkit on laadittu käytössä olevista ja toimivista ratkaisuista. Jokaisessa esimerkissä yritetään painottaa eri osa-alueita semanttisesta internetistä. Ensimmäisessa esimerkissä käsitellään RDF-tietomuotoa, toisessa semantiikkaa ja kolmannessa ontologioita, jotka liittyvät vahvasti semantiikkaan.
 
 
 \subsection{XMP-metadataformaatti}
-
 XMP (Extensible Metadata Platform) on Adoben kehittämä metadataformaatti, jota käytetään muun muassa kuvien metadatan tallennukseen. XMP on ISO:n (International Organization for Standardization) hyväksymä standardi (ISO 16684-1:2012) \cite{XMP_standard}. XMP-merkintätekniikka pohjautuu RDF-tietomallin osajoukkoon ja se hyödyntää toteutuksessaan Dublin Core sanastoa \cite{XMP2}. Merkintäteknikan avulla tallennetaan hyödyllistä metatietoa itse tiedostoihin, jolloin tietoa kuvaileva tieto on aina saatavilla tiedostojen yhteydessä \cite{XMP1}.
 
 XMP-metadataformaatista on useita hyötyjä. Sen avulla tiedostot säilyttävät niiden kontekstin, kun tiedostoja siirrellään ohjelmistolta, laitteelta tai tietokannasta toiseen. Yhteinen metadataformaatti sallii tehokkaan etsimisen eri tiedostotyyppien ja tietokantojen välillä. XMP-metadatan avulla voidaan merkitä yhteyksiä eri tiedostojen välille, joka voi auttaa esimerkiksi tiedostojen järjestelyssä. Avoimen standardin ansiosta XMP:n hyödyt ovat kaikkien saatavilla \cite{XMP_overall}. Konkreettinen esimerkki XMP:n eduista voidaan havaita, kun digitaalikameralla otettu kuva siirretään tietokoneelle ja kuvanottohetki ja kameran asetukset voidaan edelleen tietää lukemalla kuvan metadataa.
@@ -777,7 +803,7 @@ Semanttisen tiedon määrittäminen vaatii aihealueen asiantutemusta ja runsaast
 \vspace*{0.2cm}
 $\star$                     & Tieto on vapaassa jaossa internetissä. \\
 \vspace*{0.2cm}
-$\star\star$                & Tieto on tietokoneen luettavissa. \\
+$\star \star$                & Tieto on tietokoneen luettavissa. \\
 \vspace*{0.2cm}
 $\star\star\star$           & Tarjolla oleva tieto esitetään avoimen standardin mukaisesti. \\
 
@@ -792,77 +818,67 @@ Listan laadintaan on käytetty seuraavia lähteitä: \cite{SeCo_stars} \cite{SeC
 Seitsemän tähden tiedolla pyritään takaamaan tiedon laadukkuus ja soveltuuvuus jatkokäyttöä varten. Tällä hetkellä ongelmana on se, että ulkopuolinen taho ei voi tietää nopeasti mikäli tieto on laadukkasta. Lisäksi tiedon ominaisuuksia ei voida tuntea ja tiedon ja sanaston yhteensopivuudesta ei voida varmistua, mikäli sanastoon ei perehdytä erikseen. Laajennetun arvosteluasteikon tarkoituksena on siten helpottaa ja nopeuttaa tiedon uudelleenkäyttöä \cite{SeCo_stars}.
 
 
-\subsection{Haasteet}
-
-
+\subsection{Haasteita}
 Semanttisen tiedon luominen vaatii aikaa ja osaamista. Moni kokee internetissä esiintyvän ihmiselle tarkoitetun tekstimäisen muodon riittäväksi, joten semanttista tietoa syntyy vähän. Yhdistetty tieto vaatii hyvin toimiakseen laajat tietoresurssit. Ihmisten tulisi ymmärtää Semanttisen internetin tarjoamat hyödyt, jotta he alkaisivat luomaan enemmän semanttista materiaalia. Tällähetkellä termi ja ala on vähän ymmärretty. Siten alalle ei myöskään kouluttaudu osaavia ihmisiä, jotka PUSKISIVAT kehitystä eteenpäin.
 
 
 
-\subsubsection{ihmiskielen monimuotoisuus}
-Ihmiskielen termien merkitys voi riippua toimialasta, minkä takia termeillä ei ole välttämättä yhtä ainoaa merkitystä. Siksi kaikkea tietoa ei voida linkittää sokkona yhteen, koska muuten termejä vastaava tieto voi mennä sekaisin. Semanttinen internet tarjoaa ongelman ratkaisuksi sanastoja ja ontologioita, joiden avulla tiedon monimerkityksisyysongelmasta päästään eroon \cite{linked_data_finlad}. Termit voidaan ilmaista sanastojen avulla alakohtaisesti, jolloin ne merkitsevät ainoastaan yhtä asiaa. Termien luokittelu oikeisiin sanastoihin on kuitenkin tietokoneelle vaikeaa, koska se ei ymmärrä termien perimmäistä merkitystyä. Siksi ihminen on tärkeässä asemassa ontologioiden luomisessa ja tiedon ensimäärittämisessä.
+\subsubsection{Ihmiskielen monimuotoisuus}
+Ihmiskielessä termien merkitys voi riippua toimialasta, minkä vuoksi sanoilla ei ole välttämättä yhtä ainoaa merkitystä. Siksi kaikkea tietoa ei voi linkittää sokkona yhteen, koska muuten termejä vastaava tieto voi mennä sekaisin. Ongelma voidaan ratkaista sanastoilla ja ontologioilla, minkä avulla termit voidaan määrittää sovelluskohtaisesti \cite{linked_data_finlad}. Tästä kuitenkin seuraa tarve ontologioista, semanttisen internetin tekniikoista ja alan termistöstä ymmärtävien ihmisten palkkaamiselle. Ontologioita on mahdollista luoda automaattisesti, mutta usein viimeistään ontologian validointivaiheessa vaaditaan ihmisen tulkintaa. Validointi on myös mahdollista jättää kokonaan tekemättä, mutta tällöin ei voida varmistua ontologian oikeellisuudesta \cite{automatic_ontology}. Lisäksi kaikkia luonnollisen kielen lauseita ei voida esittää RDF:n avulla. RDF:llä soveltuu ainoastaan toteamuksien esittämiseen.
 
-- Aiemmin käsitelty asia, että kaikkea ei edes pystytä ilmaisemaan tietokoneelle.
+\subsubsection{Tiedon luotettavuus}
+Tiedon luotettavuuden varmentaminen on haastavaa, mikäli tiedon esittäjä ei perustele väitteitään omin sanoin tai muiden luotettavien lähteiden avulla. Jos tietoon ei voi luottaa, niin sitä on hankala käyttää hyödyksi. Ongelmaan on tarjottu ratkaisuksi tiedostojen sähköistä allekirjoittamista, mutta tämä ratkaisu ei pysty vastaamaan ihmisten luotettavuuten \cite{trust}. Ihmisten luotettavuus pystyttäisiin ratkaisemaan henkilökohtaisten luotettavuusontologioiden avulla. Ihmiset voisivat luokitella ystäviään ja jakaa ontologiaa muille vuorovaikutuksen yhteydessä. Ontologioiden pohjalta voitaisiin luoda verkkomainen graafi käyttäjälle, minkä pohjalta voidaan laskea ihmisten luotettavuus. Henkilön luotettavuus riippuisi siitä, kuinka kauas kättäjästä hän sijoittuisi graafissa ja siitä millaisia luotettavuusarvioita tämä henkilö on saanut hänen tuttaviltaan \cite{trust}. Tällä tavalla läheiset ihmiset olisivat usein luotettavampia tietolähteitä kuin ventovieraat. Ratkaisu ei kuitenkaan takaa tiedon oikeellisuutta, koska luotettavakin henkilö voivat valehdella.
 
-
-\subsubsection{ontologiat}
-Hyvien ontologioiden luominen vaatii sovelluskohteen asiantuntemusta ja kehitystyötä.
-Kehitykseen kuluvaa aikaa voidaan vähentää hyödyntämällä erilaisia ohjelmistoja, jotka ovat erikoistuneet ontologioiden luomiseen. Ohjelmistoilla ei voida kuitenkaan korvata asiantuntemusta, sillä kehittäjän täytyy tuntea kuvailtava tieto, jotta hän voi luoda siihen liittyviä semanttisia määrittelyjä ja sääntöjä. Esimerkiksi onnistuneen luokkajaottelun tekeminen on hyvin vaikeaa, mikäli kehittäjä ei hahmota kuvailtavan tiedon suhteisuutta. Lisäksi kehittäjällä tulee olla tietämystä Semanttisen internetin tekniikoista, jotta hän osaa käyttää niitä oikein. Ontologioiden luomiseen käytetään RDF Schemaa ja OWL-tietämyksenesittämiskieltä \cite{OWL_specification}.
-\subsubsection{tiedon luotettavuus}
-
-\subsubsection{tietämättömyys (ei tunneta mahdollisuuksia)}
-Semanttinen internet pohjautuu ideaan jossa kuka tahansa voi julkaista semanttista tietoa, mikä voidaan linkittää muuhun tietoon. Ongelmaksi kuitenkin nousee tiedon luotettavuus \cite{Semantic_search}.
-
-Semanttinen verkko ei tarjoa ratkaisua yksittäiseen ongelmaan, joten semanttisen verkon markkinointi on haastavaa. Sovellusten kehitys ei ole myöskään aivan suoraviivaista, mikäli niiden halutaan hyödyntävän semanttista internettiä täydessä potentiaalissaan \cite{lassila_dissertion}.
-- johtuu osittain siitä, että ei vastaa mihinkää yksittäiseen. Konsepti on laaja...
-
-Semanttinen tieto näyttää samalta kuin tavallinen teksti, minkä vuoksi moni voi olla haluton käyttämään enempää aikaa semantiikan määrittämiseen.
+\subsubsection{Tietämättömyys}
+Semanttista internetiä ei osata hyödyntää. Ihmiset eivät tunne semantiikan tuomia hyötyjä, joten semanttisen materiaalin tuottamiseen käytettyä panosta ei nähdä vaivan arvoisena. Tämän seurauksena ala kehittyy ja kasvaa hitaammin kuin se kasvaisi suuremmalla käyttäjämäärällä. Onneksi suuret yritykset, kuten esimerkiksi Facebook, Google ja Microsoft kehittävät yhdistetyn tiedon verkkojaan, mikä lisää alan kiinnostusta pienemmissä yrityksissä \cite{Facebook} \cite{knowledge_graph} \cite{cortana}. Semanttista materiaalia on tuotettu vuosittain yhä enemmän ja tämä voidaan havaita esimerkiksi seuraavasta kuvaajasta (Kuva \ref{images/verkkosivut}).
 
 
+\subsection{Semanttisen materiaalin yleistyminen}
 
-
-
-\subsection{Semanttisen internetin arkkitehtuuri}
-Tietotekniikan yhteydessä arkkitehtuurilla viitataan ratkaisujen jäsentelyyn eli rakenteeseen. Semanttinen internet koostuu selkeistä komponenteista, joten voidaan puhua, että semanttisella internetillä on oma arkkitehtuurinsa. Tim-Berners lee esitteli vuonna 2000 semanttisen internetin arkkitehtuurin seuraavanlaisena:
+Internetissä esiintyvän semanttisen materiaalin määrä on jatkuvassa kasvussa. Kasvava kiinnostus voidaan havaita tutkimalla verkkosivuilla käytettyjen semanttisten merkintäkielien suosiota. Verkkosivuilla käytettyjä yleisiä semanttisia merkintäkieliä ovat muun muassa: Microdata, Microformat, RDFa ja JSON-LD. Bizer et al. on tilastoinut satunnaisesti valituilta verkkosivustoilta semanttista merkintää käyttävien verkkosivustojen määrän \cite{rdfa_usage}. Esimerkiksi vuonna 2013 näytekoko oli alhaisin: 12 831 509 verkkosivustoa, josta semanttista merkintää hyödynsi 2 189 256 sivustoa eli 17,06 \%. Alla on kooste Bizerin tuloksista:
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=10cm]{images/sweb-stack.png}
-\caption{Tim Berners-Leen esittämä pinomalli. Lähde: \cite{stack_bl} \label{images/sweb-stack.png}}
+\includegraphics[width=15cm]{images/taulukko.png}
+\caption{Bizerin tilastojen pohalta laadittu taulukko \cite{rdfa_usage}. \label{images/taulukko}}
 \end{figure}
-\clearpage %% Force images on same paragraph
-
-Pinomallissa ajatuksena oli jatkaa kehitystä aina edellisen tason päälle, jolloin tekniikohin nähdyt investoinnit säilyisivät semanttisen internetin kehittyessä. Ajatus kuitenkin vaatii sen, että tekniikat olisivat ikuisia ja aina yhteensopivia uusien kanssa, mikä ei ole käytännössä mahdollista \cite{stack}. Tästä syystä vuoden 2000 pinomalli ei voi olla realistinen ja sen tilalle on esitetty muun muassa seuraavaa pinomallia:
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=10cm]{images/sweb-stack2.pdf}
-\caption{Vuonna 2005 esitetty arkkitehtuuri. Lähde: \cite{stack}. \label{images/sweb-stack2.pdf}}
+\includegraphics[width=13cm]{images/verkkosivut.png}
+\caption{Edellisen taulukon pohjalta laadittu kuvaaja. \label{images/verkkosivut}}
 \end{figure}
-
-Merkittävin ominaisuus uudessa pinomallissa on sen jakautuminen useampiin pinoihin. Tämä sallii tekniikoiden muuttua ja vaihtua vapaammin ilman oletusta, että ne säilyisivät ikuisesti \cite{stack}. Vaikka malli on esitetty vuonna 2005, niin se vastaa edelleen nykypäivän (vuoden 2018) arkkitehtuuria melko hyvin. W3C:n ylläpitämiä standardeja on päivitetty, joten tekniikat eivät ole päässeet vanhenemaan. Semannttinen internet pohjautuu edelleen pinomallissa esitettyihin lohkoihin. Pinomallin värien tarkoituksena on havainnollistaa tämän työn esittelemä sisältö. Lukijan tulisi nyt tuntea tummansinisellä esitetyt tekniikat ja vaaleisiin lohkoihin tämä tutkielma ei ota kantaa.
-
-
-\clearpage %% Force images on same paragraph
-
-\subsection{kehitys}
-Goel et al. on kerännyt statistiikkaa liittyen semanttiseen merkintään. Statistiikka on saatu keräämällä satunnainen näyte miljoonasta web sivusta. Kesäkuussa 2010 \cite{Google} (s.3). Semanttikkaa (Microformats tai RDFa) käytti ainoastaan 42 605 sivua eli alle puoli prosenttia. Vuonna 2010 semanttisen materiaalin osuus on ollut siis olematon.
-???
 \clearpage
+
+Kuvaajan trendikäyrä on johdettu yhteensä yli 140 miljoonan verkkosivustonäytteen pohjalta. Semanttisen tiedon yleistyminen on siis kasvava trendi. Bizerin tilastoja tukee vuonna 2010 tehty vastaavanlainen tiedonkeräys. Goel ja Gupta (2010) keräsivät miljoona näytettä, joista 42 605 sivua (eli 4,3\%) käytti joko Microformats tai RDFa merkintää \cite{Google}.
+
+Vuonna 2014 julkaistu HTML5-merkintäkieli tarjoaa käyttäjälle semanttisia merkintöjä. Esimerkiksi elementit \textit{header}, \textit{main} ja \textit{footer} voidaan kaikki korvata rakenteensa puolesta \textit{div}-elementillä, mutta tällöin elementtien sisällöstä ei voida päätellä mitään. Uudet elementit kuten \textit{article}, \textit{form} ja \textit{figure} vihjaavat tietokoneelle tiedon merkityksestä eli semantiikasta \cite{html5}.  Näin esimerkiksi Googlen ideksoijat (engl. crawlers) kykenevät tunnistamaan verkkosivulla esiintyvän materiaalin tyypin \cite{html5}.
+
+\clearpage %% Force images on same paragraph
+
+
 %%==============================================================================
 \section{Yhteenveto}
 
+% Vastaa kysymyksiin.
+% Katso arvostelumatriisi ja tee sen mukaan !!!
+
+Semanttinen internet on ihmisten ja tietokoneiden yhteisesti hyödynnettävissä oleva tietoresurssi. Tavallisessa internetissä materiaali on lähtökohtaisesti suunnattu ihmisille, jolloin tietokoneet eivät kykene ymmärtämään ihmisille esittämäänsä materiaalia. Semanttinen internet pyrkii muuntamaan internetissä esiintyvän materiaalin sellaiseen muotoon, jota myös tietokoneet kykenevät ymmärtämään. Tämän seurauksena tiedon hyödynnettävyysmahdollisuudet paranevat, koska voidaan rakentaa sovelluksia, jotka hyödyntävät tietokoneen ymmärtämää tietoa.
+
+Tiedon muuntaminen tietokoneiden ymmärtämään eli semanttiseen muotoon tapahtuu W3C:n ylläpitämien standardien avulla. Keskeisiä tiedon määritykseen liittyviä standardeja ovat muun muassa RDF, RDFS ja OWL. RDF-tietomuoto mahdollistaa joustavan tavan esittää ihmistietoa tietokoneelle. RDF:n avulla voidaan esittää tietoa ainoastaan URI:n avulla määritetyistä tunnetuista resursseista. Usein kuitenkin halutaan määritellä resursseja, joita ei tunneta entuudestaan. Tällöin täytyy kyetä kuvaamaan resurssille tyypillisiä ominaisuuksia, minkä kyseinen resurssi voidaan luokitella. Tähän ongelmaan on kehitetty ratkaisuksi RDFS ja OWL. RDFS määrittelee kaikista tarpeellisimmat tiedonkuvaus mekanismit, kun taas OWL tarjoaa RDFS:ää huomattavasti laajemmat mahdollisuudet tiedon kuvailuun. Standardien tarpeellisuus riippuu pitkälti sovelluksen tarpeista. Jos RDF tietoa halutaan tallentaa tietokantoihin, niin kannattaa hyödyntää triple store tietokantoja ja SPARQL-kyselykieltä. Triple store tietokantatyyppi on suunniteltu RDF-tietomuodossa olevan tiedon tallennukseen ja tietoa voidaan hakea nopeasti tietokannasta SPQRL-kyselykielen avulla.
+
+Käyttämällä semanttisen internetin tekniikoita, voidaan rakentaa laadukkaita sovelluksia. W3C:n standardit varmistavat yhteensopivuuden sovelluksien välillä ja tämä mahdollistaa muun muassa tietokantojen yhteen liittämisen. Semanttista internetiä kutsutaankin myös termillä Yhdistetty tieto ja ajatuksena on, että tieto rikastuu siihen liittyvän muun tiedon avulla \cite{linked_data_finlad}. Tietoa ei tarvitse monistaa, koska aina voidaan hyödyntää tiedon alkuperäisresurssia \cite{linked_data_finlad}. Laajoja tietämysverkkoja voidaan hyödyntää esimerkiksi silloin, kun haetaan vastauksia ihmisten esittämiin kysymyksiin. Tietoa linkittämällä on myös mahdollista tarjota käyttäjälle merkityksellistä tietoa, vaikka hän ei suoraan pyytäisikään sitä. Tietokoneymmärrettävä tieto tarjoaa monia sovellusmahdollisuuksia.
 
 
-Semanttisessa internetissä tieto esitetään tietokoneiden luettavassa ja ymmärtämässä muodossa. Esitystapaa varten on kehitetty joukko erilaisia tekniikoita, jotka mahdollistavat edellisen. Tekniikat ovat vapaasti käytettävissä ja ne on standardoitu W3C:n toimesta.
 
-Semanttinen internet ei tarkoita tekoälyä, joka kykenee itsestään etsimään ja ymmärtämään tietoa \cite{Semantic_Web_represent}. Lähtökohtaisesti ihminen määrittää tiedon niin, että tietkone kykenee löytämään ja ymmärtämään sen. Tietokonetta voidaan kuitenkin käyttää tiedon määrittämisprosessissa apuna. Tiedon määritys tapahtuu muun muassa URI:en, RDF:n ja ontologioiden avulla.
+
+
 
 
 \clearpage
 %%==============================================================================
 %% Lähdeluettelo - toisesta tiedostosta
-\bibliographystyle{IEEEtran} %acm
+\bibliographystyle{myieeetran} %acm
 \bibliography{bibliography.bib}
 \clearpage
 %%==============================================================================
@@ -880,7 +896,7 @@ Tässä liitteessä on esitelty yhtenäinen Turtle syntaksilla kirjoitettu seman
 
 Digitaalikuvien metatiedon esittämiseen käytetään XMP:tä. XMP pohjautuu RDF-tietomalliin. Alla on esimerkki digitaalivalokuvan metatiedoista esitettyn XMP-metakielellä.
 %\lstinputlisting[style=codeblock]{files/IMG_5104.xmp}
-
+?
 \clearpage
 \end{changemargin}
 \end{document}
