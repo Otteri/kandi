@@ -63,7 +63,7 @@
          
          <dc:rights><rdf:Alt><rdf:li xml:lang="x-default">Copyright © 2018 Joni Airaksinen</rdf:li></rdf:Alt></dc:rights>
          <dc:description><rdf:Alt><rdf:li xml:lang="x-default"> Semanttinen internet tehostaa tiedon jakoa ja hyödynnettävyyttä. Kaikki saatavilla oleva tieto ei kuitenkaan ole semanttista. Tämä johtuu siitä, että semanttisen tiedon luominen vaatii ylimääräistä vaivannäköä ja resursseja. Toinen hidaste semanttisen tiedon synnylle on ihmisten tietämättömyys asiasta. Kovinkaan moni ihminen ei pysty määrittelemään termiä: semanttinen internet, vaikka semanttinen internet kuuluukin hyvin monen ihmisen arkeen. Pelkästään yksittäinen Google haku tuo käyttäjälle esiin linkittynyttä tietoa, joka on mahdollisesti muodostettu hyödyntäen semanttisen verkon työkaluja. Tutkielmassa selvitetään semanttisen verkon luomiseen vaadittavat vähimmäistyökalut. Tutkielman tarkoituksena on selkeyttää semanttisen internetin merkitystä ja tutustuttaa lukija linkittyneen tiedon luomiseen. Lisäksi tutkielmassa yritetään tuoda ilmi semanttisen internetin tuomia hyötyjä ja hyviä käyttökohteita. </rdf:li></rdf:Alt></dc:description>
-         <dc:subject><rdf:Bag><rdf:li>Semanttinen internet</rdf:li>
+         <dc:subject><rdf:Bag><rdf:li>Semanttinen web</rdf:li>
      <rdf:li>RDF</rdf:li></rdf:Bag></dc:subject>
       </rdf:Description> 
       <rdf:Description rdf:about="" xmlns:prism="http://prismstandard.org/namespaces/basic/2.2/"> 
@@ -89,9 +89,9 @@
       </rdf:Description> 
       <rdf:Description rdf:about="" xmlns:xmp="http://ns.adobe.com/xap/1.0/"> 
          <xmp:CreatorTool>LaTeX with hyperref package</xmp:CreatorTool> 
-         <xmp:ModifyDate>2018-04-28T23:58:43+03:00</xmp:ModifyDate> 
-         <xmp:CreateDate>2018-04-28T23:58:43+03:00</xmp:CreateDate> 
-         <xmp:MetadataDate>2018-04-28T23:58:43+03:00</xmp:MetadataDate> 
+         <xmp:ModifyDate>2018-04-29T17:29:11+03:00</xmp:ModifyDate> 
+         <xmp:CreateDate>2018-04-29T17:29:11+03:00</xmp:CreateDate> 
+         <xmp:MetadataDate>2018-04-29T17:29:11+03:00</xmp:MetadataDate> 
       </rdf:Description> 
       <rdf:Description rdf:about="" xmlns:xmpRights = "http://ns.adobe.com/xap/1.0/rights/"> 
          <xmpRights:Marked>True</xmpRights:Marked>
@@ -100,7 +100,7 @@
       </rdf:Description> 
       <rdf:Description rdf:about="" xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/"> 
          <xmpMM:DocumentID>uuid:E4A48AB5-7CA3-6712-4FD6-BD3D4CBF3C37</xmpMM:DocumentID> 
-         <xmpMM:InstanceID>uuid:932FE186-62AA-CBBD-6ED7-A8EB8A38A4F4</xmpMM:InstanceID> 
+         <xmpMM:InstanceID>uuid:B8889484-F5F2-0138-748B-C12CB91C4019</xmpMM:InstanceID> 
       </rdf:Description> 
    </rdf:RDF> 
 </x:xmpmeta> 
