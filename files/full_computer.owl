@@ -1,0 +1,180 @@
+@prefix : <http://www.semanticweb.org/otteri/ontologies/2018/2/computer#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/otteri/ontologies/2018/2/computer> .
+<http://www.semanticweb.org/otteri/ontologies/2018/2/computer> rdf:type owl:Ontology .
+
+
+##########   Object Properties   ##########
+:hasComponent rdf:type owl:ObjectProperty ;
+              rdfs:domain :Computer ;
+              rdfs:range :Case ,
+                         :Cpu ,
+                         :Gpu ,
+                         :MotherBoard ,
+                         :Psu ,
+                         :Ram ,
+                         :Ssd .
+
+
+##########   Data properties   ##########
+:capacityGigaByte rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Ram ,
+                              :Ssd ;
+                  rdfs:range xsd:integer .
+
+:hasClockRateGhz rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Cpu ,
+                             :Gpu ;
+                 rdfs:range xsd:integer .
+
+:hasClockRateMhz rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Ram ;
+                 rdfs:range xsd:integer .
+
+:hasCores rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Cpu ;
+          rdfs:range xsd:integer .
+
+:hasDepth rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Case ,
+                      :Cpu ,
+                      :Gpu ,
+                      :MotherBoard ,
+                      :Psu ,
+                      :Ram ,
+                      :Ssd ;
+          rdfs:range xsd:float .
+
+:hasHeight rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Case ,
+                       :Computer ,
+                       :Cpu ,
+                       :Gpu ,
+                       :MotherBoard ,
+                       :Psu ,
+                       :Ram ,
+                       :Ssd ;
+           rdfs:range xsd:float .
+
+:hasMemoryType rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Ram ;
+               rdfs:range rdfs:Literal .
+
+:hasSizeInch rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Ssd ;
+             rdfs:range xsd:decimal .
+
+:hasSocket rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Cpu ;
+           rdfs:range rdfs:Literal .
+
+:hasTdp rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Cpu ;
+        rdfs:range xsd:integer .
+
+:hasWeightKg rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Case ,
+                         :Computer ,
+                         :Cpu ,
+                         :Gpu ,
+                         :MotherBoard ,
+                         :Psu ,
+                         :Ram ,
+                         :Ssd ;
+             rdfs:range xsd:decimal .
+
+:hasWidth rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Case ,
+                      :Cpu ,
+                      :Gpu ,
+                      :MotherBoard ,
+                      :Psu ,
+                      :Ram ,
+                      :Ssd ;
+          rdfs:range xsd:float .
+
+:isModular rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Psu ;
+           rdfs:range xsd:boolean .
+
+
+##########   Classes   ##########
+:Case rdf:type owl:Class ;
+      rdfs:subClassOf :Computer .
+
+:Computer rdf:type owl:Class .
+
+:Cpu rdf:type owl:Class ;
+     rdfs:subClassOf :Computer .
+
+:Gpu rdf:type owl:Class ;
+     rdfs:subClassOf :Computer .
+
+:MotherBoard rdf:type owl:Class ;
+             rdfs:subClassOf :Computer .
+
+:Psu rdf:type owl:Class ;
+     rdfs:subClassOf :Computer .
+
+:Ram rdf:type owl:Class ;
+     rdfs:subClassOf :Computer .
+
+:Ssd rdf:type owl:Class ;
+     rdfs:subClassOf :Computer .
+
+
+##########   Individuals   ##########
+:DefineR5 rdf:type owl:NamedIndividual ,
+                   :Case ;
+          :hasDepth 52.1 ;
+          :hasHeight 45.1 ;
+          :hasWeightKg 11.8 ;
+          :hasWidth 23.2 .
+
+:EVO rdf:type owl:NamedIndividual ,
+              :Ssd ;
+     :capacityGigaByte 250 ;
+     :hasSizeInch 2.5 .
+
+:HyperXFury rdf:type owl:NamedIndividual ,
+                     :Ram ;
+            :capacityGigaByte 16 ;
+            :hasClockRateMhz 2666 ;
+            :hasMemoryType "DDR4" .
+
+:PrimeZ370-P rdf:type owl:NamedIndividual ,
+                      :MotherBoard ;
+             :hasSocket 1151 .
+
+:TitanV rdf:type owl:NamedIndividual ,
+                 :Gpu ;
+        :capacityGigaByte 12 ;
+        :hasClockRateMhz 1455 .
+
+:exampleComputer rdf:type owl:NamedIndividual ,
+                          :Computer ;
+                 :hasComponent :DefineR5 ,
+                               :EVO ,
+                               :HyperXFury ,
+                               :PrimeZ370-P ,
+                               :TitanV ,
+                               :i7-8700K ,
+                               :purePower .
+
+:i7-8700K rdf:type owl:NamedIndividual ,
+                   :Cpu ;
+          :hasClockRateGhz 3.7 ;
+          :hasCores 6 ;
+          :hasSocket "LGA1151" ;
+          :hasTdp 95 .
+
+:purePower rdf:type owl:NamedIndividual ,
+                    :Psu ;
+           :hasDepth 20.0 ;
+           :hasHeight 10.0 ;
+           :hasWidth 15.0 ;
+           :isModular "false"^^xsd:boolean .
