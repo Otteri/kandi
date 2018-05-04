@@ -238,7 +238,7 @@ Semanttinen web on internetiä tehokkaampi ympäristö tarjolla olevan tiedon hy
 %\setboolean{writexmpdatafile}{false}
 
 %%-------------------------------------------------------------------------------
-%% OMAT ASETUKSET:
+%% OMAT MÄÄRITYKSET:
 %% Aseta tyjä rivi kappaleiden väliin
 \usepackage[parfill]{parskip}
 
@@ -343,43 +343,34 @@ Semanttinen web on internetiä tehokkaampi ympäristö tarjolla olevan tiedon hy
 %% Sisällysluettelo
 %%
 \thesistableofcontents
-
+\enlargethispage{2\baselineskip}
 
 %% Symbolit ja lyhenteet
 %%
 \mysection{Lyhenteet}
 
-\subsection*{Internet}
 \begin{tabular}{ll}
+CPU          & Central Processing Unit \\
+ELI          & European Legislation Identifier \\
+GPU          & Graphics Processing Unit \\
+HDD          & Hard Disk Drive \\
 HTTP         & Hypertext Transfer Protocol \\
+OWL          & Web Ontology Language \\
+PSU          & Power Supply Unit \\
+RAM          & Random Access Memory \\
+RDF          & Resource Description Framework \\
+RDFS         & Resource Description Framework Schema\\
+SFL          & Semantic Finlex Legislation ontology \\
+SPARQL       & SPARQL Protocol and RDF Query Language \\
+SSD          & Solid State Drive \\
+Turtle       & Terse RDF Triple Language \\
 URI          & Uniform Resource Identifier \\
 URL          & Uniform Resource Locator \\
 WWW          & World Wide Web \\
 W3C          & World Wide Web Consortium \\
-\end{tabular}
-
-\subsection*{Tekniikat}
-\begin{tabular}{ll}
-OWL          & Web Ontology Language \\
-RDF          & Resource Description Framework \\
-RDFS         & Resource Description Framework Schema\\
-SPARQL       & SPARQL Protocol and RDF Query Language \\
-Turtle       & Terse RDF Triple Language \\
 XML          & Extensible Markup Language \\
 XMP          & Extensible Metadata Platform \\
 \end{tabular}
-
-
-\subsection*{Tietokoneen komponentit}
-\begin{tabular}{ll}
-CPU          & Central Processing Unit \\
-GPU          & Graphics Processing Unit \\
-HDD          & Hard Disk Drive \\
-PSU          & Power Supply Unit \\
-RAM          & Random Access Memory \\
-SSD          & Solid State Drive \\
-\end{tabular}
-
 %% \clearpage on melkein samanlainen kuin newpage, mutta
 %% flushaa myös LaTeX:n floatit
 %%
@@ -614,7 +605,7 @@ ex:thinkpad-l540 a ex:Laptop ;
 
 \end{lstlisting}
 
-\subsection{OWL}
+\subsection{Web Ontology Language}
 % KIRJOITA: OWL on logiikkapohjainen kieli, mikä sallii tietokoneiden käsitellä ilmaisuja.
 % https://www.w3.org/OWL/
 
@@ -742,8 +733,7 @@ Semanttista tietoa voidaan käyttää monella tavalla hyödyksi. Tässä kappale
 \subsection{XMP-metadataformaatti}
 XMP (Extensible Metadata Platform) on Adoben kehittämä metadataformaatti, jota käytetään muun muassa kuvien metadatan tallennukseen. XMP on ISO:n (International Organization for Standardization) hyväksymä standardi (ISO 16684-1:2012) \cite{XMP_standard}. XMP-merkintätekniikka pohjautuu RDF-tietomallin osajoukkoon ja se hyödyntää toteutuksessaan Dublin Core sanastoa \cite{XMP2}. Merkintäteknikan avulla tallennetaan hyödyllistä metatietoa itse tiedostoihin, jolloin tietoa kuvaileva tieto on aina saatavilla tiedostojen yhteydessä \cite{XMP1}.
 
-XMP-metadataformaatista on useita hyötyjä. Sen avulla tiedostot säilyttävät niiden kontekstin, kun tiedostoja siirrellään ohjelmistolta, laitteelta tai tietokannasta toiseen. Yhteinen metadataformaatti mahdollistaa tiedostojen tehokkaan etsimisen eri tiedostotyyppien ja tietokantojen välillä. XMP-metadatan avulla voidaan merkitä yhteyksiä eri tiedostojen välille, mikä auttaa tiedostojen järjestelyssä. Avoimen standardin ansiosta XMP:n hyödyt ovat kaikkien saatavilla \cite{XMP_overall}. Konkreettinen esimerkki XMP:n eduista voidaan havaita, kun digitaalikameralla otettu valokuva siirretään tietokoneelle ja kuvanottohetki ja kameran asetukset
-ovat edelleen selvitettävissä kuvan metadatasta.
+XMP-metadataformaatista on useita hyötyjä. Sen avulla tiedostot säilyttävät niiden kontekstin, kun tiedostoja siirrellään ohjelmistolta, laitteelta tai tietokannasta toiseen. Yhteinen metadataformaatti mahdollistaa tiedostojen tehokkaan etsimisen eri tiedostotyyppien ja tietokantojen välillä. XMP-metadatan avulla voidaan merkitä yhteyksiä eri tiedostojen välille, mikä auttaa tiedostojen järjestelyssä. Avoimen standardin ansiosta XMP:n hyödyt ovat kaikkien ihmisten ja sovellusten saatavilla \cite{XMP_overall}. Konkreettinen esimerkki XMP:n hyödyistä voidaan havaita, kun digitaalikameralla otettu valokuva siirretään tietokoneelle ja kuvanottohetki ja kameran asetukset ovat edelleen selvitettävissä kuvan metadatasta. Liitteissä on esimerkki metadatasta (\nameref{Liite B}).
 
 \subsection{Semanttinen haku}
 
@@ -825,7 +815,7 @@ Internetissä esiintyvän semanttisen materiaalin määrä on jatkuvassa kasvuss
 \begin{figure}[htb]
 \centering
 \includegraphics[width=15cm]{images/taulukko.png}
-\caption{Bizerin tilastojen pohalta laadittu kooste \cite{rdfa_usage}. \label{images/taulukko}}
+\caption{Bizerin tilastojen pohalta laadittu kooste. \label{images/taulukko}}
 \end{figure}
 
 \begin{figure}[htb]
@@ -885,11 +875,13 @@ Laajoja tietämysverkkoja voidaan hyödyntää esimerkiksi silloin, kun haetaan 
 \clearpage
 %%==============================================================================
 \thesisappendix
-
+%% Table of content titles are added manually here,
+%% because I want the appendix to begin with word "Liite".
 \begin{changemargin}{-1.5cm}{-1.5cm}
-\section{Laaja esimerkki \label{LiiteA}}
+\section*{Liite A\ \ \ Esimerkki tietokone ontologiasta \label{Liite A}}
+\addcontentsline{toc}{section}{Liite A\ \ \ Esimerkki tietokone ontologiasta}
 
-Tässä liitteessä on yhtenäinen Turtle-syntaksilla kirjoitettu ontologia esimerkki. Esimerkissä kuvataan kuvitteellisen pöytätietokoneen rakennetta. Esimerkin tarkoituksena on auttaa hahmottamaan työssä esiteltyjen tekniikoiden yhteiskäyttöä ja ontologioiden rakennetta, sillä tekstissä esiintyvät esimerkit ovat hyvin pelkistettyjä. Myös tämä esimerkki on yksinkertaistettu, jotta se mahtuu järkevälle määrälle sivuja. Alla on esitelty esimerkin karkea rakenne graafimaisessa muodossa. Graafissa ei ole esitelty esimerkin kaikkia määritelmiä.
+Tässä liitteessä on yhtenäinen Turtle-syntaksilla kirjoitettu ontologia esimerkki. Esimerkissä kuvataan kuvitteellisen pöytätietokoneen rakennetta. Esimerkin tarkoituksena on auttaa hahmottamaan työssä esiteltyjen tekniikoiden yhteiskäyttöä ja ontologioiden rakennetta, sillä tekstissä esiintyvät esimerkit ovat hyvin pelkistettyjä. Myös tämän esimerkin ontologia on yksinkertaistettu, jotta se mahtuu järkevälle määrälle sivuja. Alla on esitelty esimerkin karkea rakenne graafimaisessa muodossa. Graafissa ei ole esitelty esimerkin kaikkia määritelmiä.
 
 \begin{figure}[htb]
 \centering
@@ -900,5 +892,15 @@ Tässä liitteessä on yhtenäinen Turtle-syntaksilla kirjoitettu ontologia esim
 \lstinputlisting[style=codeblock]{files/full_computer.owl}
 \clearpage
 
+
+\section*{Liite B\ \ \ Digitaalikuvan XMP-metadata \label{Liite B}}
+\addcontentsline{toc}{section}{Liite B\ \ \ Digitaalikuvan XMP-metadata}
+XMP-metadataformaattia käytetään muun muassa digitaalikuvien metadatan tallentamiseen. Metadata tallennetaan kuvatiedostoon, jolloin kuvatiedostoa kuvaava tieto on aina kuvan yhteydessä saatavilla. Seuraavan valokuvan (Kuva \ref{Takuma}) XMP-metadata on esitetty kuvan alla (Koodikatkelma \ref{Takuma_xmp}).
+\begin{figure}[htb]
+\centering
+\includegraphics[width=10cm]{images/IMG_5104.JPG}
+\caption{Digitaalinen valokuva kissasta \label{Takuma}}
+\end{figure}
+\lstinputlisting[style=codeblock,caption={XMP-metadata},captionpos=b,label={Takuma_xmp}]{files/IMG_5104.xmp}{}
 \end{changemargin}
 \end{document}
