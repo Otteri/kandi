@@ -272,6 +272,15 @@ Semanttinen web on internetiä tehokkaampi ympäristö tarjolla olevan tiedon hy
   columns=flexible,
   basicstyle=\footnotesize,
 }
+%% Allow finnish characters in lstlisting
+\lstset{literate=%
+    {Ö}{{\"O}}1
+    {Ä}{{\"A}}1
+    {ä}{{\"a}}1
+    {ö}{{\"o}}1
+    {~}{{\textasciitilde}}1
+}
+
 %% subfigures
 \usepackage{subcaption}
 
@@ -279,7 +288,7 @@ Semanttinen web on internetiä tehokkaampi ympäristö tarjolla olevan tiedon hy
 \usepackage{svg}
 \usepackage{amsmath}
 
-\renewcommand*\lstlistingname{Koodikatkelma}
+\renewcommand*\lstlistingname{Koodifragmentti}
 %%-------------------------------------------------------------------------------
 
 
@@ -663,13 +672,15 @@ Seuraavassa esimerkissä (koodikatkelma \ref{owl_esim}) on esitetty RDF Schema l
 \subsection{Ontologiat ja sanastot}
 
 % An ontology is a formal, explicit specification of a shared conceptualisation \cite{ontology_def}.
-Vuonna 1998 Studer et al. määritteli ontologian seuraavasti: ``Ontologia on formaali, eksplisiittinen määritelmä yhteisestä käsitteellistämisestä.'' \cite{ontology_def}. Yhteisellä käsitteellistämisellä hän viittaa kaikkien saatavilla olevaan malliin jostakin maailman ilmiöstä, minkä merkitykselliset konseptit kyetään tunnistamaan ja ilmaisemaan käsitteiden avulla \cite{ontology_def}. Edellinen määritelmä tiivistää ontologia-käsitteen tarkoituksen tehokkaasti, mutta määritelmää voi olla vaikeaselkoinen, mikäli ontologia-käsitettä ei tunne entuudestaan. Ontologiat voidaan ymmärtää kokoelmina toteamuksia, jotka määräävät konseptien välisiä suhteita ja määrittelevät loogisia sääntöjä, joiden avulla tiedosta voidaan tehdä päätelmiä \cite{Berners_visio}. Termillä \textit{sanasto} (engl. vocabulary) voidaan viitata samaan asiaan kuin ontologialla \cite{vocabulary}.
+Vuonna 1998 Studer et al. määritteli ontologian seuraavasti: ontologia on formaali, eksplisiittinen määritelmä sovellusalueen yhteisistä käsitteistä \cite{ontology_def}.  Edellinen määritelmä tiivistää ontologia-käsitteen merkityksen hyvin, mutta määritelmä voi olla vaikeaselkoinen, mikäli ontologia käsitettä ei tunne entuudestaan. Ontologiat voidaankin ymmärtää kokoelmina toteamuksista, jotka määräävät käsitteiden välisiä suhteita ja määrittelevät loogisia sääntöjä, joiden avulla tiedosta voidaan tehdä päätelmiä \cite{Berners_visio}.
 
-Ontologiat ovat usein rakenteeltaan monimutkaisia, formaaleja ja laajoja. Jos rakenne on kuitenkin melko yksinkertainen, niin ontologian sijaan käytetään usein termiä sanasto. Toisinaan sanaston ja ontologian erottaminen voi olla hyvin haastavaa, minkä vuoksi termejä voidaankin käyttää myös toistensa synonyymeinä \cite{vocabulary}. Sekä ontologioiden että sanastojen toimivuuden kannalta on tärkeää, että määrittelyt tehdään tietokoneluettavassa muodossa ja yksiselitteisesti. Yksiselitteisen eli eksplisiittisen määrittelyn seurauksena tieto täytyy kuvata sovelluskohtaisesti, jotta jokaisella termillä on vain ja ainoastaan yksi merkitys \cite{RDF_specification}. Luonnollisessa kielessä yhdellä sanalla voi olla monia merkityksiä, mutta ylimääräisistä merkityksistä päästään eroon, kun termi määritellään sovelluskohtaisesti. Tietokoneluettava ja eksplisiittinen konseptien määrittely tehostaa ihmisen ja tietokoneen välistä kommunikointia \cite{ontology_learning}. Lisäksi tietokoneen ymmärtämä termistö ja semantiikka mahdollistavat päättelyn tiedon pohjalta.
+Ontologiat voivat olla rakenteeltaan monimutkaisia, formaaleja ja laajoja. Jos ontologian rakenne on kuitenkin melko yksinkertainen, niin ontologiaan viitataan usein termillä \textit{sanasto} (engl. vocabulary) \cite{vocabulary}. Toisinaan sanaston ja ontologian toisistaan erottaminen voi olla kuitenkin hyvin haastavaa, minkä vuoksi termejä voidaankin käyttää myös toistensa synonyymeinä \cite{vocabulary}.
 
-Ontologioita ja sanastoja voidaan kirjoittaa OWL:n ja RDF Scheman avulla. Ontologioilla voidaan määritellä sovellukselle ominaisia tiedon rakenteita ja rajoitteita. \cite{vocabulary}. Esimerkiksi rakennussovellusta varten voitaisiin määritellä \textit{yhteensopiva}-predikaatti, sekä erilaisia \textit{mutteri} ja \textit{pultti} resursseja. Tämän jälkeen voitaisiin määritellä, että saman kierteen omaavat \textit{pultit} ja \textit{mutterit} ovat yhteensopivia, minkä seurauksena sovelluksen käyttöliittymä voisi tarjota käyttäjälle ainoastaan yhteensopivia rakennustarvikevaihtoehtoja. Hyvin määriteltyjä sanastoja ja ontologioita voidaan uudelleen käyttää ja jakaa muiden kesken. Esimerkiksi Dublin Core ja Friend of a Friend (FOAF) ovat todella tunnettuja ja maailmanlaajuisesti RDF:n yhteydessä käytettyjä ontologioita \cite{data_namespace}.
+Ontologioiden ja sanastojen toimivuuden kannalta on tärkeää, että määrittelyt tehdään tietokoneluettavassa muodossa ja yksiselitteisesti. Yksiselitteisen eksplisiittisen määrittelyn seurauksena tieto täytyy kuvata sovellusaluekohtaisesti, jotta jokaisella termillä on vain ja ainoastaan yksi merkitys \cite{RDF_specification}. Luonnollisessa kielessä yhdellä sanalla voi olla monia merkityksiä, mutta ylimääräisistä merkityksistä päästään eroon, kun termi määritellään sovellusaluekohtaisesti. Tietokoneluettava ja eksplisiittinen käsitteiden määrittely tehostaa ihmisen ja tietokoneen välistä kommunikointia \cite{ontology_learning}. Lisäksi tietokoneen ymmärtämä termistö ja semantiikka mahdollistavat päättelyn tiedon pohjalta.
 
-Sanastoja ja ontologioita hyödynnetään myös tiedon integroinnissa ja organisoinnissa \cite{vocabulary}. Esimerkiksi tuotteen maahantuojan tuotetietojen ja kauppiaan myynti tietojen yhdistäminen voi olla hyödyllistä. Kauppiaan ei tarvitse kuvailla myymien tuotteidensa ominaisuuksia, koska hän voi hyödyntää maahantuojan valmiita kuvauksia. Kauppias ja myyjä eivät kuitenkaan todennäköisesti kuvaile tuotteita täysin samalla RDF-termistöllä. Siksi tarvitaan sanasto, jonka avulla voidaan esittää tarpeellinen termien yhdistämiseen vaadittava lisätieto. Ilman sanastoa tietokone ei kykenisi yhdistämään maahantuojan tuotekuvausta ja myyjän vastaavaa tuotetta toisiinsa \cite{vocabulary}.
+Ontologioita ja sanastoja voidaan kirjoittaa OWL:n ja RDF Scheman avulla. Ontologioilla voidaan määritellä sovellusalueelle ominaisia tiedon rakenteita ja rajoitteita. \cite{vocabulary}. Esimerkiksi tietokoneavusteista kokoonpanosuunnittelusovellusta varten voitaisiin määritellä \textit{yhteensopiva}-predikaatti, sekä erilaisia \textit{mutteri} ja \textit{pultti} resursseja. Tämän jälkeen voitaisiin määritellä, että saman kierteen omaavat \textit{pultit} ja \textit{mutterit} ovat yhteensopivia, minkä seurauksena sovelluksen käyttöliittymä voisi tarjota käyttäjälle ainoastaan yhteensopivia rakennustarvikevaihtoehtoja. Siten M8-kierteisen pultin valinnan seurauksena ohjelma ehdottaisi käyttäjälle seuraavaksi M8-kierteistä mutteria. Hyvin määriteltyjä sanastoja ja ontologioita voidaan uudelleenkäyttää ja jakaa muiden kesken. Esimerkiksi Dublin Core ja Friend of a Friend (FOAF) ovat todella tunnettuja ja maailmanlaajuisesti RDF:n yhteydessä usein käytettyjä ontologioita \cite{data_namespace}.
+
+Sanastoja ja ontologioita hyödynnetään myös tiedon integroinnissa ja organisoinnissa \cite{vocabulary}. Esimerkiksi tuotteen maahantuojan tuotetietojen ja kauppiaan myynti tietojen yhdistäminen voi olla hyödyllistä. Kauppiaan ei tarvitse kuvailla myymiensä tuotteidensa ominaisuuksia, koska hän voi hyödyntää maahantuojan valmiita kuvauksia. Kauppias ja myyjä eivät kuitenkaan todennäköisesti kuvaile tuotteita täysin samalla RDF-termistöllä. Siksi tarvitaan sanasto, jonka avulla voidaan esittää tarpeellinen termien yhdistämiseen vaadittava lisätieto. Ilman termejä yhdistävää sanastoa tietokone ei kykene yhdistämään maahantuojan tuotekuvausta ja myyjän vastaavaa tuotetta toisiinsa \cite{vocabulary}.
 
 
 \subsection{RDF-muotoisen tiedon tallentaminen}
@@ -692,7 +703,7 @@ SPARQL-kyselykielen (SPARQL Query Language) avulla voidaan hakea RDF-muotoista t
 
 RDF:ssa toteamukset koostuvat subjektista, predikaatista ja objektista. SPARQL-kyselylauseessa, jokin edellisistä RDF-toteamuksen osista voidaan korvata muuttujalla, mitä merkitään kysymysmerkillä muuttujanimen alussa \cite{Antoniou}. SPARQL etsii kyselylausetta vastaavat toteamukset ja palauttaa niistä muuttujan paikalle sopivat arvot. Kyselylause voi olla esimerkiksi seuraavanlainen:
 
-\begin{lstlisting}[style=codeblock]
+\begin{lstlisting}[style=codeblock,caption={SPARQL esimerkki.},captionpos=b,label={sparql_esim}]
 PREFIX ex: <http://www.Computer-Specs.com/ontologies/example#> .
 
 SELECT ?battery
@@ -710,18 +721,18 @@ Haut voivat koostua yhdisteestä (engl. union) ja negaatioista. Lukuarvoista koo
 \clearpage
 %%===============================================================================
 
-\subsection{Yhdistetty tieto}
+\subsection{Linkitetty tieto}
 
-\textit{Yhdistetty tieto} (engl. Linked data) sallii yhteisiin tietoresursseihin viittaamisen. Tietoa ei tarvitse monistaa, vaan eri tietolähteet voivat käyttää samoja tietoresursseja hyödykseen \cite{linked_data_finlad}. Tämän ansiosta tiedon tallennukseen tarvitaan vähemmän muistitilaa ja tiedon muuttaminen on nopeampaa, koska muutos täytyy tehdä ainoastaan yhteen paikkaan. Lisäksi tiedon katsotaan rikastuvan, kun siihen liitetään muuta merkityksellistä tietoa \cite{linked_data_finlad}. Saumaton ja tehokas yhdistetyn tiedon hyödyntäminen vaatii, että sovelluksen suunnittelussa noudatetaan seuraavia sääntöjä \cite{cambridge_linked}:
+\textit{Linkitetty tieto} (engl. Linked data) sallii yhteisiin tietoresursseihin viittaamisen. Tietoa ei tarvitse monistaa, vaan eri tietolähteet voivat käyttää samoja tietoresursseja hyödykseen \cite{linked_data_finlad}. Tämän ansiosta tiedon tallennukseen tarvitaan vähemmän muistitilaa ja tiedon muuttaminen on nopeampaa, koska muutos täytyy tehdä ainoastaan yhteen paikkaan. Lisäksi tiedon katsotaan rikastuvan, kun siihen liitetään muuta merkityksellistä tietoa \cite{linked_data_finlad}. Saumaton ja tehokas yhdistetyn tiedon hyödyntäminen vaatii, että sovelluksen suunnittelussa noudatetaan seuraavia sääntöjä \cite{cambridge_linked}.
 \begin{enumerate}
 \item Resurssien nimeämiseen täytyy käyttää URI:eja.
-\item URI:en tulee tukea HTTP-protokollaa, jotta ihmiset voivat selvittää URI:en merkityksen.
-\item Kun käyttäjä tutkii URI:a, niin hänelle pitää tarjota merkityksellistä tietoa standardiformaatissa (esimerkiksi RDF).
+\item URI:en tulee tukea HTTP-protokollaa, jotta ihmiset ja sovellukset voivat selvittää URI:en merkityksen.
+\item Kun URI:n osoittamaa merkityksellistä tietoa tutkitaan, niin tiedon täytyy esiintyä jossakin standardiformaatissa (esimerkiksi RDF).
 \item Käyttäjälle täytyy tarjota linkkejä muihin resursseihin, jotta hän voi löytää uusia mielenkiintoisia resursseja.
 \end{enumerate}
 \vspace{0.5cm}
 
-Graafimaiset tietokannat ovat merkittävässä asemassa yhdistetyn tiedon kannalta. Tavallisten relaatiotietokantojen rakenne riippuu pitkälti sovelluksesta. Koska tietokannat ovat erilaisia eri sovellusten välillä, niin tiedon hakeminen on haastavaa, mikäli tietokantaa ei tunne entuudestaan. Tästä syystä graafimaiset tietokannat soveltuvat yhdistetyn tiedon käyttöön paremmin, koska niiden rakenne ei vaihtele sovellusten kesken. Kun viittaukset resursseihin tehdään URI:en avulla, niin tietokannan käyttäjä myös tietää tarkalleen mihin resurssit viittaavat \cite{cambridge_linked}.
+Graafimaiset tietokannat ovat merkittäviä linkitetyn tiedon kannalta. Tavallisten relaatiotietokantojen rakenne riippuu pitkälti sovelluksesta. Koska tietokannat ovat erilaisia eri sovellusten välillä, niin tiedon hakeminen on haastavaa, mikäli tietokantaa ei tunne entuudestaan. Tästä syystä graafimaiset tietokannat soveltuvat yhdistetyn tiedon käyttöön paremmin, koska niiden rakenne ei vaihtele sovellusten kesken. Kun viittaukset resursseihin tehdään URI:en avulla, niin tietokannan käyttäjä myös tietää tarkalleen mihin resurssit viittaavat \cite{cambridge_linked}.
 
 \clearpage
 %%===============================================================================
@@ -737,18 +748,34 @@ XMP-metadataformaatista on useita hyötyjä. Sen avulla tiedostot säilyttävät
 
 \subsection{Semanttinen haku}
 
-Internetistä tietoa hakiessa käyttäjä pyrkii ennakoimaan sopivia hakusanoja, jotka identifioivat merkitykselliset tietolähteet \cite{keyword_search}. Avainsanahaussa materiaalin löytymisen edellytyksenä on, että käyttäjä hakee tietoa materiaalista löytyvillä sanoilla ja termillä. Sanojen eri taivutusmuodot ja synonyymit voivat aiheuttaa haun epäonnistumisen, koska käyttäjälle merkitykselliset tulokset voivat jäädä löytymättä. Haun lopputulos voidaan kokea epäonnistuneeksi, jos käyttäjä ei kykene ennakoimaan sopivia hakusanoja. Tällöin hakusanat johtavat vääränlaiseen materiaaliin.
+Internetistä tietoa hakiessaan käyttäjä pyrkii ennakoimaan sopivia avainsanoja, jotka identifioivat merkitykselliset tietolähteet \cite{keyword_search}. Avainsanahaussa merkityksellisen tiedon löytymisen edellytyksenä on, että käyttäjä hakee tietoa merkityksellisestä tietolähteestä löytyvillä sanoilla ja termillä. Sanojen eri taivutusmuodot ja synonyymit voivat aiheuttaa haun epäonnistumisen, koska käyttäjälle merkitykselliset tulokset voivat jäädä löytymättä. Haun lopputulos voidaan kokea epäonnistuneeksi, jos käyttäjä ei kykene ennakoimaan sopivia hakusanoja. Tällöin hakusanat johtavat vääränlaiseen tietoaineistoon.
 
-Semanttinen haku pyrkii parantamaan haun onnistumismahdollisuuksia. Haku on erityisen menestynyt sosiaalisen median sovelluksissa, joissa tavallinen avainsanahaku on hankala suorittaa käyttäjän tarpeita tyydyttävällä tavalla. Esimerkiksi oikean henkilön etsiminen on haastavaa, koska usein parhaiten identifioiva hakusana on henkilön nimi, joka sekin tuottaa useita tuloksia. Semanttinen haku huomioi haun kontekstin, minkä ansiosta se tuottaa parempia hakutuloksia kuin pelkkiin avainsanoihin perustuva haku \cite{profium_search}. Konteksti voi olla automaattisesti hankittu tieto hakijan sijainnista tai tieto palvelussa määritetyistä ystävyyssuhteista. On todennäköisempää, että käyttäjä etsii henkilöä, joka jakaa käyttäjän kanssa ystäviä kuin henkilöä, joka asuu toisella puolella maapalloa.
+Semanttinen haku pyrkii parantamaan haun onnistumismahdollisuuksia. Semanttinen haku on erityisen hyödyllinen sosiaalisen median sovelluksissa, joissa tavallinen avainsanahaku on hankala suorittaa käyttäjän tarpeita tyydyttävällä tavalla. Esimerkiksi oikean henkilön etsiminen on haastavaa, koska usein parhaiten identifioiva avainsana on henkilön nimi, joka sekin tuottaa useita tuloksia. Semanttinen haku huomioi haun kontekstin, minkä ansiosta se tuottaa parempia hakutuloksia kuin pelkkiin avainsanoihin perustuva haku \cite{profium_search}. Sovelluksessa konteksti voi olla esimerkiksi automaattisesti hankittu tieto hakijan sijainnista tai tieto palvelussa määritetyistä ystävyyssuhteista. On yleisempää, että käyttäjä etsii henkilöä, joka jakaa käyttäjän kanssa ystäviä, kuin henkilöä, joka asuu toisella puolella maapalloa.
 
-Semanttisessa haussa yritetään ymmärtää hakijan haun merkitys, jotta käyttäjälle osataan tarjota osuvia hakutuloksia \cite{profium_search}. Siten käyttäjä ei ole enää yksin vastuussa haun onnistumisesta. Semanttinen haku sallii tavallista laajemmasta tietojoukosta etsimisen, koska haun ei tarvitse rajoittua pelkästään hakusanoilla löydettäviin tuloksiin. Yhdistetyn tiedon ansiosta voidaankin näyttää vahvoja asiayhteyksiä joita epäillään haun kohteiksi. Google hyödyntää semanttista hakua \cite{knowledge_graph} \cite{linked_data_finlad}. Esimerkiksi haku hakusanalla "Leonardo da Vinci" tuottaa hakutulosten lisäksi tietoikkunan, jossa esitetään tietoa Leonardo da Vincista. Google arvaa haun tarkoituksen olleen ehkä löytää perustietoa kyseisestä henkilöstä.
+Semanttisessa haussa yritetään ymmärtää hakijan haun merkitys, jotta käyttäjälle osataan tarjota osuvia hakutuloksia \cite{profium_search}. Siten käyttäjä ei ole enää yksin vastuussa haun onnistumisesta. Semanttinen haku sallii tavallista laajemmasta tietojoukosta etsimisen, koska haun ei tarvitse rajoittua pelkästään hakusanoilla löydettäviin tuloksiin. Yhdistetyn tiedon ansiosta voidaankin näyttää vahvoja asiayhteyksiä joita epäillään haun kohteiksi. Google hyödyntää semanttista hakua \cite{knowledge_graph} \cite{linked_data_finlad}. Esimerkiksi haku hakusanalla ``Leonardo da Vinci'' tuottaa hakutulosten lisäksi tietoikkunan, jossa esitetään tietoa Leonardo da Vincista. Google arvaa haun tarkoituksen olleen ehkä löytää perustietoa kyseisestä henkilöstä.
 
-Haku voi tapahtua myös puhumalla. Puheentunnistuksen ansiosta laite pystyy poimimaan ihmisen esittämät hakusanat ja tekemään haun niiden avulla. Haun ei tarvitse koostua yksittäisistä sanoista, vaan se voidaan suorittaa luonnollisen lauseen tai kysymyksen pohjalta. Kun sovellus ymmärtää kysymyksen tarkoituksen ja sillä on riittävän hyvä tietoverkko käytettävissä, niin se pystyy tarjoamaan käyttäjän kysymykseen oikean vastauksen. Tietoverkko koostuu yhdistetystä tiedosta. Edellistä tekniikkaa hyödynnetään muun muassa Applen Sirissä, Googlen Assistantissa ja Microsoftin Cortanassa \cite{siri} \cite{assistant} \cite{cortana}.
+Haku voi tapahtua myös puhumalla. Puheentunnistuksen ansiosta laite pystyy poimimaan ihmisen esittämät hakusanat ja tekemään haun niiden avulla. Haun ei tarvitse koostua yksittäisistä sanoista, vaan se voidaan tehdä luonnollisen lauseen tai kysymyksen pohjalta. Kun sovellus ymmärtää kysymyksen tarkoituksen ja sovelluksella on pääsy vastauksen sisältämään tietokantaan, niin sovellus pystyy tajoamaan käyttäjän kysymykseen oikean vastauksen. Tästä syystä tietokantojen linkittäminen ja laajojen tietoverkkojen rakentaminen on antoisaa, sillä muun muassa hauissa hyödynnettävän tiedon määrä kasvaa. Edellistä tekniikkaa hyödynnetään esimerkiksi Applen Sirissä, Googlen Assistantissa ja Microsoftin Cortanassa \cite{siri} \cite{assistant} \cite{cortana}.
 
 \subsection{Semanttinen Finlex}
 Semanttinen Finlex on kehitetty tarjoamaan Suomen lainsäädännöllisiä sisältöjä tietokonehyödynnettävässä muodossa. Tämä sallii sovellusten ja verkkopalveluiden hyödyntää lainsäädännöllistä materiaalia, joko lataamalla tai vaihtoehtoisesti avoimien rajapintojen avulla \cite{finlex}. Semanttinen Finlex tarjoaa muun muassa SPARQL-palvelupisteen tiedon hakemiseen \cite{finlex2}.
 
-Semanttisen Finlexin esittämä tieto ja palvelut perustuvat semanttisen webin standardeihin ja parhaisiin käytäntöihin \cite{finlex2}. Tieto esitetään RDF-tietomallin ja ELI-standardin (European Legislation Identifier) mukaisessa muodossa. ELI-standardi määrittelee metadatamallin (ontologian) säädöksille sekä mallin URI:en luomiseen. Tarkoituksena on edistää lainsäädännön yhteen toimivuutta Euroopan ja sen jäsenmaiden kesken. ELI-ontologiaa on jatkettu projektia varten kehitetyllä SFL-ontologialla (Semantic Finlex Legislation ontology), mikä mahdollistaa muun muassa lain väliaikaisten versioiden määrittämisen \cite{finlex3}. Ontologiat ovat hankkeen kannalta merkittäviä, koska ne määrittävät tietokoneen ja ihmisen yhteisesti ymmärtämän termistön. Ennen hanketta lait ovat olleet ainoastaan ihmisen ymmärrettävissä, mutta nyt tietokoneet kykenevät myös ymmärtämään lain termistöä \cite{finlex}.
+Semanttisen Finlexin esittämä tieto ja palvelut perustuvat semanttisen webin standardeihin ja parhaisiin käytäntöihin \cite{finlex2}. Tieto esitetään RDF-tietomallin ja ELI-standardin (European Legislation Identifier) mukaisessa muodossa. ELI-standardi määrittelee metadatamallin (ontologian) säädöksille sekä mallin URI:en luomiseen. Tarkoituksena on edistää lainsäädännön yhteen toimivuutta Euroopan ja sen jäsenmaiden kesken. ELI-ontologiaa on jatkettu projektia varten kehitetyllä SFL-ontologialla (Semantic Finlex Legislation ontology), mikä mahdollistaa muun muassa lain väliaikaisten versioiden ja suomenkielisen lain termistön määrittämisen \cite{finlex3}. Ontologiat ovat hankkeen kannalta merkittäviä, koska ne määrittävät tietokoneen ja ihmisen yhteisesti ymmärtämän termistön. Ennen hanketta lait ovat olleet ainoastaan ihmisen ymmärrettävissä, mutta nyt tietokoneet kykenevät myös ymmärtämään lain termistöä \cite{finlex}.
+
+Finlexin SFL-ontologiassa on useita kymmeniä erilaisia määritelmiä. Alla on esimerkki \textit{säädös} ja \textit{säädöksen version} määrityksistä.
+\begin{lstlisting}[style=codeblock,caption={SFL-ontologia esimerkki.},captionpos=b,label={sfl_esim}]
+:Statute
+  rdf:type owl:Class ;
+  rdfs:subClassOf eli:LegalResource ;
+  rdfs:label "Statute"@en, "Säädös"@fi, "Författning"@sv;
+.
+:StatuteVersion
+  rdf:type owl:Class ;
+  rdfs:subClassOf eli:LegalResource ;
+  rdfs:label "Statute version"@en, "Säädöksen versio"@fi ;
+.
+\end{lstlisting}
+
+
 
 %Tieto on esitetty erittäin laadukkaalla tavalla (tieto on 7/7 tähden arvoista). Tieto on esitetty RDF-tietomallin avulla. \cite{finlex2}.
 
@@ -795,22 +822,22 @@ Listan laadintaan on käytetty seuraavia lähteitä: \cite{SeCo_stars} \cite{SeC
 Seitsemän tähden tiedolla pyritään takaamaan tiedon laadukkuus ja soveltuvuus jatkokäyttöä varten. Tällä hetkellä ongelmana on se, että ulkopuolinen taho ei voi tietää nopeasti, mikäli tieto on laadukasta. Lisäksi tiedon ominaisuuksia ei voida tuntea ja tiedon ja sanaston yhteensopivuudesta ei voida varmistua, mikäli sanastoon ei perehdytä erikseen. Laajennetun arvosteluasteikon tarkoituksena on siten helpottaa ja nopeuttaa tiedon uudelleenkäyttöä \cite{SeCo_stars}.
 
 \subsection{Haasteita}
-Semanttisen webin kehitykseen liittyy haasteita. Ideana semanttinen web ei ole uusi, joten useisiin teknisiin ongelmiin on ehditty jo kehittämään ratkaisu. Siksi esimerkiksi tekniikoita on useita erilaisia. Osa haasteista on kuitenkin luonteeltaan sellaisia, että niihin ei voida kehittää suoraa ratkaisua. Tässä luvussa esitellään kolme edellisenkaltaista pitkäaikaista haastetta.
+Semanttisen webin kehitykseen liittyy haasteita. Ideana semanttinen web ei ole uusi, joten useisiin teknisiin ongelmiin on ehditty jo kehittää ratkaisuja. Osa haasteista on kuitenkin luonteeltaan sellaisia, että niihin ei voida kehittää suoraa ratkaisua. Tässä luvussa esitellään kolme semanttisen webin pitkäaikaista haastetta.
 
 
 \subsubsection{Ihmiskielen monimuotoisuus}
-Ihmiskielessä termien merkitys voi riippua toimialasta, minkä vuoksi sanoilla ei ole välttämättä yhtä ainoaa merkitystä. Siksi kaikkea tietoa ei voi linkittää sokkona yhteen, koska muuten termejä vastaava tieto voi mennä sekaisin. Ongelma voidaan ratkaista sanastoilla ja ontologioilla, minkä avulla termit voidaan määrittää sovelluskohtaisesti \cite{linked_data_finlad}. Tästä kuitenkin seuraa tarve ontologioista, semanttisen internetin tekniikoista ja alan termistöstä ymmärtävien ihmisten palkkaamiselle. Ontologioita on mahdollista luoda automaattisesti, mutta usein viimeistään ontologian validointivaiheessa vaaditaan ihmisen tulkintaa. Validointi on myös mahdollista jättää kokonaan tekemättä, mutta tällöin ei voida varmistua ontologian oikeellisuudesta \cite{automatic_ontology}. Lisäksi kaikkia luonnollisen kielen lauseita ei voida esittää RDF:n avulla. RDF:llä soveltuu ainoastaan toteamuksien esittämiseen.
+Ihmiskielessä termien merkitys voi riippua asiayhteydestä, minkä vuoksi sanoilla ei ole välttämättä yhtä ainoaa merkitystä. Siksi tietoa linkittäessä täytyy olla tarkkana, jotta termejä vastaavat merkitykset eivät sekottuisi keskenään. Tämän vuoksi termit määritellään yleensä sovellusalakohtaisesti \cite{linked_data_finlad}. Tästä kuitenkin seuraa tarve ontologioiden, semanttisen internetin tekniikoiden ja alan termistön ymmärtävien ihmisten palkkaamiselle. Ontologioita on mahdollista luoda automaattisesti, mutta usein viimeistään ontologian validointivaiheessa vaaditaan ihmisen tulkintaa. Validointi on myös mahdollista jättää kokonaan tekemättä, mutta tällöin ei voida varmistua ontologian oikeellisuudesta \cite{automatic_ontology}. Lisäksi kaikkia luonnollisen kielen lauseita ei voida esittää RDF:n avulla. RDF soveltuu ainoastaan toteamusten esittämiseen.
 
 \subsubsection{Semanttisen tiedon ja ihmisten luotettavuus}
-Tiedon luotettavuuden varmentaminen on haastavaa, mikäli tiedon esittäjä ei perustele väitteitään itse tai muiden luotettavien lähteiden avulla. Jos tietoon ei voi luottaa, niin sitä on hankala hyödyntää. Ongelmaan on tarjottu ratkaisuksi tiedostojen sähköistä allekirjoittamista, minkä avulla voidaan varmentaa tiedon todenmukaisuus. Tiedostojen sähköinen allekirjoitus ei kuitenkaan pysty vastaamaan ihmisten luotettavuudesta \cite{trust}. Ihmisten välinen luotettavuus pystyttäisiin ratkaisemaan henkilökohtaisten luotettavuusontologioiden avulla. Käyttäjät voisivat luokitella ystäviään ja jakaa ontologiaansa muille automaattisesti. Ontologioita yhdistelemällä voidaan luoda verkkomainen graafi, minkä pohjalta voidaan laskea kaikkien käyttäjien luotettavuus.
-Luotettavuus riippuisi verkko-graafissa esiintyvien henkilöiden etäisyydestä ja luotettavuusarvosteluista \cite{trust}. Tämän seurauksena läheiset käyttäjät olisivat usein luotettavampia kuin ventovieraat. Ratkaisu ei kuitenkaan takaa käyttäjältä peräisin olevan tiedon oikeellisuutta, koska luotettavatkin henkilöt voivat valehdella.
+Tiedon luotettavuuden varmentaminen on haastavaa, mikäli tiedon esittäjä ei perustele väitteitään itse tai muiden luotettavien lähteiden avulla. Jos tietoon ei voi luottaa, niin sitä on hankala hyödyntää. Ongelmaan on tarjottu ratkaisuksi tiedostojen sähköistä allekirjoittamista, minkä avulla voidaan varmentaa tietolähteen aitous. Tiedostojen sähköisen allekirjoituksen avulla ei kuitenkaan kyetä varmentamaan ihmisten luotettavuutta \cite{trust}. Ihmisten välinen luottamus pystyttäisiin ratkaisemaan henkilökohtaisten luotettavuusontologioiden avulla. Käyttäjät voisivat luokitella ystäviään ja jakaa ontologiaansa muille automaattisesti. Ontologioita yhdistelemällä voidaan luoda verkkomainen graafi, minkä pohjalta voidaan laskea kaikkien käyttäjien luotettavuus.
+Luotettavuus riippuisi verkko-graafissa esiintyvien henkilöiden etäisyydestä ja luotettavuusarvosteluista \cite{trust}. Tämän seurauksena läheiset käyttäjät olisivat usein luotettavampia kuin ventovieraat. Ratkaisu ei kuitenkaan takaa käyttäjältä peräisin olevan tiedon todenperäisyyttä, koska luotettavatkin henkilöt voivat valehdella.
 
 \subsubsection{Alan heikko tietämys}
-Semanttista webiä ei osata hyödyntää. Ihmiset eivät tunne semantiikan tuomia hyötyjä, joten semanttisen materiaalin tuottamiseen käytettyä panosta ei nähdä vaivan arvoisena. Tämän seurauksena ala kehittyy ja kasvaa hitaammin kuin se kasvaisi suuremmalla käyttäjämäärällä. Suuret yritykset, kuten esimerkiksi Facebook, Google ja Microsoft kehittävät yhdistetyn tiedon verkkojaan, mikä lisää kiinnostusta pienemmissä yrityksissä \cite{Facebook} \cite{knowledge_graph} \cite{cortana}. Semanttista materiaalia tuotetaan vuosittain yhä enemmän, tämä voidaan havaita esimerkiksi seuraavasta kuvaajasta (Kuva \ref{images/verkkosivut}).
+Semanttisen webin tekniikoita ei osata hyödyntää. Ihmiset eivät tunne semantiikan tuomia hyötyjä, joten semanttisen materiaalin tuottamiseen tarvittavaa työtä ei nähdä vaivan arvoisena. Tämän seurauksena ala kehittyy ja kasvaa hitaammin kuin se kasvaisi suuremmalla käyttäjämäärällä. Suuret yritykset, kuten esimerkiksi Facebook, Google ja Microsoft kehittävät linkitetyn tiedon verkkojaan, mikä lisää kiinnostusta myös pienemmissä yrityksissä \cite{Facebook} \cite{knowledge_graph} \cite{cortana}.
 
 
 \subsection{Semanttisen materiaalin yleistyminen}
-Internetissä esiintyvän semanttisen materiaalin määrä on jatkuvassa kasvussa. Kasvava kiinnostus semantiikkaa kohtaan voidaan havaita tutkimalla verkkosivuja. Verkkosivuilla käytettyjä yleisiä semanttisia merkintäkieliä ovat muun muassa: Microdata, Microformat, RDFa ja JSON-LD. Bizer et al. on tilastoinut satunnaisesti valituilta verkkosivustoilta semanttista merkintää käyttävien verkkosivustojen määrän \cite{rdfa_usage}. Esimerkiksi vuonna 2013 näytekoko oli alhaisin: 12 831 509 verkkosivustoa, josta semanttista merkintää hyödynsi 2 189 256 sivustoa eli 17,06 \%. Alla on kooste Bizerin tuloksista:
+Internetissä esiintyvän semanttisen materiaalin määrä on jatkuvassa kasvussa. Kasvava kiinnostus semantiikkaa kohtaan voidaan havaita tutkimalla verkkosivuja. Verkkosivuilla käytettyjä yleisiä semanttisia merkintäkieliä ovat muun muassa: Microdata, Microformat, RDFa ja JSON-LD. Bizer et al. on tilastoinut satunnaisesti valituilta verkkosivustoilta semanttista merkintää käyttävien verkkosivustojen määrän \cite{rdfa_usage}. Esimerkiksi vuonna 2013 näytekoko oli: 12 831 509 satunnaista verkkosivustoa, josta semanttista merkintää hyödynsi 2 189 256 sivustoa eli 17,06 \%. Alla on kooste Bizerin tuloksista ja lisäksi taulukon viimeiseen sarakkeeseen on laskettu semanttisen merkinnän käyttöprosentti tulosten pohjalta.
 
 \begin{figure}[htb]
 \centering
@@ -827,10 +854,10 @@ Internetissä esiintyvän semanttisen materiaalin määrä on jatkuvassa kasvuss
 
 Kuvaajan trendikäyrä on johdettu yhteensä yli 140 miljoonan verkkosivustonäytteen pohjalta. Semanttisen tiedon yleistyminen on siis selvästi kasvava trendi. Bizerin tilastoja tukee vuonna 2010 tehty vastaavanlainen tiedonkeräys. Goel ja Gupta (2010) keräsivät miljoona näytettä, joista 42 605 sivua (eli 4,3 \%) käytti joko Microformat tai RDFa merkintää \cite{Google}. Tulos sijoittuu Bizerin tilastojen pohjalta johdetun lineaarisen trendikäyrän läheisyyteen.
 
-Vuonna 2014 julkaistu HTML5-merkintäkieli sisältää semanttisia merkintöjä. Esimerkiksi elementit \textit{header}, \textit{main} ja \textit{footer} voitaisiin kaikki korvata rakenteensa puolesta \textit{div}-elementillä, mutta tällöin elementtien sisällöstä ei voida päätellä mitään. Uudet elementit, kuten \textit{article}, \textit{form} ja \textit{figure} vihjaavat tietokoneelle tiedon sisällöstä ja merkityksestä eli semantiikasta \cite{html5}. Näin esimerkiksi Googlen indeksoijat (engl. crawlers) kykenevät tunnistamaan verkkosivulla esiintyvän materiaalin tyypin \cite{html5}. HTML5:n tarjoamat ominaisuudet on otettu laajalti käyttöön, joten nykyisin semantiikkaa hyödyntävien verkkosivustojen määrän voidaan nähdä olevan edellisiä tilastoja suurempi. Semanttisia elementtejä on kuitenkin rajallinen määrä, joten HTML5:n avulla ei voida määritellä kaiken tiedon semantiikkaa.
+Vuonna 2014 julkaistu HTML5-merkintäkieli sisältää semanttisia merkintöjä. Esimerkiksi elementit \textit{header}, \textit{main} ja \textit{footer} voitaisiin kaikki korvata rakenteensa puolesta \textit{div}-elementillä, mutta tällöin elementtien sisällöstä ei voida päätellä mitään. Uudet elementit, kuten \textit{article}, \textit{form} ja \textit{figure} vihjaavat tietokoneelle tiedon sisällöstä ja merkityksestä eli semantiikasta \cite{html5}. Näin esimerkiksi Googlen indeksoijat (engl. crawlers) kykenevät tunnistamaan verkkosivulla esiintyvän materiaalin tyypin \cite{html5}. HTML5:n tarjoamat ominaisuudet on otettu laajalti käyttöön, joten nykyisin semantiikkaa hyödyntävien verkkosivustojen määrän voidaan nähdä olevan edellisiä tilastoja suurempi. Semanttisia elementtejä on kuitenkin rajallinen määrä, joten HTML5:n avulla ei voida määritellä kaikkea tiedon semantiikkaa.
 
 \subsection{Semanttisen webin arkkitehtuuri}
-Tietotekniikan yhteydessä arkkitehtuurilla viitataan ratkaisujen jäsentelyyn eli rakenteeseen. Semanttinen web koostuu selkeistä komponenteista, joten voidaan puhua, että semanttisella internetillä on arkkitehtuuri. Tim-Berners lee esitteli vuonna 2000 semanttisen webin arkkitehtuurin kuva \ref{images/sweb-stack.png} mukaisena. Pinomallissa ajatuksena oli jatkaa kehitystä aina edellisen tason päälle, jolloin tekniikoihin nähdyt investoinnit säilyisivät semanttisen webin kehittyessä. Ajatus kuitenkin vaatii, että tekniikat olisivat ikuisia ja aina yhteensopivia uusien kanssa, mikä ei ole käytännössä mahdollista \cite{stack}. Tästä syystä vuoden 2000 pinomalli ei ole realistinen ja sen tilalle on esitetty kuva \ref{images/sweb-stack.png} mallia.
+Tietotekniikan yhteydessä arkkitehtuurilla viitataan ratkaisujen jäsentelyyn eli rakenteeseen. Semanttinen web koostuu selkeistä komponenteista, joten voidaan puhua, että semanttisella internetillä on arkkitehtuuri. Tim-Berners lee esitteli vuonna 2000 semanttisen webin arkkitehtuurin kuvan \ref{images/sweb-stack.png} mukaisena. Pinomallissa ajatuksena oli jatkaa kehitystä aina edellisen tason päälle, jolloin tekniikoihin nähdyt investoinnit säilyisivät semanttisen webin kehittyessä. Ajatus kuitenkin vaatii, että tekniikat olisivat ikuisia ja aina yhteensopivia uusien kanssa, mikä ei ole käytännössä mahdollista \cite{stack}. Tästä syystä vuoden 2000 pinomalli ei ole realistinen ja sen tilalle on esitetty kuvan \ref{images/Semantic_web_stack_one_col.pdf} tarkennettua mallia.
 
 % Side by side figures
 \begin{figure}[htb]
@@ -853,7 +880,7 @@ Merkittävin ominaisuus uudessa pinomallissa on sen jakautuminen useampiin pinoi
 % Vastaa kysymyksiin.
 % Katso arvostelumatriisi ja tee sen mukaan !!!
 
-Semanttinen web on ihmisten ja tietokoneiden yhteisesti hyödynnettävissä oleva tietoresurssi. Tavallisessa internetissä materiaali on lähtökohtaisesti suunnattu ihmisille, jolloin tietokoneet eivät kykene ymmärtämään esittämäänsä materiaalia. Semanttinen web pyrkii muuntamaan internetissä esiintyvän materiaalin sellaiseen muotoon, jota myös tietokoneet kykenevät ymmärtämään. Tämän seurauksena tiedon hyödynnettävyys mahdollisuudet paranevat, koska voidaan rakentaa sovelluksia, jotka hyödyntävät tietokoneen ymmärtämää tietoa.
+Semanttinen web on ihmisten ja tietokoneiden yhteisesti hyödynnettävissä oleva tietoresurssi. Tavallisessa internetissä materiaali on lähtökohtaisesti suunnattu ihmisille, jolloin tietokoneet eivät kykene ymmärtämään esittämäänsä materiaalia. Semanttinen web pyrkii muuntamaan internetissä esiintyvän materiaalin sellaiseen muotoon, jota myös tietokoneet kykenevät ymmärtämään. Tämän seurauksena tiedon hyödynnettävyyden mahdollisuudet paranevat, koska voidaan rakentaa sovelluksia, jotka hyödyntävät tietokoneen ymmärtämää tietoa.
 
 Tiedon muuntaminen tietokoneiden ymmärtämään eli semanttiseen muotoon tapahtuu W3C:n ylläpitämien standardien avulla. Keskeisiä tiedon esittämiseen ja määritykseen liittyviä standardeja ovat RDF, RDFS ja OWL. RDF-tietomuoto mahdollista joustavan tavan esittää ihmiseltä peräisin olevaa tietoa. Tiedonkohteisiin viitataan yksiselitteisten URI:en avulla. Usein tietoa halutaan kuitenkin ilmaista yleisellä tasolla, milloin suoria URI-viittauksia ei voida käyttää. Tällöin tiedon kuvailuun hyödynnetään RDF Schemaa, jonka avulla voidaan määritellä luokkia ja luokkien ominaisuuksia. RDFS määrittelee kaikista tarpeellisimmat semanttisen webin tiedonkuvausmekanismit, mutta RDFS:n määritykset eivät ole aina riittäviä. Tällöin tiedon kuvaamiseen voidaan hyödyntää ilmaisuvoimaisempaa OWL:ia. Kun tieto määritellään riittävän hyvin, niin tietokone kykenee tekemään itsenäisiä päätelmiä tiedon pohjalta. Vaadittu määrittelyn tarkkuus riippuu sovelluksesta, joten sovellus määrää tarpeelliset tekniikat. Kaikki tekniikat vastaavat tiettyihin ongelmiin, minkä vuoksi mikään tekniikka ei ole turha, mutta yksittäisessä sovelluksessa ei välttämättä tarvita kaikkia tekniikoita.
 
@@ -877,7 +904,7 @@ Laajoja tietämysverkkoja voidaan hyödyntää esimerkiksi silloin, kun haetaan 
 \thesisappendix
 %% Table of content titles are added manually here,
 %% because I want the appendix to begin with word "Liite".
-\begin{changemargin}{-1.5cm}{-1.5cm}
+\begin{changemargin}{-1.0cm}{-1.0cm}
 \section*{Liite A\ \ \ Esimerkki tietokone ontologiasta \label{Liite A}}
 \addcontentsline{toc}{section}{Liite A\ \ \ Esimerkki tietokone ontologiasta}
 
@@ -899,7 +926,7 @@ XMP-metadataformaattia käytetään muun muassa digitaalikuvien metadatan tallen
 \begin{figure}[htb]
 \centering
 \includegraphics[width=10cm]{images/IMG_5104.JPG}
-\caption{Digitaalinen valokuva kissasta \label{Takuma}}
+\caption{Digitaalinen valokuva kissasta. \label{Takuma}}
 \end{figure}
 \lstinputlisting[style=codeblock,caption={XMP-metadata},captionpos=b,label={Takuma_xmp}]{files/IMG_5104.xmp}{}
 \end{changemargin}
