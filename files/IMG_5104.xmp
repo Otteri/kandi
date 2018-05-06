@@ -13,16 +13,12 @@
          <aux:LensInfo>18/1 55/1 0/0 0/0</aux:LensInfo>
          <aux:Lens>EF-S18-55mm f/3.5-5.6 IS</aux:Lens>
          <aux:LensID>48</aux:LensID>
-         <aux:ImageNumber>0</aux:ImageNumber>
          <aux:ApproximateFocusDistance>93/100</aux:ApproximateFocusDistance>
          <aux:FlashCompensation>0/1</aux:FlashCompensation>
          <aux:Firmware>1.1.0</aux:Firmware>
          <xmp:ModifyDate>2012-04-06T16:12:47.01</xmp:ModifyDate>
          <xmp:CreateDate>2012-04-06T16:12:47</xmp:CreateDate>
          <xmp:MetadataDate>2012-04-06T16:12:47.01</xmp:MetadataDate>
-         <photoshop:DateCreated>2012-04-06T16:12:47.001</photoshop:DateCreated>
-         <photoshop:ColorMode>3</photoshop:ColorMode>
-         <photoshop:ICCProfile>sRGB IEC61966-2.1</photoshop:ICCProfile>
          <xmpMM:DocumentID>C988F5B67AD0AF364502326AC4517C8B</xmpMM:DocumentID>
          <xmpMM:InstanceID>C988F5B67AD0AF364502326AC4517C8B</xmpMM:InstanceID>
          <dc:format>image/jpeg</dc:format>
@@ -35,10 +31,7 @@
                <rdf:li>8</rdf:li>
             </rdf:Seq>
          </tiff:BitsPerSample>
-         <tiff:PhotometricInterpretation>2</tiff:PhotometricInterpretation>
-         <tiff:Orientation>1</tiff:Orientation>
          <tiff:SamplesPerPixel>3</tiff:SamplesPerPixel>
-         <tiff:YCbCrPositioning>2</tiff:YCbCrPositioning>
          <tiff:XResolution>72/1</tiff:XResolution>
          <tiff:YResolution>72/1</tiff:YResolution>
          <tiff:ResolutionUnit>2</tiff:ResolutionUnit>
@@ -74,14 +67,6 @@
          <exif:FocalPlaneXResolution>4752000/894</exif:FocalPlaneXResolution>
          <exif:FocalPlaneYResolution>3168000/593</exif:FocalPlaneYResolution>
          <exif:FocalPlaneResolutionUnit>2</exif:FocalPlaneResolutionUnit>
-         <exif:CustomRendered>0</exif:CustomRendered>
-         <exif:ExposureMode>1</exif:ExposureMode>
-         <exif:WhiteBalance>0</exif:WhiteBalance>
-         <exif:SceneCaptureType>0</exif:SceneCaptureType>
-         <exif:SubSecTime>01</exif:SubSecTime>
-         <exif:SubSecTimeOriginal>01</exif:SubSecTimeOriginal>
-         <exif:SubSecTimeDigitized>01</exif:SubSecTimeDigitized>
-         <exif:GPSVersionID>2.2.0.0</exif:GPSVersionID>
       </rdf:Description>
    </rdf:RDF>
 </x:xmpmeta>
