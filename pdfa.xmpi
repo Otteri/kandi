@@ -57,16 +57,17 @@
       </rdf:Description> 
       <rdf:Description rdf:about="" xmlns:dc="http://purl.org/dc/elements/1.1/"> 
          <dc:format>application/pdf</dc:format> 
-         <dc:title><rdf:Alt><rdf:li xml:lang="x-default">Semanttinen web</rdf:li></rdf:Alt></dc:title>
+         <dc:title><rdf:Alt><rdf:li xml:lang="x-default">Semanttinen web ja RDF-kuvauskieli</rdf:li></rdf:Alt></dc:title>
          <dc:creator><rdf:Seq><rdf:li>Joni Airaksinen</rdf:li></rdf:Seq></dc:creator>
          <dc:publisher><rdf:Bag><rdf:li></rdf:li></rdf:Bag></dc:publisher>
          
          <dc:rights><rdf:Alt><rdf:li xml:lang="x-default">Copyright © 2018 Joni Airaksinen</rdf:li></rdf:Alt></dc:rights>
-         <dc:description><rdf:Alt><rdf:li xml:lang="x-default"> Semanttinen web on internetiä tehokkaampi ympäristö tarjolla olevan tiedon hyödyntämiseen. Tieto pitää kuitenkin saattaa tietokoneymmärrettävään muotoon, jotta se kelpaa semanttiseen webiin. Tutkielmassa tutustutaan semanttisen webin standardeihin, joiden avulla voidaan luoda tietokoneluettavaa ja -pääteltävää tietoa. Standardien tarpeellisuus pyritään perustelemaan niiden käyttökohteiden ja erikoisuuksien avulla. Keskeisiä standardeja ovat muun muassa: RDF, RDFS ja OWL. Standardien lisäksi tutkielmassa pohditaan semanttisen webin sovelluskohteita, haasteita ja nykytilaa. Tutkielmassa pyritään tiivistämään semanttisen webin pääkohdat helposti omaksuttavalla tavalla, jotta aiheeseen perehtymätön lukija kykenee hahmottamaan semanttisen webin kokonaisuuden. Ohjelmointitaidoista voi olla apua esimerkkejä lukiessa. </rdf:li></rdf:Alt></dc:description>
+         <dc:description><rdf:Alt><rdf:li xml:lang="x-default"> Semanttinen web on internetiä tehokkaampi tiedon hyödyntämisympäristö. Tieto pitää kuitenkin saattaa tietokoneymmärrettävään muotoon, jotta se kelpaa semanttiseen webiin. Tutkielmassa tutustutaan semanttisen webin standardeihin, joiden avulla voidaan luoda tietokoneluettavaa ja -pääteltävää tietoa. Standardien tarpeellisuus pyritään perustelemaan niiden käyttökohteiden avulla. Keskeisiä standardeja ovat muun muassa: RDF, RDFS ja OWL. Standardien lisäksi tutkielmassa pohditaan semanttisen webin sovelluskohteita, haasteita ja nykytilaa. Tutkielmassa pyritään tiivistämään semanttisen webin pääkohdat helposti omaksuttavalla tavalla, jotta aiheeseen perehtymätön lukija kykenee hahmottamaan semanttisen webin kokonaisuuden. Ohjelmointitaidoista voi olla apua esimerkkejä luettaessa. </rdf:li></rdf:Alt></dc:description>
          <dc:subject><rdf:Bag><rdf:li>Semanttinen web</rdf:li>
      <rdf:li>semantiikka</rdf:li>
      <rdf:li>RDF</rdf:li>
-     <rdf:li>RDFS</rdf:li></rdf:Bag></dc:subject>
+     <rdf:li>OWL</rdf:li>
+     <rdf:li>SPARQL</rdf:li></rdf:Bag></dc:subject>
       </rdf:Description> 
       <rdf:Description rdf:about="" xmlns:prism="http://prismstandard.org/namespaces/basic/2.2/"> 
          
@@ -91,9 +92,9 @@
       </rdf:Description> 
       <rdf:Description rdf:about="" xmlns:xmp="http://ns.adobe.com/xap/1.0/"> 
          <xmp:CreatorTool>LaTeX with hyperref package</xmp:CreatorTool> 
-         <xmp:ModifyDate>2018-05-06T21:20:41+03:00</xmp:ModifyDate> 
-         <xmp:CreateDate>2018-05-06T21:20:41+03:00</xmp:CreateDate> 
-         <xmp:MetadataDate>2018-05-06T21:20:41+03:00</xmp:MetadataDate> 
+         <xmp:ModifyDate>2018-05-11T14:13:29+03:00</xmp:ModifyDate> 
+         <xmp:CreateDate>2018-05-11T14:13:29+03:00</xmp:CreateDate> 
+         <xmp:MetadataDate>2018-05-11T14:13:29+03:00</xmp:MetadataDate> 
       </rdf:Description> 
       <rdf:Description rdf:about="" xmlns:xmpRights = "http://ns.adobe.com/xap/1.0/rights/"> 
          <xmpRights:Marked>True</xmpRights:Marked>
@@ -102,7 +103,7 @@
       </rdf:Description> 
       <rdf:Description rdf:about="" xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/"> 
          <xmpMM:DocumentID>uuid:E4A48AB5-7CA3-6712-4FD6-BD3D4CBF3C37</xmpMM:DocumentID> 
-         <xmpMM:InstanceID>uuid:269EDF70-83BD-A55D-CE79-C399ADB85A6A</xmpMM:InstanceID> 
+         <xmpMM:InstanceID>uuid:9D08CE9C-DFCB-2F22-2076-54338B7F9420</xmpMM:InstanceID> 
       </rdf:Description> 
    </rdf:RDF> 
 </x:xmpmeta> 
